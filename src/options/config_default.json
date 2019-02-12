@@ -1,0 +1,103 @@
+{
+  "H36M": {
+    "url": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+    "filename": "h36train.hdf5",
+    "tgz_md5": "c58f30108f718f92721af3b95e74349a",
+    "data_dir": "datasets/h36m/",
+    "use_bgr": false,
+    "data_folder": "human-36m-batches-py",
+    "meta_file": "batches.meta",
+    "train_ids_file": "train_ids.txt",
+    "val_ids_file": "val_ids.txt",
+    "test_ids_file": "test_ids.txt"
+  },
+
+  "dataset": {
+    "type": "H36M",
+    "batch_size": 15,
+    "input_dim": 42,
+    "input_rows": 14,
+    "input_cols": 3,
+    "hidden_dim": 512,
+    "layer_dim": 3,
+    "output_dim": 42,
+    "seq_dim": 99,
+    "serial_batches": false,
+    "drop_last_batch": true,
+    "n_threads": 1
+  },
+  "dataset_train": {
+    "n_threads": 3
+  },
+  "dataset_val": {
+    "serial_batches": true
+  },
+  "dataset_test": {
+    "batch_size": 1,
+    "drop_last_batch": false,
+    "n_prev_frames": 0,
+    "serial_batches": true
+  },
+
+  "model": {
+    "load_epoch": -1,
+    "type": "lstm1",
+    "master_gpu": 0,
+    "reg_gpus": [0,1,2]
+  },
+
+  "train": {
+    "nepochs_no_decay": 20,
+    "nepochs_decay": 2000,
+    "reg_lr": 0.001,
+    "num_iters_validate": 10
+  },
+
+  "logs": {
+    "print_freq_s": 5,
+    "display_freq_s": 180,
+    "save_latest_freq_s": 3600
+  },
+
+  "networks": {
+    "reg": {
+      "type": "lstm",
+      "hyper_params": {
+        "input_dim": 42,
+        "hidden_dim": 512,
+        "layer_dim": 3,
+        "output_dim": 42
+      }
+    }
+  },
+
+  "transforms_train": [],
+  "transforms_val": [],
+  "transforms_test": [],
+  "transforms": {
+    "to_tensor": {
+      "type": "to_tensor",
+      "general_args": {},
+      "perkey_args": {
+        "img": {}
+      }
+    },
+    "normalize": {
+      "type": "normalize",
+      "general_args": {
+        "mean": [0.0],
+        "std": [1.0]
+      },
+      "perkey_args": {
+        "img": {}
+      }
+    },
+    "horz_flip": {
+      "type": "rand_horz_flip",
+      "general_args": {},
+      "perkey_args": {
+        "img": {}
+      }
+    }
+  }
+}

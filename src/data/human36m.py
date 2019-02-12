@@ -38,7 +38,7 @@ class H36M(DatasetBase):
         self._init_meta(opt)
 
         # normalize
-        # self._normalize()
+        self._normalize()
 
         # read dataset
         self._read_dataset()
@@ -142,7 +142,7 @@ class H36M(DatasetBase):
                 #Pick only one each 2 frames
                 #x_tensor = x_tensor[:,::2,:,:]
 
-                #x_tensor = (x_tensor - self._mean)/self._std
+                x_tensor = (x_tensor - self._mean)/self._std
 
                 self._data.append(x_tensor)
 

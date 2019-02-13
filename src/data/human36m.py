@@ -47,8 +47,6 @@ class H36M(DatasetBase):
 
         self.transform = transform
 
-        # self._dataset_size = self.__len__()
-
     def _init_meta(self, opt):
         self._root = opt[self._name]["root"]
         self._meta_file = opt[self._name]["meta_file"]
@@ -142,6 +140,7 @@ class H36M(DatasetBase):
                 #Pick only one each 2 frames
                 x_tensor = x_tensor[:,::2,:,:]
 
+                #Normalize the whole dataset, but this is done in the transform of get item
                 #x_tensor = (x_tensor - self._mean)/self._std
 
                 self._data.append(x_tensor)

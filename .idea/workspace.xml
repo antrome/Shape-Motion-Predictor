@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/lstm1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
-              <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+              <caret line="111" column="17" lean-forward="true" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -64,10 +64,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/labelsDict.py">
+        <entry file="file://$PROJECT_DIR$/src/models/lstm1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="930">
+              <caret line="62" column="78" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+            <state relative-caret-position="285">
+              <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -85,10 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init_losses()</find>
-      <find>loss_gt</find>
-      <find>dev</find>
-      <find>get_current_erro</find>
       <find>init_losses</find>
       <find>forward</find>
       <find>input_target</find>
@@ -115,6 +114,10 @@
       <find>data_dir</find>
       <find>data_folder</find>
       <find>format</find>
+      <find>self._class_to</find>
+      <find>14</find>
+      <find>self._dataset_size</find>
+      <find>42</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,8 +137,8 @@
         <option value="$PROJECT_DIR$/src/transforms/transforms.py" />
         <option value="$PROJECT_DIR$/datasets/h36m/train_ids.txt" />
         <option value="$PROJECT_DIR$/datasets/h36m/val_ids.txt" />
-        <option value="$PROJECT_DIR$/src/models/lstm1.py" />
         <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/src/models/lstm1.py" />
         <option value="$PROJECT_DIR$/src/data/human36m.py" />
       </list>
     </option>
@@ -169,6 +172,11 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="datasets" type="462c0819:PsiDirectoryNode" />
               <item name="h36m" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -279,12 +287,12 @@
       <workItem from="1549991580875" duration="228000" />
       <workItem from="1549991821013" duration="1834000" />
       <workItem from="1550053787531" duration="9261000" />
-      <workItem from="1550067884423" duration="12309000" />
+      <workItem from="1550067884423" duration="13750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51353000" />
+    <option name="totallyTimeSpent" value="52794000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -303,7 +311,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -311,7 +319,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32937366" />
-      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.32937366" />
+      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -477,16 +485,6 @@
     <entry file="file://$PROJECT_DIR$/src/loss/loss.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/lstm1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing/pruebaLSTMTutorial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1349">
@@ -503,6 +501,13 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/labelsDict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -526,24 +531,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/labelsDict.py">
+    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="285">
+          <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+    <entry file="file://$PROJECT_DIR$/src/models/lstm1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        <state relative-caret-position="930">
+          <caret line="62" column="78" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+          <caret line="111" column="17" lean-forward="true" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

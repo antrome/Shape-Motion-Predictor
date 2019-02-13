@@ -180,8 +180,8 @@ class Lstm1(BaseModel):
 
     def _compute_metric(self,estim):
         #unormalize
-        estimUn = (estim.view(self._B,self._Sd,14,3)*self._std)+self._mean
-        inputUn = (self._input_target.view(self._B,self._Sd,14,3)*self._std)+self._mean
+        estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
+        inputUn = (self._input_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
 
         #Euclidean Distance
         #self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))

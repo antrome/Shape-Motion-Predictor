@@ -118,6 +118,7 @@ class Lstm1(BaseModel):
         # estimate loss
         if estimate_loss:
             self._loss_gt = self._criterion(estim, self._input_target)
+            self._compute_metric(estim)
             total_loss = self._loss_gt
         else:
             total_loss = -1
@@ -126,7 +127,6 @@ class Lstm1(BaseModel):
         if keep_data_for_visuals:
             self._keep_data(estim)
 
-        self._compute_metric(estim)
         return total_loss
 
     def _estimate(self, img):
@@ -143,10 +143,11 @@ class Lstm1(BaseModel):
     def get_current_errors(self):
         loss_dict = OrderedDict()
         loss_dict["loss_gt"] = self._loss_gt.item()
+        loss_dict["unloss_gt"] = self._metric.item()
         return loss_dict
 
     def get_current_scalars(self):
-        return OrderedDict([('lr', self._current_lr),('metric', self._metric)])
+        return OrderedDict([('lr', self._current_lr),('loss', self._loss_gt),('metric', self._metric)])
 
     def get_current_visuals(self):
         visuals = OrderedDict()
@@ -186,4 +187,4 @@ class Lstm1(BaseModel):
         #self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
 
         #MSE Square Error
-        self._metric = torch.mean(torch.sum((inputUn-estimUn)**2,dim=-1))
+        self._metric = self._criterion(estimUn, inputUn)

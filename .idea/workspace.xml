@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/lstm1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transforms/normalize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transforms/normalize.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/lstm1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
+            <state relative-caret-position="164">
+              <caret line="120" column="39" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -87,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="218" column="23" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="23" />
+            <state relative-caret-position="74">
+              <caret line="187" column="18" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -136,12 +131,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_current_errors()</find>
-      <find>cri</find>
-      <find>tot</find>
-      <find>dict</find>
       <find>self._loss_gt</find>
-      <find>loss</find>
       <find>reg</find>
       <find>self._re</find>
       <find>self._mean</find>
@@ -151,11 +141,9 @@
       <find>self._criterion</find>
       <find>init_losses()</find>
       <find>.item()</find>
-      <find>bac</find>
       <find>loss_gt</find>
       <find>dev</find>
       <find>get_current_erro</find>
-      <find>get_current_errors</find>
       <find>criterion</find>
       <find>init_losses</find>
       <find>forward</find>
@@ -166,6 +154,13 @@
       <find>cuda</find>
       <find>print(</find>
       <find>compute_metric</find>
+      <find>bac</find>
+      <find>loss</find>
+      <find>lr</find>
+      <find>get_current_errors</find>
+      <find>scalars</find>
+      <find>plot_scalars</find>
+      <find>self._loss</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -327,12 +322,12 @@
       <workItem from="1549991580875" duration="228000" />
       <workItem from="1549991821013" duration="1834000" />
       <workItem from="1550053787531" duration="9261000" />
-      <workItem from="1550067884423" duration="5938000" />
+      <workItem from="1550067884423" duration="6973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44982000" />
+    <option name="totallyTimeSpent" value="46017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,7 +342,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2728279" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2728279" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -508,13 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="218" column="23" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -552,10 +540,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="187" column="18" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
+        <state relative-caret-position="164">
+          <caret line="120" column="39" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>

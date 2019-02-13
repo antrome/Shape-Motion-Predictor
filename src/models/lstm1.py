@@ -147,7 +147,7 @@ class Lstm1(BaseModel):
         return loss_dict
 
     def get_current_scalars(self):
-        return OrderedDict([('lr', self._current_lr),('loss', self._loss_gt),('metric', self._metric)])
+        return OrderedDict([('lr', self._current_lr)])
 
     def get_current_visuals(self):
         visuals = OrderedDict()

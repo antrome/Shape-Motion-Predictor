@@ -1,11 +1,7 @@
 {
   "H36M": {
-    "url": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
     "filename": "h36train.hdf5",
-    "tgz_md5": "c58f30108f718f92721af3b95e74349a",
     "data_dir": "datasets/h36m/",
-    "use_bgr": false,
-    "data_folder": "human-36m-batches-py",
     "meta_file": "batches.meta",
     "train_ids_file": "train_ids.txt",
     "val_ids_file": "val_ids.txt",

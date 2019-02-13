@@ -30,7 +30,7 @@ class Lstm1(BaseModel):
             self._init_losses()
 
         # prefetch inputs
-        self._init_prefetch_inputs()
+        self._init_prefetch_inputs(opt)
 
     def _init_set_input_params(self):
         self._B = self._opt[self._dataset_type]["batch_size"]           # batch
@@ -47,7 +47,6 @@ class Lstm1(BaseModel):
         reg_type = self._opt["networks"]["reg"]["type"]
         reg_hyper_params = self._opt["networks"]["reg"]["hyper_params"]
         self._reg = NetworksFactory.get_by_name(reg_type, **reg_hyper_params)
-        print(self._reg_gpus_ids)
         self._reg = torch.nn.DataParallel(self._reg, device_ids=self._reg_gpus_ids)
 
     def _init_train_vars(self):
@@ -57,9 +56,12 @@ class Lstm1(BaseModel):
     def _init_losses(self):
         self._criterion = torch.nn.MSELoss().to(self._device_master)
 
-    def _init_prefetch_inputs(self):
+    def _init_prefetch_inputs(self,opt):
         self._input_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc]).to(self._device_master)
         self._input_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
+        #opt for unormalize
+        self._mean = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["mean"]).to(self._device_master)
+        self._std = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["std"]).to(self._device_master)
 
     def set_input(self, input):
         # copy values
@@ -115,11 +117,6 @@ class Lstm1(BaseModel):
 
         # estimate loss
         if estimate_loss:
-            self._init_losses()
-            #print("ESTIMATE: ")
-            #print(estim)
-            #print("INPUT_TARGET: ")
-            #print(self._input_target)
             self._loss_gt = self._criterion(estim, self._input_target)
             total_loss = self._loss_gt
         else:
@@ -129,10 +126,11 @@ class Lstm1(BaseModel):
         if keep_data_for_visuals:
             self._keep_data(estim)
 
+        self._compute_metric(estim)
         return total_loss
 
     def _estimate(self, img):
-        return self._reg.cuda().forward(img)
+        return self._reg.to(self._device_master).forward(img)
 
     def _keep_data(self, estim):
         predicted = estim.max(1)[1].detach().cpu().numpy()
@@ -148,7 +146,7 @@ class Lstm1(BaseModel):
         return loss_dict
 
     def get_current_scalars(self):
-        return OrderedDict([('lr', self._current_lr)])
+        return OrderedDict([('lr', self._current_lr),('metric', self._metric)])
 
     def get_current_visuals(self):
         visuals = OrderedDict()
@@ -178,3 +176,14 @@ class Lstm1(BaseModel):
             new_lr = self._lr_linear(self._current_lr, nepochs_decay, initial_lr)
             self._update_learning_rate(self._optimizer, "reg", self._current_lr, new_lr)
             self._current_lr = new_lr
+
+    def _compute_metric(self,estim):
+        #unormalize
+        estimUn = (estim.view(self._B,self._Sd,14,3)*self._std)+self._mean
+        inputUn = (self._input_target.view(self._B,self._Sd,14,3)*self._std)+self._mean
+
+        #Euclidean Distance
+        #self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
+
+        #MSE Square Error
+        self._metric = torch.mean(torch.sum((inputUn-estimUn)**2,dim=-1))

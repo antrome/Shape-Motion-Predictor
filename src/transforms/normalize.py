@@ -16,22 +16,9 @@ class Normalize(TransformBase):
         for sample_key in sample.keys():
             if sample_key in self._params.keys():
                 elem = sample[sample_key]
-                #mean = self._params[sample_key]["mean"]
-                #std = self._params[sample_key]["std"]
-                mean = self._params[sample_key]["mean"]
-                std = self._params[sample_key]["std"]
-                #mean = np.full((elem.size(0),elem.size(1)), mean).astype(np.float32)
-                #std = np.full((elem.size(0),elem.size(1)), std).astype(np.float32)
-                #mean = torch.from_numpy(mean)
-                #std = torch.from_numpy(std)
-                mean = torch.mean(elem)
-                std = torch.std(elem)
-                #if isinstance(elem, list):
-                #    for i, el in enumerate(elem):
-                #        elem[i] = self._normalize(el, mean, std)
-                #else:
+                mean = torch.FloatTensor(self._params[sample_key]["mean"])
+                std = torch.FloatTensor(self._params[sample_key]["std"])
                 sample[sample_key] = self._normalize(elem, mean, std)
-
         return sample
 
     def _normalize(self, sample, mean, std):

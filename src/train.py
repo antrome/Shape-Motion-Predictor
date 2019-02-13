@@ -159,6 +159,7 @@ class Train:
 
     def _display_terminal(self, iter_read_time, iter_procs_time, i_epoch, i_train_batch, visuals_flag):
         errors = self._model.get_current_errors()
+        print(errors)
         self._tb_visualizer.print_current_train_errors(i_epoch, i_train_batch, self._iters_per_epoch, errors,
                                                        iter_read_time, iter_procs_time, visuals_flag)
         self._epoch_train_e = append_dictionaries(self._epoch_train_e, errors)

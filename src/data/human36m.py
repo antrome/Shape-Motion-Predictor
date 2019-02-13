@@ -31,14 +31,13 @@ class H36M(DatasetBase):
     # Initialize your data, download, etc.
     def __init__(self, opt, is_for, subset, transform, dataset_type):
         super(H36M, self).__init__(opt, is_for, subset, transform, dataset_type)
-        print(dataset_type)
         self._name = 'H36M'
 
         # init meta
         self._init_meta(opt)
 
         # normalize
-        self._normalize()
+        # self._normalize()
 
         # read dataset
         self._read_dataset()
@@ -91,6 +90,9 @@ class H36M(DatasetBase):
         self._mean = torch.mean(tensors,dim=(0,1,2),keepdim=True)
         self._std = torch.sqrt(torch.mean((tensors - self._mean)**2,dim=(0,1,2),keepdim=True))
 
+        print(self._mean)
+        print(self._std)
+
     def __getitem__(self,index):
         assert (index < self._dataset_size)
 
@@ -105,10 +107,6 @@ class H36M(DatasetBase):
         self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
         self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
 
-        # reshape
-        self.tensor_x = self.tensor_x.reshape(self.tensor_x.size(0), self.tensor_x.size(1) * self.tensor_x.size(2))
-        self.tensor_y = self.tensor_y.reshape(self.tensor_y.size(0), self.tensor_y.size(1) * self.tensor_y.size(2))
-
         img, target = self.tensor_x, self.tensor_y
 
         # pack data
@@ -117,6 +115,13 @@ class H36M(DatasetBase):
         # apply transformations
         if self._transform is not None:
             sample = self._transform(sample)
+
+        # reshape
+        #self.tensor_x = self.tensor_x.reshape(self.tensor_x.size(0), self.tensor_x.size(1) * self.tensor_x.size(2))
+        #self.tensor_y = self.tensor_y.reshape(self.tensor_y.size(0), self.tensor_y.size(1) * self.tensor_y.size(2))
+
+        sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
+        sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
 
         return sample
 
@@ -140,9 +145,9 @@ class H36M(DatasetBase):
                 x_tensor = torch.from_numpy(x_data)
 
                 #Pick only one each 2 frames
-                #x_tensor = x_tensor[:,::2,:,:]
+                x_tensor = x_tensor[:,::2,:,:]
 
-                x_tensor = (x_tensor - self._mean)/self._std
+                #x_tensor = (x_tensor - self._mean)/self._std
 
                 self._data.append(x_tensor)
 

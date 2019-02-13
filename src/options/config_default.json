@@ -1,8 +1,8 @@
 {
   "H36M": {
     "filename": "h36train.hdf5",
-    "data_dir": "datasets/h36m/",
-    "meta_file": "batches.meta",
+    "root": "datasets/h36m/",
+    "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",
     "val_ids_file": "val_ids.txt",
     "test_ids_file": "test_ids.txt"

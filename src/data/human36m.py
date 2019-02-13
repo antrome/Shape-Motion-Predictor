@@ -50,10 +50,8 @@ class H36M(DatasetBase):
         # self._dataset_size = self.__len__()
 
     def _init_meta(self, opt):
-        self._root = opt[self._name]["data_dir"]
-        self._data_folder = opt[self._name]["data_folder"]
+        self._root = opt[self._name]["root"]
         self._meta_file = opt[self._name]["meta_file"]
-        self._data_dir = opt[self._name]["data_dir"]
         self._filename = opt[self._name]["filename"]
 
         if self._is_for == "train":
@@ -72,7 +70,7 @@ class H36M(DatasetBase):
         # load the picked numpy arrays
         data = []
 
-        filepath = os.path.join("./"+self._data_dir, self._filename)
+        filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
@@ -133,7 +131,7 @@ class H36M(DatasetBase):
         self._data = []
         #self._targets = []
 
-        filepath = os.path.join("./"+self._data_dir, self._filename)
+        filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
@@ -147,19 +145,18 @@ class H36M(DatasetBase):
                 #x_tensor = (x_tensor - self._mean)/self._std
 
                 self._data.append(x_tensor)
-
         # dataset size
         self._dataset_size = len(self._data)
 
     def _read_meta(self):
-        path = os.path.join(self._root, self._data_folder, self._meta_file)
+        path = os.path.join(self._root, self._meta_file)
         with open(path, 'rb') as infile:
             if sys.version_info[0] == 2:
                 data = pickle.load(infile)
             else:
                 data = pickle.load(infile, encoding='latin1')
             self.classes = data["label_names"]
-        self._class_to_idx = {_class: i for i, _class in enumerate(self.classes)}
+        self._class_to_idx = {_class: '{:03d}'.format(i) for i, _class in enumerate(self.classes)}
 
     def _read_valid_ids(self, file_path):
         ids = np.loadtxt(file_path, dtype=np.str)

@@ -33,6 +33,8 @@ class H36M(DatasetBase):
         super(H36M, self).__init__(opt, is_for, subset, transform, dataset_type)
         self._name = 'H36M'
 
+        self._dataset_type = opt["dataset"]["name"]
+
         # init meta
         self._init_meta(opt)
 
@@ -94,9 +96,15 @@ class H36M(DatasetBase):
         # Pick a random camera
         cam = random.randint(0, 3)
         frames = random.randint(0, data.shape[1] - 101)
-        x_data_cam_frame = data[cam][frames:frames + 99][:][:]
 
-        labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
+        if self._dataset_type=="H36MHidden50InputFrames":
+            x_data_cam_frame = data[cam][frames:frames + 99][:][:]
+            x_data_cam_frame[50:]=torch.zeros([x_data_cam_frame[50:].size(0),x_data_cam_frame[50:].size(1),x_data_cam_frame[50:].size(2)], dtype=torch.float32)
+            labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
+        else:#DEFAULT H36M
+            x_data_cam_frame = data[cam][frames:frames + 99][:][:]
+            labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
+
         self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
         self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
 

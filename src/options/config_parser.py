@@ -42,10 +42,8 @@ class ConfigParser:
         relFile = os.path.dirname(self._exp_dir)
         relFile = relFile.split("/")
         relFile = relFile[1]+"/"+relFile[2]
-        print(os.path.join(os.path.dirname(experiments.__file__),relFile,'config.json'))
         with open(os.path.join(os.path.dirname(experiments.__file__),relFile, 'config.json'), 'r') as f:
             specific_opt = json.load(f)
-        print(specific_opt)
         # recursively overwrite options
         self._override_json(self._opt, specific_opt)
 

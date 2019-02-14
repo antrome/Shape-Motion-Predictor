@@ -10,6 +10,7 @@
 
   "dataset": {
     "type": "H36M",
+    "name": "H36M",
     "batch_size": 15,
     "input_dim": 42,
     "input_rows": 14,

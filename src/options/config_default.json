@@ -1,6 +1,6 @@
 {
   "H36M": {
-    "filename": "h36train.hdf5",
+    "filename": "h36trainall.hdf5",
     "root": "datasets/h36m/",
     "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",
@@ -11,7 +11,7 @@
   "dataset": {
     "type": "H36M",
     "name": "H36M",
-    "batch_size": 15,
+    "batch_size": 14,
     "input_dim": 42,
     "input_rows": 14,
     "input_cols": 3,
@@ -44,8 +44,8 @@
   },
 
   "train": {
-    "nepochs_no_decay": 20,
-    "nepochs_decay": 380,
+    "nepochs_no_decay": 40,
+    "nepochs_decay": 760,
     "reg_lr": 0.001,
     "num_iters_validate": 10,
     "optim": "sgd"
@@ -85,8 +85,8 @@
     "normalize": {
       "type": "normalize",
       "general_args": {
-        "mean": [18.4472, 233.4337, 834.2037],
-        "std": [435.8993, 641.1512, 452.8181]
+        "mean": [6.6536, 220.5698, 833.9904],
+        "std": [425.6353, 629.1545, 449.7418]
       },
       "perkey_args": {
         "img": {},

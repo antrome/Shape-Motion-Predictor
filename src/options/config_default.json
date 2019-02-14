@@ -37,16 +37,17 @@
 
   "model": {
     "load_epoch": -1,
-    "type": "lstm1",
+    "type": "lstm",
     "master_gpu": 0,
     "reg_gpus": [0,1,2]
   },
 
   "train": {
     "nepochs_no_decay": 20,
-    "nepochs_decay": 2000,
+    "nepochs_decay": 380,
     "reg_lr": 0.001,
-    "num_iters_validate": 10
+    "num_iters_validate": 10,
+    "optim": "sgd"
   },
 
   "logs": {
@@ -62,7 +63,9 @@
         "input_dim": 42,
         "hidden_dim": 512,
         "layer_dim": 3,
-        "output_dim": 42
+        "output_dim": 42,
+        "input_rows": 14,
+        "input_cols": 3
       }
     }
   },

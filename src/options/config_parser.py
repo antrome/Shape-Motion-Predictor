@@ -4,6 +4,7 @@ import json
 from src.utils.util import mkdir
 import torch
 import src
+import experiments
 
 
 class ConfigParser:
@@ -35,13 +36,16 @@ class ConfigParser:
         default_conf_path = os.path.join(os.path.dirname(src.__file__), "options", "config_default.json")
         with open(default_conf_path, 'r') as f:
             self._opt = json.load(f)
-
     def _overwrite_default_opt(self):
         # parse experiment specific config
-        print(self._exp_dir)
-        with open(os.path.join(self._exp_dir, 'config.json'), 'r') as f:
+        #CAMBIAR QUEDA MUY CUTRE
+        relFile = os.path.dirname(self._exp_dir)
+        relFile = relFile.split("/")
+        relFile = relFile[1]+"/"+relFile[2]
+        print(os.path.join(os.path.dirname(experiments.__file__),relFile,'config.json'))
+        with open(os.path.join(os.path.dirname(experiments.__file__),relFile, 'config.json'), 'r') as f:
             specific_opt = json.load(f)
-
+        print(specific_opt)
         # recursively overwrite options
         self._override_json(self._opt, specific_opt)
 

@@ -13,8 +13,8 @@ class ModelsFactory:
         if model_name == 'model1':
             from .model1 import Model1
             model = Model1(*args, **kwargs)
-        elif model_name == 'lstm1':
-            from .lstm1 import Lstm1
+        elif model_name == 'lstm':
+            from .lstm import Lstm1
             model = Lstm1(*args, **kwargs)
         else:
             raise ValueError("Model %s not recognized." % model_name)

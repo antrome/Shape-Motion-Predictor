@@ -1,0 +1,59 @@
+import h5py
+import numpy as np
+import re
+from os import walk
+import glob
+import scipy.io
+import os, os.path
+import sys
+import copy
+
+#Print the attributes of a hdf5 file
+def print_attrs(name, obj):
+    print(name)
+    for key, val in obj.attrs.items():
+        print ("    %s: %s" % (key, val))
+
+#Define detections path, subjects, actions, subactions and cameras
+DETC_PATH="/media/finuxs/HDD/H36M/H36M_skeleton/detections/"
+SHAPE_PATH="/media/finuxs/HDD/H36M/H36M_shape/data/"
+SAVE_PATH="/media/finuxs/HDD/"
+subjects = [[1,5,6,7,8], [9]]
+actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+subactions = [1,2]
+cameras = [1,2,3,4]
+
+filepath=os.path.join(SAVE_PATH, 'h36.hdf5')
+filepath2=os.path.join(SAVE_PATH, 'h36train.hdf5')
+filepath3=os.path.join(SAVE_PATH, 'h36test.hdf5')
+f = h5py.File(filepath,'r')
+g = h5py.File(filepath2,'w')
+h = h5py.File(filepath3,'w')
+
+cnt1=0
+cnt2=0
+
+for split in range(2):
+
+    for subject in subjects[split]:
+        print("Subject: "+str(subject))
+        for action in actions:
+            print("Action: "+str(action))
+            for subaction in subactions:
+                folder_name_no_cam = 'S{:02d}/Act{:02d}/Subact{:02d}/'.format(subject, action, subaction)
+                print(folder_name_no_cam)
+                for camera in cameras:
+                    folder_name = 'S{:02d}/Act{:02d}/Subact{:02d}/Cam{:02d}/'.format(subject, action, subaction, camera)
+
+                if split == 0:
+                    tmp = f["train/skeleton/"+folder_name_no_cam].get('x14').value
+                    g['{:03d}'.format(cnt1)]=tmp
+                    cnt1=cnt1+1
+                else:
+                    tmp = f["test/skeleton/"+folder_name_no_cam].get('x14').value
+                    h['{:03d}'.format(cnt2)]=tmp
+                    cnt2=cnt2+1
+
+print(list(g.keys()))
+f.close()
+g.close()

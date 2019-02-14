@@ -9,7 +9,7 @@ import numpy as np
 class Lstm1(BaseModel):
     def __init__(self, opt):
         super(Lstm1, self).__init__(opt)
-        self._name = 'Model1'
+        self._name = 'lstm'
 
         # init input params
         self._init_set_input_params()
@@ -41,6 +41,7 @@ class Lstm1(BaseModel):
         self._Ld = self._opt[self._dataset_type]["layer_dim"]           # layer dimension
         self._Od = self._opt[self._dataset_type]["output_dim"]          # output dimension
         self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
+        self._optim = self._opt["train"]["optim"]
 
     def _init_create_networks(self):
         # create reg
@@ -51,7 +52,19 @@ class Lstm1(BaseModel):
 
     def _init_train_vars(self):
         self._current_lr = self._opt["train"]["reg_lr"]
-        self._optimizer = torch.optim.SGD(self._reg.parameters(), lr=self._current_lr)
+
+        print(self._optim)
+
+        if self._optim == "adam":
+            self._optimizer = torch.optim.Adam(self._reg.parameters(), lr=self._current_lr)
+        elif self._optim == "adamax":
+            self._optimizer = torch.optim.Adamax(self._reg.parameters(), lr=self._current_lr)
+        elif self._optim == "adadelta":
+            self._optimizer = torch.optim.Adadelta(self._reg.parameters(), lr=self._current_lr)
+        elif self._optim == "adagrad":
+            self._optimizer = torch.optim.Adagrad(self._reg.parameters(), lr=self._current_lr)
+        else:#Default SGD
+            self._optimizer = torch.optim.SGD(self._reg.parameters(), lr=self._current_lr)
 
     def _init_losses(self):
         self._criterion = torch.nn.MSELoss().to(self._device_master)

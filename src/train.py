@@ -74,7 +74,7 @@ class Train:
     def _train(self):
         # meta
         self._total_steps = self._load_epoch * self._dataset_train_size
-        self._iters_per_epoch = len(self._dataset_train)*100
+        self._iters_per_epoch = len(self._dataset_train)
         self._last_display_time = None
         self._last_save_latest_time = None
         self._last_print_time = time.time()

@@ -21,13 +21,22 @@ import math
 import os
 
 class LSTMModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols):
         super(LSTMModel, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
 
         # Number of hidden layers
         self.layer_dim = layer_dim
+
+        # Number of input rows for coordinates
+        self.input_rows = input_rows
+
+        # Number of input columns for coordinates
+        self.input_cols = input_cols
+
+        # Output dimensions
+        self.output_dim = output_dim
 
         # Building your LSTM
         # batch_first=True causes input/output tensors to be of shape
@@ -42,7 +51,7 @@ class LSTMModel(nn.Module):
 
     def forward(self, x):
 
-        x = x.reshape(x.size(0),x.size(1),14,3)
+        x = x.reshape(x.size(0),x.size(1),self.input_rows,self.input_cols)
 
         # reshape
         out = x.reshape(x.size(0), x.size(1) * x.size(2), x.size(3))
@@ -78,6 +87,6 @@ class LSTMModel(nn.Module):
 
         out = out + x
 
-        out = out.reshape(x.size(0),x.size(1),42)
+        out = out.reshape(x.size(0),x.size(1),self.output_dim)
 
         return out

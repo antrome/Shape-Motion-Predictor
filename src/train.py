@@ -88,16 +88,20 @@ class Train:
 
             # train epoch
             self._train_epoch(i_epoch)
-            self._model.save(i_epoch, "checkpoint")
 
-            # print epoch info
-            time_epoch = time.time() - epoch_start_time
-            self._tb_visualizer.print_msg('End of epoch %d / %d \t Time Taken: %d sec (%d min or %d h)' %
-                  (i_epoch, self._nepochs_no_decay + self._nepochs_decay, time_epoch,
-                   time_epoch / 60, time_epoch / 3600))
+            if i_epoch%100 == 0:
+                self._model.save(i_epoch, "checkpoint")
 
-            # print epoch error
-            self._display_visualizer_avg_epoch(i_epoch)
+                # print epoch info
+                """
+                time_epoch = time.time() - epoch_start_time
+                self._tb_visualizer.print_msg('End of epoch %d / %d \t Time Taken: %d sec (%d min or %d h)' %
+                      (i_epoch, self._nepochs_no_decay + self._nepochs_decay, time_epoch,
+                       time_epoch / 60, time_epoch / 3600))
+        
+                # print epoch error
+                self._display_visualizer_avg_epoch(i_epoch)
+                """
             # update learning rate
             self._model.update_learning_rate(i_epoch+1)
 
@@ -118,8 +122,8 @@ class Train:
 
             # display flags
             do_visuals = self._last_display_time is None or\
-                         time.time() - self._last_display_time > self._display_freq_s or\
-                         i_train_batch == self._num_batches_per_epoch-1
+                         time.time() - self._last_display_time > self._display_freq_s or (i_epoch%100 == 0)
+                         #or\ i_train_batch == self._num_batches_per_epoch-1
             do_print_terminal = time.time() - self._last_print_time > self._print_freq_s or do_visuals
 
             # train model
@@ -159,7 +163,6 @@ class Train:
 
     def _display_terminal(self, iter_read_time, iter_procs_time, i_epoch, i_train_batch, visuals_flag):
         errors = self._model.get_current_errors()
-        print(errors)
         self._tb_visualizer.print_current_train_errors(i_epoch, i_train_batch, self._iters_per_epoch, errors,
                                                        iter_read_time, iter_procs_time, visuals_flag)
         self._epoch_train_e = append_dictionaries(self._epoch_train_e, errors)

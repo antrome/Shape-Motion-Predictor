@@ -52,8 +52,8 @@
   },
 
   "logs": {
-    "print_freq_s": 5,
-    "display_freq_s": 180,
+    "print_freq_s": 50,
+    "display_freq_s": 30,
     "save_latest_freq_s": 3600
   },
 

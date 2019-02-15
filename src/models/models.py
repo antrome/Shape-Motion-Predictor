@@ -170,4 +170,4 @@ class BaseModel(object):
     def _update_learning_rate(self, optimizer, label, curr_lr, new_lr):
         for param_group in optimizer.param_groups:
             param_group['lr'] = new_lr
-        print('update %s learning rate: %f -> %f' % (label, curr_lr, new_lr))
+        #print('update %s learning rate: %f -> %f' % (label, curr_lr, new_lr))

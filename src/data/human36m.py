@@ -99,7 +99,7 @@ class H36M(DatasetBase):
 
         if self._dataset_type=="H36MHidden50InputFrames":
             x_data_cam_frame = data[cam][frames:frames + 99][:][:]
-            x_data_cam_frame[50:]=torch.zeros([x_data_cam_frame[50:].size(0),x_data_cam_frame[50:].size(1),x_data_cam_frame[50:].size(2)], dtype=torch.float32)
+            x_data_cam_frame[50:99]=torch.zeros([x_data_cam_frame[50:99].size(0),x_data_cam_frame[50:99].size(1),x_data_cam_frame[50:99].size(2)], dtype=torch.float32)
             labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
         else:#DEFAULT H36M
             x_data_cam_frame = data[cam][frames:frames + 99][:][:]

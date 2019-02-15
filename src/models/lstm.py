@@ -53,8 +53,6 @@ class Lstm1(BaseModel):
     def _init_train_vars(self):
         self._current_lr = self._opt["train"]["reg_lr"]
 
-        print(self._optim)
-
         if self._optim == "adam":
             self._optimizer = torch.optim.Adam(self._reg.parameters(), lr=self._current_lr)
         elif self._optim == "adamax":
@@ -167,6 +165,12 @@ class Lstm1(BaseModel):
         visuals["1_estim_img"] = self._vis_input_img
         return visuals
 
+    def get_current_moves(self):
+        moves_dict = OrderedDict()
+        moves_dict["moves_gt"] = self._inputUn
+        moves_dict["moves_predicted"]=self._estimUn
+        return moves_dict
+
     def save(self, epoch_label, save_type, do_remove_prev=True):
         # save networks
         self._save_network(self._reg, 'nn_reg', epoch_label, save_type, do_remove_prev)
@@ -201,3 +205,7 @@ class Lstm1(BaseModel):
 
         #MSE Square Error
         self._metric = self._criterion(estimUn, inputUn)
+
+        #Moves for Visualization
+        self._estimUn = torch.mean(estimUn,dim=0)
+        self._inputUn = torch.mean(inputUn,dim=0)

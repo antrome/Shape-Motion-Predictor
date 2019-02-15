@@ -115,6 +115,9 @@ class Train:
         num_iters_time = 0
         self._epoch_train_e = dict()
         self._epoch_val_e = dict()
+        self._epoch_train_mov = dict()
+        self._epoch_val_mov_gt = dict()
+        self._epoch_val_mov_predicted = dict()
 
         for i_train_batch, train_batch in enumerate(self._dataset_train):
             iter_read_time += (time.time() - iter_start_time) / self._train_batch_size
@@ -167,6 +170,10 @@ class Train:
                                                        iter_read_time, iter_procs_time, visuals_flag)
         self._epoch_train_e = append_dictionaries(self._epoch_train_e, errors)
 
+        moves = self._model.get_current_moves()
+        self._epoch_train_mov = append_dictionaries(self._epoch_train_mov, moves)
+
+
     def _display_visualizer_train(self, total_steps, iter_read_time, iter_procs_time):
         #self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps, is_train=True)
         self._tb_visualizer.plot_scalars(self._model.get_current_errors(), total_steps, is_train=True)
@@ -189,6 +196,11 @@ class Train:
         self._model.set_eval()
         # evaluate self._opt.num_iters_validate epochs
         val_errors = dict()
+        val_gt_moves = dict()
+        val_gt_moves_aux = dict()
+        val_predicted_moves = dict()
+        val_predicted_moves_aux = dict()
+        val_moves = dict()
         with torch.no_grad():
             vis_batch_idx = np.random.randint(min(self._num_iters_validate, self._dataset_val_size))
             for i_val_batch, val_batch in enumerate(self._dataset_val):
@@ -203,6 +215,34 @@ class Train:
                 # store errors
                 errors = self._model.get_current_errors()
                 val_errors = append_dictionaries(val_errors, errors)
+                moves = self._model.get_current_moves()
+                val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
+                val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
+
+                """
+                print("MOVES GT 1",moves['moves_gt'][0:9])
+                print("MOVES PREDICTED 1",moves['moves_predicted'][0:9])
+                print("MOVES GT 2",moves['moves_gt'][10:19])
+                print("MOVES PREDICTED 2",moves['moves_predicted'][10:19])
+                print("MOVES GT 3",moves['moves_gt'][20:29])
+                print("MOVES PREDICTED 3",moves['moves_predicted'][20:29])
+                print("MOVES GT 4",moves['moves_gt'][30:39])
+                print("MOVES PREDICTED 4",moves['moves_predicted'][30:39])
+                print("MOVES GT 5",moves['moves_gt'][40:49])
+                print("MOVES PREDICTED 5",moves['moves_predicted'][40:49])
+                print("MOVES GT 6",moves['moves_gt'][50:59])
+                print("MOVES PREDICTED 6",moves['moves_predicted'][50:59])
+                print("MOVES GT 7",moves['moves_gt'][60:69])
+                print("MOVES PREDICTED 7",moves['moves_predicted'][60:69])
+                print("MOVES GT 8",moves['moves_gt'][70:79])
+                print("MOVES PREDICTED 8",moves['moves_predicted'][70:79])
+                print("MOVES GT 9",moves['moves_gt'][80:89])
+                print("MOVES PREDICTED 9",moves['moves_predicted'][80:89])
+                print("MOVES GT 10",moves['moves_gt'][90:99])
+                print("MOVES PREDICTED 10",moves['moves_predicted'][90:99])
+                """
+                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
+                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
                 # keep visuals
                 if keep_data_for_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -213,6 +253,10 @@ class Train:
             # store error
             val_errors = mean_dictionary(val_errors)
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
+            tensors_val_gt_moves = torch.cat([i for i in val_gt_moves["moves_gt"]], 1)
+            tensors_val_predicted_moves = torch.cat([i for i in val_predicted_moves["moves_predicted"]], 1)
+            self._epoch_val_mov_gt['{:03d}'.format(int(i_val_batch))] = torch.mean(tensors_val_gt_moves,dim=(1))
+            self._epoch_val_mov_predicted['{:03d}'.format(int(i_val_batch))] = torch.mean(tensors_val_predicted_moves,dim=(1))
 
         # visualize
         t = (time.time() - val_start_time)

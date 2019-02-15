@@ -80,7 +80,7 @@ class ConfigParser:
         self._set_dataset_params()
 
         # print config
-        self._print()
+        # self._print()
 
         return self._opt
 
@@ -123,5 +123,5 @@ class ConfigParser:
 
     def _print(self):
         print('------------ Options -------------')
-        print(json.dumps(self._opt, indent=2))
+        #print(json.dumps(self._opt, indent=2))
         print('-------------- End ----------------')

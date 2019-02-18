@@ -1,6 +1,6 @@
 {
   "H36M": {
-    "filename": "h36trainall.hdf5",
+    "filename": "h36train.hdf5",
     "root": "datasets/h36m/",
     "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",
@@ -10,14 +10,14 @@
 
   "dataset": {
     "type": "H36M",
-    "name": "H36M",
+    "name": "H36MHidden50InputFrames",
     "batch_size": 14,
-    "input_dim": 42,
-    "input_rows": 14,
+    "input_dim": 96,
+    "input_rows": 32,
     "input_cols": 3,
     "hidden_dim": 512,
     "layer_dim": 3,
-    "output_dim": 42,
+    "output_dim": 96,
     "seq_dim": 99,
     "serial_batches": false,
     "drop_last_batch": true,
@@ -54,18 +54,19 @@
   "logs": {
     "print_freq_s": 50,
     "display_freq_s": 30,
-    "save_latest_freq_s": 3600
+    "save_latest_freq_s": 10
   },
 
   "networks": {
     "reg": {
       "type": "lstm",
+      "input_type": "hidden50FramesInput",
       "hyper_params": {
-        "input_dim": 42,
+        "input_dim": 96,
         "hidden_dim": 512,
         "layer_dim": 3,
-        "output_dim": 42,
-        "input_rows": 14,
+        "output_dim": 96,
+        "input_rows": 32,
         "input_cols": 3
       }
     }
@@ -85,12 +86,13 @@
     "normalize": {
       "type": "normalize",
       "general_args": {
-        "mean": [6.6536, 220.5698, 833.9904],
-        "std": [425.6353, 629.1545, 449.7418]
+        "mean": [61.0654, 194.6125, 512.1083],
+        "std": [415.9541, 617.7456, 519.2516]
       },
       "perkey_args": {
         "img": {},
-        "target": {}
+        "target": {},
+        "gt" : {}
       }
     },
     "horz_flip": {

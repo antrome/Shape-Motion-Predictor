@@ -43,12 +43,12 @@ for split in range(2):
                     folder_name = 'S{:02d}/Act{:02d}/Subact{:02d}/Cam{:02d}/'.format(subject, action, subaction, camera)
 
                 if split == 0:
-                    tmp = f["train/skeleton/"+folder_name_no_cam].get('x14').value
+                    tmp = f["train/skeleton/"+folder_name_no_cam].get('x32').value
                     g['{:03d}'.format(cnt)]=tmp
                     cnt=cnt+1
                 else:
                     print("test/skeleton/"+folder_name_no_cam)
-                    tmp = f["test/skeleton/"+folder_name_no_cam].get('x14').value
+                    tmp = f["test/skeleton/"+folder_name_no_cam].get('x32').value
                     g['{:03d}'.format(cnt)]=tmp
                     cnt=cnt+1
 

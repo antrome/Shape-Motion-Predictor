@@ -25,13 +25,10 @@ cameras = [1,2,3,4]
 
 filepath=os.path.join(SAVE_PATH, 'h36.hdf5')
 filepath2=os.path.join(SAVE_PATH, 'h36train.hdf5')
-filepath3=os.path.join(SAVE_PATH, 'h36test.hdf5')
 f = h5py.File(filepath,'r')
-g = h5py.File(filepath2,'w')
-h = h5py.File(filepath3,'w')
+g = h5py.File(filepath2,'a')
 
-cnt1=0
-cnt2=0
+cnt=0
 
 for split in range(2):
 
@@ -46,13 +43,13 @@ for split in range(2):
                     folder_name = 'S{:02d}/Act{:02d}/Subact{:02d}/Cam{:02d}/'.format(subject, action, subaction, camera)
 
                 if split == 0:
-                    tmp = f["train/skeleton/"+folder_name_no_cam].get('x14').value
-                    g['{:03d}'.format(cnt1)]=tmp
-                    cnt1=cnt1+1
+                    tmp = f["train/skeleton/"+folder_name_no_cam].get('x32').value
+                    g['{:03d}'.format(cnt)]=tmp
                 else:
-                    tmp = f["test/skeleton/"+folder_name_no_cam].get('x14').value
-                    h['{:03d}'.format(cnt2)]=tmp
-                    cnt2=cnt2+1
+                    tmp = f["test/skeleton/"+folder_name_no_cam].get('x32').value
+                    g['{:03d}'.format(cnt)]=tmp
+
+                cnt = cnt + 1
 
 print(list(g.keys()))
 f.close()

@@ -41,7 +41,8 @@ class Lstm1(BaseModel):
         self._Ld = self._opt[self._dataset_type]["layer_dim"]           # layer dimension
         self._Od = self._opt[self._dataset_type]["output_dim"]          # output dimension
         self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
-        self._optim = self._opt["train"]["optim"]
+        self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
+        self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
 
     def _init_create_networks(self):
         # create reg
@@ -75,6 +76,11 @@ class Lstm1(BaseModel):
         self._std = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["std"]).to(self._device_master)
 
     def set_input(self, input):
+
+        #check input type
+        #if self._inputType == "hidden50FramesInput":
+        #    input['img'][:,50:99,:]=torch.zeros([input['img'][:,50:99,:].size(0),input['img'][:,50:99,:].size(1),input['img'][:,50:99,:].size(2)], dtype=torch.float32)
+        #default input type
         # copy values
         self._input_img.copy_(input['img'])
         self._input_target.copy_(input['target'])

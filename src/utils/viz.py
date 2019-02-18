@@ -1,7 +1,7 @@
 """Functions to visualize human poses"""
 
 import matplotlib.pyplot as plt
-import data_utils
+import src.utils.data_utils
 import numpy as np
 import h5py
 import os
@@ -51,8 +51,8 @@ class Ax3DPose(object):
       Nothing. Simply updates the axis with the new pose.
     """
 
-    assert channels.size == 96, "channels should have 96 entries, it has %d instead" % channels.size
-    vals = np.reshape( channels, (32, -1) )
+    #assert channels.size == 96, "channels should have 96 entries, it has %d instead" % channels.size
+    vals = np.reshape( channels.cpu(), (32, -1) )
 
     for i in np.arange( len(self.I) ):
       x = np.array( [vals[self.I[i], 0], vals[self.J[i], 0]] )

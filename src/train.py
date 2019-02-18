@@ -7,6 +7,15 @@ import torch.backends.cudnn as cudnn
 from src.utils.util import append_dictionaries, mean_dictionary
 import numpy as np
 import time
+import h5py
+import os
+import src.utils.viz as viz
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from mpl_toolkits.mplot3d import Axes3D
+import imageio
+from PIL import Image
 
 class Train:
     def __init__(self):
@@ -66,6 +75,7 @@ class Train:
         self._save_latest_freq_s = self._opt["logs"]["save_latest_freq_s"]
         self._display_freq_s = self._opt["logs"]["display_freq_s"]
         self._num_iters_validate = self._opt["train"]["num_iters_validate"]
+        self._gifs_save_path = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"])
 
     def _check_options(self):
         assert self._opt["dataset_train"]["batch_size"] == self._opt["dataset_val"]["batch_size"], \
@@ -89,11 +99,11 @@ class Train:
             # train epoch
             self._train_epoch(i_epoch)
 
+            """
             if i_epoch%100 == 0:
                 self._model.save(i_epoch, "checkpoint")
 
                 # print epoch info
-                """
                 time_epoch = time.time() - epoch_start_time
                 self._tb_visualizer.print_msg('End of epoch %d / %d \t Time Taken: %d sec (%d min or %d h)' %
                       (i_epoch, self._nepochs_no_decay + self._nepochs_decay, time_epoch,
@@ -101,7 +111,7 @@ class Train:
         
                 # print epoch error
                 self._display_visualizer_avg_epoch(i_epoch)
-                """
+            """
             # update learning rate
             self._model.update_learning_rate(i_epoch+1)
 
@@ -125,7 +135,7 @@ class Train:
 
             # display flags
             do_visuals = self._last_display_time is None or\
-                         time.time() - self._last_display_time > self._display_freq_s or (i_epoch%100 == 0)
+                         time.time() - self._last_display_time > self._display_freq_s
                          #or\ i_train_batch == self._num_batches_per_epoch-1
             do_print_terminal = time.time() - self._last_print_time > self._print_freq_s or do_visuals
 
@@ -152,9 +162,9 @@ class Train:
                 self._last_display_time = time.time()
 
             # save model
-            if self._last_save_latest_time is None or time.time() - self._last_save_latest_time > self._save_latest_freq_s:
-                self._model.save(i_epoch, "checkpoint")
-                self._last_save_latest_time = time.time()
+            #if self._last_save_latest_time is None or time.time() - self._last_save_latest_time > self._save_latest_freq_s:
+            #    self._model.save(i_epoch, "checkpoint")
+            #    self._last_save_latest_time = time.time()
 
             # reset metadata time
             if do_print_terminal:
@@ -171,7 +181,7 @@ class Train:
         self._epoch_train_e = append_dictionaries(self._epoch_train_e, errors)
 
         moves = self._model.get_current_moves()
-        self._epoch_train_mov = append_dictionaries(self._epoch_train_mov, moves)
+        epoch_train_mov = append_dictionaries(self._epoch_train_mov, moves)
 
 
     def _display_visualizer_train(self, total_steps, iter_read_time, iter_procs_time):
@@ -218,6 +228,8 @@ class Train:
                 moves = self._model.get_current_moves()
                 val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
                 val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
+                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
+                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
 
                 """
                 print("MOVES GT 1",moves['moves_gt'][0:9])
@@ -241,22 +253,49 @@ class Train:
                 print("MOVES GT 10",moves['moves_gt'][90:99])
                 print("MOVES PREDICTED 10",moves['moves_predicted'][90:99])
                 """
-                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
-                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
                 # keep visuals
                 if keep_data_for_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
                                                                 is_train=False)
                     self._tb_visualizer.plot_histograms(self._model.get_current_histograms(), total_steps,
                                                         is_train=False)
-
             # store error
             val_errors = mean_dictionary(val_errors)
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
-            tensors_val_gt_moves = torch.cat([i for i in val_gt_moves["moves_gt"]], 1)
-            tensors_val_predicted_moves = torch.cat([i for i in val_predicted_moves["moves_predicted"]], 1)
-            self._epoch_val_mov_gt['{:03d}'.format(int(i_val_batch))] = torch.mean(tensors_val_gt_moves,dim=(1))
-            self._epoch_val_mov_predicted['{:03d}'.format(int(i_val_batch))] = torch.mean(tensors_val_predicted_moves,dim=(1))
+
+            # === Plot and animate ===
+            fig = plt.figure()
+            ax = plt.gca(projection='3d')
+            ob = viz.Ax3DPose(ax)
+
+            images_gt = []
+            images_predicted = []
+            images = []
+            # Plot the conditioning ground truth
+            for i in range(99):
+                ob.update(val_gt_moves["moves_gt"][0][i, :])
+                plt.show(block=False)
+                fig.canvas.draw()
+                data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+                data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+                plt.pause(0.01)
+                images_gt.append(data)
+
+            # Plot the conditioning predicted
+            for i in range(99):
+                ob.update(val_predicted_moves["moves_predicted"][0][i, :],lcolor="#9b59b6", rcolor="#2ecc71")
+                plt.show(block=False)
+                fig.canvas.draw()
+                data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+                data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+                plt.pause(0.01)
+                images_predicted.append(data)
+
+            #Put the predicted and gt together
+            for i in range(0,len(images_gt)):
+                images.append(np.hstack((images_gt[i],images_predicted[i])))
+
+            imageio.mimsave(os.path.join(self._gifs_save_path,"val","epoch"+str(i_epoch)+".gif"), images)
 
         # visualize
         t = (time.time() - val_start_time)

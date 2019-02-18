@@ -171,6 +171,7 @@ def main():
 
   nframes_gt = expmap_gt.shape[1]
   nframes_pred = expmap_pred.shape[1]
+  print(expmap_gt.shape)
   np.vstack((expmap_gt, expmap_pred))
   # Put them together and revert the coordinate space
   expmap_all = revert_coordinate_space( np.vstack((expmap_gt, expmap_pred)), np.eye(3), np.zeros(3) )

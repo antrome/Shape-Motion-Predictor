@@ -62,11 +62,14 @@ class ConfigParser:
         self._opt["dirs"]["checkpoints"] = "checkpoints"
         self._opt["dirs"]["events"] = "events"
         self._opt["dirs"]["test"] = "test"
+        self._opt["dirs"]["gifs"] = "gifs"
 
         # create necessary directories
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["checkpoints"]))
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["events"]))
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"]))
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"], "train"))
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"], "val"))
 
     def _init_opt(self):
         # set load epoch conf

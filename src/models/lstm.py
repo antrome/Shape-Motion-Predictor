@@ -43,6 +43,7 @@ class Lstm1(BaseModel):
         self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
+        self._loss_type = self._opt["train"]["loss"]                    # loss type
 
     def _init_create_networks(self):
         # create reg
@@ -209,11 +210,14 @@ class Lstm1(BaseModel):
         estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
         inputUn = (self._input_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
 
-        #Euclidean Distance
-        #self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
 
-        #MSE Square Error
-        self._metric = self._criterion(estimUn, inputUn)
+
+        if self._loss_type == "euclidean":
+            #Euclidean Distance
+            self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
+        else:#DEFAULT
+            #MSE Square Error
+            self._metric = self._criterion(estimUn, inputUn)
 
         #Moves for Visualization
         self._estimUn = torch.mean(estimUn,dim=0)

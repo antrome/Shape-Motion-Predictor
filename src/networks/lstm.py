@@ -70,7 +70,7 @@ class LSTMModel(nn.Module):
         c0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
 
         #Flatten Parameters
-        #self.lstm.flatten_parameters()
+        self.lstm.flatten_parameters()
 
         # One time step
         out, (hn, cn) = self.lstm(out, (h0, c0))

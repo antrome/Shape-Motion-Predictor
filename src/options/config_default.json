@@ -48,7 +48,8 @@
     "nepochs_decay": 760,
     "reg_lr": 0.001,
     "num_iters_validate": 10,
-    "optim": "sgd"
+    "optim": "sgd",
+    "loss": "mse"
   },
 
   "logs": {

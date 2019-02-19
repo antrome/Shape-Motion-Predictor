@@ -18,6 +18,7 @@ import imageio
 from PIL import Image
 import random
 
+
 class Train:
     def __init__(self):
         self._opt = ConfigParser().get_config()
@@ -56,10 +57,10 @@ class Train:
         self._dataset_val_size = len(data_loader_val)
         self._num_batchesper_epoch = len(self._dataset_train)
 
-        #print(self._dataset_train_size)
-        #print(self._dataset_val_size)
-        #print(len(list(enumerate(self._dataset_train))))
-        #print(len(list(enumerate(self._dataset_val))))
+        # print(self._dataset_train_size)
+        # print(self._dataset_val_size)
+        # print(len(list(enumerate(self._dataset_train))))
+        # print(len(list(enumerate(self._dataset_val))))
 
         # create visualizer
         self._tb_visualizer.print_msg('#train images = %d' % self._dataset_train_size)
@@ -98,8 +99,13 @@ class Train:
             self._i_epoch = i_epoch
             epoch_start_time = time.time()
 
-            # train epoch
-            self._train_epoch(i_epoch)
+            # train epoch visualizer
+            if i_epoch % 20 == 0 or i_epoch == 1:
+                self._train_epoch_vis(i_epoch)
+                self._display_visualizer_avg_epoch(i_epoch)
+            else:
+                # train epoch no visualizer
+                self._train_epoch(i_epoch)
 
             """
             if i_epoch%100 == 0:
@@ -110,91 +116,52 @@ class Train:
                 self._tb_visualizer.print_msg('End of epoch %d / %d \t Time Taken: %d sec (%d min or %d h)' %
                       (i_epoch, self._nepochs_no_decay + self._nepochs_decay, time_epoch,
                        time_epoch / 60, time_epoch / 3600))
-        
+
                 # print epoch error
                 self._display_visualizer_avg_epoch(i_epoch)
             """
             # update learning rate
-            self._model.update_learning_rate(i_epoch+1)
+            self._model.update_learning_rate(i_epoch + 1)
 
     def _train_epoch(self, i_epoch):
         self._model.set_train()
 
-        # meta
-        iter_start_time = time.time()
-        iter_read_time = 0
-        iter_procs_time = 0
-        num_iters_time = 0
-        self._epoch_train_e = dict()
-        self._epoch_val_e = dict()
-
-        train_errors = dict()
-        train_gt_moves = dict()
-        train_gt_moves_aux = dict()
-        train_predicted_moves = dict()
-        train_predicted_moves_aux = dict()
-        train_size = len(list(enumerate(self._dataset_train)))
-
         for i_train_batch, train_batch in enumerate(self._dataset_train):
-            iter_read_time += (time.time() - iter_start_time) / self._train_batch_size
-            iter_after_read_time = time.time()
-            iter_after_read_time = time.time()
-
-            # display flags
-            do_visuals = self._last_display_time is None or\
-                         time.time() - self._last_display_time > self._display_freq_s
-                         #or\ i_train_batch == self._num_batches_per_epoch-1
-            do_print_terminal = time.time() - self._last_print_time > self._print_freq_s or do_visuals
-
+            do_visuals = False
             # train model
             self._model.set_input(train_batch)
             self._model.optimize_parameters(keep_data_for_visuals=do_visuals)
-
-            # update epoch info
-            iter_procs_time += (time.time() - iter_after_read_time) / self._train_batch_size
             self._total_steps += self._train_batch_size
-            num_iters_time += 1
-
-            # display terminal
-            if do_print_terminal:
-                iter_read_time /= num_iters_time
-                iter_procs_time /= num_iters_time
-                self._display_terminal(iter_read_time, iter_procs_time, i_epoch, i_train_batch, do_visuals)
-                self._last_print_time = time.time()
-
-            # display visualizer
-            if do_visuals:
-                self._display_visualizer_train(i_epoch, iter_read_time, iter_procs_time)
-                self._display_visualizer_val(i_epoch, i_epoch)
-                self._last_display_time = time.time()
 
             # save model
-            #if self._last_save_latest_time is None or time.time() - self._last_save_latest_time > self._save_latest_freq_s:
+            # if self._last_save_latest_time is None or time.time() - self._last_save_latest_time > self._save_latest_freq_s:
             #    self._model.save(i_epoch, "checkpoint")
             #    self._last_save_latest_time = time.time()
 
-            # reset metadata time
-            if do_print_terminal:
-                iter_read_time = 0
-                iter_procs_time = 0
-                num_iters_time = 0
+    def _train_epoch_vis(self, i_epoch):
+        self._epoch_train_e = dict()
+        self._epoch_val_e = dict()
+        self._epoch_train_mov = dict()
+        self._epoch_val_mov = dict()
 
-            iter_start_time = time.time()
+        # Print the movements
+        self._display_visualizer_train(i_epoch, i_epoch)
+        self._display_visualizer_val(i_epoch, i_epoch)
 
     def _display_terminal(self, iter_read_time, iter_procs_time, i_epoch, i_train_batch, visuals_flag):
         errors = self._model.get_current_errors()
         self._tb_visualizer.print_current_train_errors(i_epoch, i_train_batch, self._iters_per_epoch, errors,
                                                        iter_read_time, iter_procs_time, visuals_flag)
 
-
+    """
     def _display_visualizer_train(self, total_steps, iter_read_time, iter_procs_time):
         #self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps, is_train=True)
         self._tb_visualizer.plot_scalars(self._model.get_current_errors(), total_steps, is_train=True)
         self._tb_visualizer.plot_scalars(self._model.get_current_scalars(), total_steps, is_train=True)
         self._tb_visualizer.plot_time(iter_read_time, iter_procs_time, total_steps)
         self._tb_visualizer.plot_histograms(self._model.get_current_histograms(), total_steps, is_train=True)
-
     """
+
     def _display_visualizer_avg_epoch(self, epoch):
         e_train = mean_dictionary(self._epoch_train_e)
         e_val = mean_dictionary(self._epoch_val_e)
@@ -202,7 +169,55 @@ class Train:
         self._tb_visualizer.print_epoch_avg_errors(epoch, e_val, is_train=False)
         self._tb_visualizer.plot_scalars(e_train, epoch, is_train=True, is_mean=True)
         self._tb_visualizer.plot_scalars(e_val, epoch, is_train=False, is_mean=True)
-    """
+
+    def _display_visualizer_train(self, i_epoch, total_steps):
+
+        self._model.set_train()
+
+        val_start_time = time.time()
+
+        # evaluate self._opt.num_iters_validate epochs
+        val_errors = dict()
+        val_gt_moves = dict()
+        val_gt_moves_aux = dict()
+        val_predicted_moves = dict()
+        val_predicted_moves_aux = dict()
+        val_size = len(list(enumerate(self._dataset_val)))
+        do_visuals = False
+
+        for i_val_batch, val_batch in enumerate(self._dataset_train):
+
+            self._model.set_input(val_batch)
+            self._model.optimize_parameters(keep_data_for_visuals=do_visuals)
+            self._total_steps += self._train_batch_size
+
+            if i_epoch % 20 == 0 or i_epoch == 1:
+                # store errors
+                errors = self._model.get_current_errors()
+                val_errors = append_dictionaries(val_errors, errors)
+                moves = self._model.get_current_moves()
+                val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
+                val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
+                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
+                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
+
+                # keep visuals
+                if do_visuals:
+                    self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
+                                                                is_train=True)
+                    self._tb_visualizer.plot_histograms(self._model.get_current_histograms(), total_steps,
+                                                        is_train=True)
+        # store error
+        val_errors = mean_dictionary(val_errors)
+        self._epoch_train_e = append_dictionaries(self._epoch_train_e, val_errors)
+        # Print the movements
+        self._display_movements_train(val_gt_moves, val_predicted_moves, val_size, i_epoch)
+
+        # visualize
+        t = (time.time() - val_start_time)
+        # self._tb_visualizer.print_current_validate_errors(i_epoch, val_errors, t)
+        self._tb_visualizer.plot_scalars(val_errors, total_steps, is_train=True)
+        self._tb_visualizer.plot_scalars(self._model.get_current_scalars(), total_steps, is_train=True)
 
     def _display_visualizer_val(self, i_epoch, total_steps):
         val_start_time = time.time()
@@ -222,7 +237,7 @@ class Train:
                 if i_val_batch == self._num_iters_validate:
                     break
                 # evaluate model
-                #keep_data_for_visuals = (i_val_batch == vis_batch_idx)
+                # keep_data_for_visuals = (i_val_batch == vis_batch_idx)
                 keep_data_for_visuals = False
                 self._model.set_input(val_batch)
                 self._model.forward(keep_data_for_visuals=keep_data_for_visuals)
@@ -246,21 +261,60 @@ class Train:
             val_errors = mean_dictionary(val_errors)
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
 
-            #Print the movements
-            self._display_movements(val_gt_moves,val_predicted_moves,val_size,i_epoch)
-
+            # Print the movements
+            self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch)
 
         # visualize
         t = (time.time() - val_start_time)
-        self._tb_visualizer.print_current_validate_errors(i_epoch, val_errors, t)
+        # self._tb_visualizer.print_current_validate_errors(i_epoch, val_errors, t)
         self._tb_visualizer.plot_scalars(val_errors, total_steps, is_train=False)
 
         # set model back to train
         self._model.set_train()
 
-    def _display_movements(self,gt_moves,predicted_moves,dataset_size,i_epoch):
+    def _display_movements_train(self, gt_moves, predicted_moves, dataset_size, i_epoch):
         # Pick Up a Random Batch and Print it
-        batch = random.randint(0, dataset_size)-1
+        batch = random.randint(0, dataset_size) - 1
+        images_gt = []
+        images_predicted = []
+        images = []
+
+        # === Plot and animate ===
+        fig = plt.figure()
+        ax = plt.gca(projection='3d')
+        ob = viz.Ax3DPose(ax)
+
+        # Plot the conditioning ground truth
+        for i in range(99):
+            ob.update(gt_moves["moves_gt"][batch][i, :].detach())
+            plt.show(block=False)
+            fig.canvas.draw()
+            data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            plt.pause(0.01)
+            images_gt.append(data)
+
+        # Plot the conditioning predicted
+        for i in range(99):
+            ob.update(predicted_moves["moves_predicted"][batch][i, :].detach(), lcolor="#9b59b6", rcolor="#2ecc71")
+            plt.show(block=False)
+            fig.canvas.draw()
+            data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            plt.pause(0.01)
+            images_predicted.append(data)
+
+        plt.close(fig)
+
+        # Put the predicted and gt together
+        for i in range(0, len(images_gt)):
+            images.append(np.hstack((images_gt[i], images_predicted[i])))
+
+        imageio.mimsave(os.path.join(self._gifs_save_path, "train", "epoch" + str(i_epoch) + ".gif"), images)
+
+    def _display_movements_val(self, gt_moves, predicted_moves, dataset_size, i_epoch):
+        # Pick Up a Random Batch and Print it
+        batch = random.randint(0, dataset_size) - 1
         images_gt = []
         images_predicted = []
         images = []
@@ -289,6 +343,8 @@ class Train:
             data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
             plt.pause(0.01)
             images_predicted.append(data)
+
+        plt.close(fig)
 
         # Put the predicted and gt together
         for i in range(0, len(images_gt)):

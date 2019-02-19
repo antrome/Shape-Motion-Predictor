@@ -134,7 +134,6 @@ class Train:
         train_predicted_moves = dict()
         train_predicted_moves_aux = dict()
         train_size = len(list(enumerate(self._dataset_train)))
-        print("TOTAL STEPS",self._total_steps)
 
         for i_train_batch, train_batch in enumerate(self._dataset_train):
             iter_read_time += (time.time() - iter_start_time) / self._train_batch_size
@@ -165,8 +164,8 @@ class Train:
 
             # display visualizer
             if do_visuals:
-                self._display_visualizer_train(self._total_steps, iter_read_time, iter_procs_time)
-                self._display_visualizer_val(i_epoch, self._total_steps)
+                self._display_visualizer_train(i_epoch, iter_read_time, iter_procs_time)
+                self._display_visualizer_val(i_epoch, i_epoch)
                 self._last_display_time = time.time()
 
             # save model

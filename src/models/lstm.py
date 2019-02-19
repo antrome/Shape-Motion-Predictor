@@ -77,12 +77,15 @@ class Lstm1(BaseModel):
 
     def set_input(self, input):
 
-        #check input type
-        #if self._inputType == "hidden50FramesInput":
-        #    input['img'][:,50:99,:]=torch.zeros([input['img'][:,50:99,:].size(0),input['img'][:,50:99,:].size(1),input['img'][:,50:99,:].size(2)], dtype=torch.float32)
-        #default input type
-        # copy values
         self._input_img.copy_(input['img'])
+        #check input type
+        if self._inputType == "hidden50FramesInput":
+            self._input_img[:, 50:99, :] = torch.zeros(
+                self._input_img[:, 50:99, :].size(0),
+                self._input_img[:, 50:99, :].size(1),
+                self._input_img[:, 50:99, :].size(2), dtype=torch.float32)
+
+        #Defauly Input Type
         self._input_target.copy_(input['target'])
 
         # move to gpu

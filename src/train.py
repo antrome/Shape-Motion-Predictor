@@ -16,6 +16,7 @@ import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import Axes3D
 import imageio
 from PIL import Image
+import random
 
 class Train:
     def __init__(self):
@@ -36,6 +37,7 @@ class Train:
         # create model
         model_type = self._opt["model"]["type"]
         self._model = ModelsFactory.get_by_name(model_type, self._opt)
+        self._model = ModelsFactory.get_by_name(model_type, self._opt)
 
         # start train
         self._train()
@@ -52,12 +54,12 @@ class Train:
         # get dataset properties
         self._dataset_train_size = len(data_loader_train)
         self._dataset_val_size = len(data_loader_val)
-        self._num_batches_per_epoch = len(self._dataset_train)
+        self._num_batchesper_epoch = len(self._dataset_train)
 
-        print(self._dataset_train_size)
-        print(self._dataset_val_size)
-        print(len(list(enumerate(self._dataset_train))))
-        print(len(list(enumerate(self._dataset_val))))
+        #print(self._dataset_train_size)
+        #print(self._dataset_val_size)
+        #print(len(list(enumerate(self._dataset_train))))
+        #print(len(list(enumerate(self._dataset_val))))
 
         # create visualizer
         self._tb_visualizer.print_msg('#train images = %d' % self._dataset_train_size)
@@ -125,12 +127,18 @@ class Train:
         num_iters_time = 0
         self._epoch_train_e = dict()
         self._epoch_val_e = dict()
-        self._epoch_train_mov = dict()
-        self._epoch_val_mov_gt = dict()
-        self._epoch_val_mov_predicted = dict()
+
+        train_errors = dict()
+        train_gt_moves = dict()
+        train_gt_moves_aux = dict()
+        train_predicted_moves = dict()
+        train_predicted_moves_aux = dict()
+        train_size = len(list(enumerate(self._dataset_train)))
+        print("TOTAL STEPS",self._total_steps)
 
         for i_train_batch, train_batch in enumerate(self._dataset_train):
             iter_read_time += (time.time() - iter_start_time) / self._train_batch_size
+            iter_after_read_time = time.time()
             iter_after_read_time = time.time()
 
             # display flags
@@ -178,10 +186,6 @@ class Train:
         errors = self._model.get_current_errors()
         self._tb_visualizer.print_current_train_errors(i_epoch, i_train_batch, self._iters_per_epoch, errors,
                                                        iter_read_time, iter_procs_time, visuals_flag)
-        self._epoch_train_e = append_dictionaries(self._epoch_train_e, errors)
-
-        moves = self._model.get_current_moves()
-        epoch_train_mov = append_dictionaries(self._epoch_train_mov, moves)
 
 
     def _display_visualizer_train(self, total_steps, iter_read_time, iter_procs_time):
@@ -191,6 +195,7 @@ class Train:
         self._tb_visualizer.plot_time(iter_read_time, iter_procs_time, total_steps)
         self._tb_visualizer.plot_histograms(self._model.get_current_histograms(), total_steps, is_train=True)
 
+    """
     def _display_visualizer_avg_epoch(self, epoch):
         e_train = mean_dictionary(self._epoch_train_e)
         e_val = mean_dictionary(self._epoch_val_e)
@@ -198,6 +203,7 @@ class Train:
         self._tb_visualizer.print_epoch_avg_errors(epoch, e_val, is_train=False)
         self._tb_visualizer.plot_scalars(e_train, epoch, is_train=True, is_mean=True)
         self._tb_visualizer.plot_scalars(e_val, epoch, is_train=False, is_mean=True)
+    """
 
     def _display_visualizer_val(self, i_epoch, total_steps):
         val_start_time = time.time()
@@ -210,7 +216,7 @@ class Train:
         val_gt_moves_aux = dict()
         val_predicted_moves = dict()
         val_predicted_moves_aux = dict()
-        val_moves = dict()
+        val_size = len(list(enumerate(self._dataset_val)))
         with torch.no_grad():
             vis_batch_idx = np.random.randint(min(self._num_iters_validate, self._dataset_val_size))
             for i_val_batch, val_batch in enumerate(self._dataset_val):
@@ -231,28 +237,6 @@ class Train:
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
 
-                """
-                print("MOVES GT 1",moves['moves_gt'][0:9])
-                print("MOVES PREDICTED 1",moves['moves_predicted'][0:9])
-                print("MOVES GT 2",moves['moves_gt'][10:19])
-                print("MOVES PREDICTED 2",moves['moves_predicted'][10:19])
-                print("MOVES GT 3",moves['moves_gt'][20:29])
-                print("MOVES PREDICTED 3",moves['moves_predicted'][20:29])
-                print("MOVES GT 4",moves['moves_gt'][30:39])
-                print("MOVES PREDICTED 4",moves['moves_predicted'][30:39])
-                print("MOVES GT 5",moves['moves_gt'][40:49])
-                print("MOVES PREDICTED 5",moves['moves_predicted'][40:49])
-                print("MOVES GT 6",moves['moves_gt'][50:59])
-                print("MOVES PREDICTED 6",moves['moves_predicted'][50:59])
-                print("MOVES GT 7",moves['moves_gt'][60:69])
-                print("MOVES PREDICTED 7",moves['moves_predicted'][60:69])
-                print("MOVES GT 8",moves['moves_gt'][70:79])
-                print("MOVES PREDICTED 8",moves['moves_predicted'][70:79])
-                print("MOVES GT 9",moves['moves_gt'][80:89])
-                print("MOVES PREDICTED 9",moves['moves_predicted'][80:89])
-                print("MOVES GT 10",moves['moves_gt'][90:99])
-                print("MOVES PREDICTED 10",moves['moves_predicted'][90:99])
-                """
                 # keep visuals
                 if keep_data_for_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -263,39 +247,9 @@ class Train:
             val_errors = mean_dictionary(val_errors)
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
 
-            # === Plot and animate ===
-            fig = plt.figure()
-            ax = plt.gca(projection='3d')
-            ob = viz.Ax3DPose(ax)
+            #Print the movements
+            self._display_movements(val_gt_moves,val_predicted_moves,val_size,i_epoch)
 
-            images_gt = []
-            images_predicted = []
-            images = []
-            # Plot the conditioning ground truth
-            for i in range(99):
-                ob.update(val_gt_moves["moves_gt"][0][i, :])
-                plt.show(block=False)
-                fig.canvas.draw()
-                data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-                data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-                plt.pause(0.01)
-                images_gt.append(data)
-
-            # Plot the conditioning predicted
-            for i in range(99):
-                ob.update(val_predicted_moves["moves_predicted"][0][i, :],lcolor="#9b59b6", rcolor="#2ecc71")
-                plt.show(block=False)
-                fig.canvas.draw()
-                data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-                data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-                plt.pause(0.01)
-                images_predicted.append(data)
-
-            #Put the predicted and gt together
-            for i in range(0,len(images_gt)):
-                images.append(np.hstack((images_gt[i],images_predicted[i])))
-
-            imageio.mimsave(os.path.join(self._gifs_save_path,"val","epoch"+str(i_epoch)+".gif"), images)
 
         # visualize
         t = (time.time() - val_start_time)
@@ -304,6 +258,44 @@ class Train:
 
         # set model back to train
         self._model.set_train()
+
+    def _display_movements(self,gt_moves,predicted_moves,dataset_size,i_epoch):
+        # Pick Up a Random Batch and Print it
+        batch = random.randint(0, dataset_size)-1
+        images_gt = []
+        images_predicted = []
+        images = []
+
+        # === Plot and animate ===
+        fig = plt.figure()
+        ax = plt.gca(projection='3d')
+        ob = viz.Ax3DPose(ax)
+
+        # Plot the conditioning ground truth
+        for i in range(99):
+            ob.update(gt_moves["moves_gt"][batch][i, :])
+            plt.show(block=False)
+            fig.canvas.draw()
+            data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            plt.pause(0.01)
+            images_gt.append(data)
+
+        # Plot the conditioning predicted
+        for i in range(99):
+            ob.update(predicted_moves["moves_predicted"][batch][i, :], lcolor="#9b59b6", rcolor="#2ecc71")
+            plt.show(block=False)
+            fig.canvas.draw()
+            data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            plt.pause(0.01)
+            images_predicted.append(data)
+
+        # Put the predicted and gt together
+        for i in range(0, len(images_gt)):
+            images.append(np.hstack((images_gt[i], images_predicted[i])))
+
+        imageio.mimsave(os.path.join(self._gifs_save_path, "val", "epoch" + str(i_epoch) + ".gif"), images)
 
 
 if __name__ == "__main__":

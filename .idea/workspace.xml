@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/forward_kinematics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/forward_kinematics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/viz.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/viz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/addS11.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/addS11.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/hdf5tohdf5trainhdf5test.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/hdf5tohdf5trainhdf5test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,17 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="174">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
+            <state relative-caret-position="84">
+              <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="64" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -56,10 +51,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="44" column="38" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state relative-caret-position="45">
+              <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -67,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
+            <state relative-caret-position="454">
               <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -79,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="99" column="55" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="55" />
+            <state relative-caret-position="510">
+              <caret line="157" column="25" selection-start-line="157" selection-start-column="25" selection-end-line="157" selection-end-column="25" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -88,13 +95,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="207" lean-forward="true" selection-start-line="207" selection-end-line="207" />
+            <state relative-caret-position="179">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="28" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,36 +130,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>canvas</find>
-      <find>_display_visualizer_val</find>
-      <find>os.pat</find>
-      <find>h36train</find>
-      <find>print</find>
-      <find>o</find>
-      <find>events</find>
-      <find>self._save_path</find>
-      <find>print(</find>
-      <find>mkdi</find>
-      <find>lstm32</find>
-      <find>lstm3</find>
-      <find>lstm</find>
-      <find>fromst</find>
-      <find>forward</find>
-      <find>optimize_parameters</find>
-      <find>loss</find>
-      <find>save</find>
-      <find>epoch</find>
-      <find>self.</find>
-      <find>100</find>
-      <find>lear</find>
-      <find>mean</find>
-      <find>type</find>
-      <find>ne</find>
+      <find>copy</find>
       <find>input</find>
-      <find>init_prefetch</find>
-      <find>if</find>
-      <find>dataset_type</find>
-      <find>network</find>
+      <find>tr</find>
+      <find>set_input</find>
+      <find>batch</find>
+      <find>cam</find>
+      <find>_mov</find>
+      <find>get_current_moves</find>
+      <find>appen</find>
+      <find>_epoch_val_mov_gt</find>
+      <find>_epoch_val_mov_predicted</find>
+      <find>_epoch_train_mov</find>
+      <find>val_moves</find>
+      <find>_display_visualizer_val</find>
+      <find>get_current_e</find>
+      <find>mean</find>
+      <find>display_visualizer_avg_epoch</find>
+      <find>epoch_train_e</find>
+      <find>self._epoch_val_e</find>
+      <find>self._epoch_train_e</find>
+      <find>epoch_val_e</find>
+      <find>iter_read_time</find>
+      <find>writer_f</find>
+      <find>model</find>
+      <find>print</find>
+      <find>display_visualizer_tra</find>
+      <find>display_visualizer_</find>
+      <find>total_steps</find>
+      <find>plot_scalars</find>
+      <find>display_visualizer_train</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,12 +202,13 @@
         <option value="$PROJECT_DIR$/src/networks/networks.py" />
         <option value="$PROJECT_DIR$/src/utils/forward_kinematics.py" />
         <option value="$PROJECT_DIR$/src/networks/lstm.py" />
-        <option value="$PROJECT_DIR$/src/train.py" />
         <option value="$PROJECT_DIR$/src/options/config_parser.py" />
         <option value="$PROJECT_DIR$/src/data/human36m.py" />
         <option value="$PROJECT_DIR$/src/models/lstm.py" />
-        <option value="$PROJECT_DIR$/src/options/config_default.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/src/utils/tb_visualizer.py" />
+        <option value="$PROJECT_DIR$/src/train.py" />
       </list>
     </option>
   </component>
@@ -203,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,14 +258,6 @@
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="lstm" type="462c0819:PsiDirectoryNode" />
               <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -327,6 +338,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,12 +407,13 @@
       <workItem from="1550438257225" duration="1985000" />
       <workItem from="1550488863010" duration="7406000" />
       <workItem from="1550499974756" duration="17213000" />
-      <workItem from="1550531367798" duration="2360000" />
+      <workItem from="1550531367798" duration="3356000" />
+      <workItem from="1550575854140" duration="8585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130062000" />
+    <option name="totallyTimeSpent" value="139643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -415,7 +428,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30990592" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31377974" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -427,7 +440,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32937366" />
-      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.34557235" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -471,27 +484,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesSgd/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/testing/pruebaLSTMTutorial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="245" column="119" selection-start-line="245" selection-start-column="112" selection-end-line="245" selection-end-column="119" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/hdf5Example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/S11/events/loss_log.txt" />
     <entry file="file://$PROJECT_DIR$/testing/hdf5trainhdf5testtohdf5train.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -616,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="121" column="52" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch1.gif" />
     <entry file="file://$PROJECT_DIR$/src/models/models.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -677,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="91" column="18" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/transforms/normalize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -706,26 +678,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
+    <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="99" column="55" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="55" />
+        <state relative-caret-position="209">
+          <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state relative-caret-position="45">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
+        <state relative-caret-position="454">
           <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -733,29 +705,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch20.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch41.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch81.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="157" column="25" selection-start-line="157" selection-start-column="25" selection-end-line="157" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        <state relative-caret-position="174">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
+        <state relative-caret-position="84">
+          <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="64" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="207" lean-forward="true" selection-start-line="207" selection-end-line="207" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/testing/x32_poses_betas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/x32_poses_betas.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/x32_poses_betas_verts.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,49 +30,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/train.py">
+        <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="345" lean-forward="true" selection-start-line="345" selection-end-line="345" />
+            <state relative-caret-position="89">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/h36mTohdf5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="128" selection-start-line="126" selection-end-line="128" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#1396#1445#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas.py">
+        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/hdf5tohdf5trainhdf5test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1590">
+              <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -78,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="135">
+              <caret line="115" column="42" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="42" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -88,12 +63,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/forward_kinematics.py">
+        <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas_verts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="166" column="41" lean-forward="true" selection-start-line="166" selection-end-line="167" />
+            <state>
+              <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-31">
+              <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#1684#1702#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
+              <folding>
+                <element signature="e#774#792#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,14 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>writer_full</find>
-      <find>add_histogram</find>
-      <find>display_</find>
-      <find>display_ter</find>
-      <find>display_visualizer_avg</find>
-      <find>total_steps</find>
-      <find>%</find>
-      <find>2</find>
       <find>20</find>
       <find>self._epoch_train_e</find>
       <find>avg_epoch</find>
@@ -129,17 +117,25 @@
       <find>_display_movements</find>
       <find>epoch %</find>
       <find>% 20</find>
-      <find>print(</find>
       <find>set_train</find>
       <find>epoch % 10</find>
       <find>% 10</find>
       <find>fig.close</find>
-      <find>epoch %</find>
       <find>cam</find>
       <find>model</find>
       <find>print_current_validate</find>
       <find>set_input</find>
       <find>dataset</find>
+      <find>priny</find>
+      <find>experiments</find>
+      <find>print(</find>
+      <find>self._filename</find>
+      <find>value</find>
+      <find>ch</find>
+      <find>f</find>
+      <find>load_model</find>
+      <find>setattr</find>
+      <find>pdb</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,15 +177,21 @@
         <option value="$PROJECT_DIR$/src/models/models.py" />
         <option value="$PROJECT_DIR$/src/networks/networks.py" />
         <option value="$PROJECT_DIR$/src/utils/forward_kinematics.py" />
-        <option value="$PROJECT_DIR$/src/options/config_parser.py" />
-        <option value="$PROJECT_DIR$/src/data/human36m.py" />
         <option value="$PROJECT_DIR$/src/utils/tb_visualizer.py" />
         <option value="$PROJECT_DIR$/src/train.py" />
         <option value="$PROJECT_DIR$/src/networks/lstm.py" />
         <option value="$PROJECT_DIR$/src/models/lstm.py" />
-        <option value="$PROJECT_DIR$/src/options/config_default.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json" />
         <option value="$PROJECT_DIR$/testing/x32_poses_betas.py" />
+        <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config_default.json" />
+        <option value="$PROJECT_DIR$/src/options/config_parser.py" />
+        <option value="$PROJECT_DIR$/src/data/human36m.py" />
+        <option value="$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/hello_smpl.py" />
+        <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py" />
+        <option value="$PROJECT_DIR$/testing/x32_poses_betas_verts.py" />
+        <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py" />
+        <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
       </list>
     </option>
   </component>
@@ -246,7 +248,68 @@
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="lstm" type="462c0819:PsiDirectoryNode" />
               <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="gifs" type="462c0819:PsiDirectoryNode" />
+              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="lstm" type="462c0819:PsiDirectoryNode" />
+              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="model1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="model1" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="model1" type="462c0819:PsiDirectoryNode" />
+              <item name="with_vgg_lower_lr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="SMPL" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+              <item name="hello_world" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -258,6 +321,12 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="options" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -290,16 +359,16 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/datasets/h36m" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/datasets/h36m" />
       <recent name="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam" />
+      <recent name="$PROJECT_DIR$/datasets/h36m" />
       <recent name="$PROJECT_DIR$/experiments/lstm" />
       <recent name="$PROJECT_DIR$/testing" />
       <recent name="$PROJECT_DIR$/experiments/lstm/adam" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
+      <recent name="$PROJECT_DIR$/datasets/h36m" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -344,12 +413,16 @@
       <workItem from="1550488863010" duration="7406000" />
       <workItem from="1550499974756" duration="17213000" />
       <workItem from="1550531367798" duration="3356000" />
-      <workItem from="1550575854140" duration="18265000" />
+      <workItem from="1550575854140" duration="20960000" />
+      <workItem from="1550600899098" duration="3780000" />
+      <workItem from="1550657741168" duration="11216000" />
+      <workItem from="1550678804889" duration="4000" />
+      <workItem from="1550681139369" duration="6562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149323000" />
+    <option name="totallyTimeSpent" value="173580000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -364,11 +437,11 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31377974" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32927504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -420,22 +493,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/adamax/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/adadelta/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/adagrad/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/adam/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/adamax/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdadelta/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdagrad/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdamax/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesSgd/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/sgd/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/samplesgt.hdf5">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/cifar10.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -463,38 +520,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/hdf5trainaddhdf5s11.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/prueba/config.json" />
     <entry file="file://$PROJECT_DIR$/datasets/h36m/test_ids.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/plots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -549,16 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/viz.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="e#42#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/transforms/normalize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -568,45 +588,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch20.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch41.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch81.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch20.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch110.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch20.gif" />
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch41.gif" />
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch81.gif" />
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch20.gif" />
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch110.gif" />
     <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -640,66 +626,179 @@
     <entry file="file://$PROJECT_DIR$/src/loss/loss.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="345" lean-forward="true" selection-start-line="345" selection-end-line="345" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/forward_kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51">
-          <caret line="166" column="41" lean-forward="true" selection-start-line="166" selection-end-line="167" />
+          <caret line="166" column="41" selection-start-line="166" selection-end-line="167" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-526">
+          <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testing/hdf5tohdf5trainhdf5test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="585">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/hdf5trainaddhdf5s11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4336" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/render_smpl.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/lstmsample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/lbs.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/posemapper.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/verts.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/serialization.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/hello_smpl.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/README.txt" />
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="26" selection-start-line="26" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testing/h36mTohdf5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="128" selection-start-line="126" selection-end-line="128" />
+        <state relative-caret-position="600">
+          <caret line="111" column="17" lean-forward="true" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas.py">
+    <entry file="file://$PROJECT_DIR$/src/utils/viz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="330">
+          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#42#73#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2016">
+          <caret line="345" selection-start-line="345" selection-end-line="345" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#774#792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+          <folding>
+            <element signature="e#1684#1702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#1396#1445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="115" column="42" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas_verts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1590">
+          <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
         </state>
       </provider>
     </entry>

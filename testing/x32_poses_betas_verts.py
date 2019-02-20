@@ -18,8 +18,8 @@ def print_attrs(name, obj):
 DETC_PATH="/media/finuxs/HDD/H36M/H36M_skeleton/detections/"
 SHAPE_PATH="/media/finuxs/HDD/H36M/H36M_shape/data/"
 SAVE_PATH="/media/finuxs/HDD/"
-subjects = [[1,5,6,7,8], [9]]
-actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+subjects = [[], [11]]
+actions = [3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 subactions = [1,2]
 cameras = [1,2,3,4]
 
@@ -28,7 +28,7 @@ filepath2=os.path.join(SAVE_PATH, 'h36train_x32_beta_pose.hdf5')
 f = h5py.File(filepath,'r')
 g = h5py.File(filepath2,'a')
 
-cnt=0
+cnt=180
 
 for split in range(2):
 
@@ -49,6 +49,8 @@ for split in range(2):
                     g['{:03d}'.format(cnt)+"/betas"]=tmp
                     tmp = f["train/skeleton/"+folder_name_no_cam].get('pose').value
                     g['{:03d}'.format(cnt)+"/pose"]=tmp
+                    tmp = f["train/skeleton/"+folder_name_no_cam].get('verts').value
+                    g['{:03d}'.format(cnt)+"/verts"]=tmp
                 else:
                     tmp = f["test/skeleton/"+folder_name_no_cam].get('x32').value
                     g['{:03d}'.format(cnt)+"/x32"]=tmp
@@ -56,7 +58,8 @@ for split in range(2):
                     g['{:03d}'.format(cnt)+"/betas"]=tmp
                     tmp = f["test/skeleton/"+folder_name_no_cam].get('pose').value
                     g['{:03d}'.format(cnt)+"/pose"]=tmp
-
+                    tmp = f["test/skeleton/"+folder_name_no_cam].get('verts').value
+                    g['{:03d}'.format(cnt)+"/verts"]=tmp
                 cnt = cnt + 1
 
 print(list(g.keys()))

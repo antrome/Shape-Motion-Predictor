@@ -1,3 +1,4 @@
+from __future__ import print_function, division, absolute_import
 from src.options.config_parser import ConfigParser
 from src.data.custom_dataset_data_loader import CustomDatasetDataLoader
 from src.models.models import ModelsFactory
@@ -12,6 +13,7 @@ import os
 import src.utils.viz as viz
 import matplotlib
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import Axes3D
 import imageio

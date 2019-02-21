@@ -82,7 +82,7 @@ class NetworkBase(nn.Module):
 
         return new_state_dict
 
-    def print(self):
+    def print_network(self):
         num_params = 0
         for param in self.parameters():
             num_params += param.numel()

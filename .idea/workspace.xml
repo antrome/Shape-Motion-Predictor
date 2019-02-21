@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/data_utils_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/main_parse_H36M_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/prepare_session.sh" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/prepare_session.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/cifar10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loss/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/loss/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/networks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pytest/test_network_resnet18.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pytest/test_network_resnet18.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pytest/test_network_vgg11.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pytest/test_network_vgg11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/tb_visualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/tb_visualizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/x32_poses_betas_verts.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/x32_poses_betas.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +42,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/hello_world/render_smpl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="102" column="6" lean-forward="true" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
+            <state relative-caret-position="359">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -47,12 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>20</find>
-      <find>self._epoch_train_e</find>
-      <find>avg_epoch</find>
-      <find>epoch_train_e</find>
-      <find>_display_visualizer_train</find>
-      <find>_display_visualizer_val</find>
       <find>self._epoch_val_e</find>
       <find>% 2</find>
       <find>_display_movements</find>
@@ -69,14 +87,20 @@
       <find>dataset</find>
       <find>priny</find>
       <find>experiments</find>
-      <find>print(</find>
       <find>self._filename</find>
       <find>value</find>
       <find>ch</find>
-      <find>f</find>
       <find>load_model</find>
       <find>setattr</find>
       <find>pdb</find>
+      <find>f</find>
+      <find>f&quot;</find>
+      <find>pickle</find>
+      <find>print(self)</find>
+      <find>plt</find>
+      <find>print(</find>
+      <find>print</find>
+      <find>transform</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,8 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/transforms/normalize.py" />
-        <option value="$PROJECT_DIR$/testing/prueba.py" />
         <option value="$PROJECT_DIR$/src/transforms/normalizevalidation.py" />
         <option value="$PROJECT_DIR$/src/transforms/normalizetrain.py" />
         <option value="$PROJECT_DIR$/src/transforms/transforms.py" />
@@ -114,32 +136,37 @@
         <option value="$PROJECT_DIR$/datasets/h36m/test_ids.txt" />
         <option value="$PROJECT_DIR$/src/utils/viz.py" />
         <option value="$PROJECT_DIR$/datasets/h36m/train_ids.txt" />
-        <option value="$PROJECT_DIR$/src/models/models.py" />
-        <option value="$PROJECT_DIR$/src/networks/networks.py" />
         <option value="$PROJECT_DIR$/src/utils/forward_kinematics.py" />
-        <option value="$PROJECT_DIR$/src/utils/tb_visualizer.py" />
-        <option value="$PROJECT_DIR$/src/train.py" />
         <option value="$PROJECT_DIR$/src/networks/lstm.py" />
         <option value="$PROJECT_DIR$/src/models/lstm.py" />
         <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json" />
-        <option value="$PROJECT_DIR$/testing/x32_poses_betas.py" />
         <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config_default.json" />
         <option value="$PROJECT_DIR$/src/options/config_parser.py" />
-        <option value="$PROJECT_DIR$/src/data/human36m.py" />
         <option value="$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/hello_smpl.py" />
         <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py" />
-        <option value="$PROJECT_DIR$/testing/x32_poses_betas_verts.py" />
         <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py" />
         <option value="$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py" />
-        <option value="$PROJECT_DIR$/src/options/config_default.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/smpl/smpl_webuser/hello_world/render_smpl.py" />
+        <option value="$PROJECT_DIR$/smpl/smpl_webuser/hello_world/video.py" />
+        <option value="$PROJECT_DIR$/testing/x32_poses_betas_verts.py" />
+        <option value="$PROJECT_DIR$/smpl/smpl_webuser/hello_world/hello_smpl.py" />
+        <option value="$PROJECT_DIR$/src/utils/tb_visualizer.py" />
+        <option value="$PROJECT_DIR$/src/networks/networks.py" />
+        <option value="$PROJECT_DIR$/experiments/prepare_session.sh" />
+        <option value="$PROJECT_DIR$/testing/x32_poses_betas.py" />
+        <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/models/models.py" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/src/data/human36m.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="530" />
     <option name="y" value="62" />
-    <option name="width" value="1380" />
+    <option name="width" value="1370" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
@@ -147,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,7 +217,7 @@
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="lstm" type="462c0819:PsiDirectoryNode" />
               <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="gifs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -197,27 +225,52 @@
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="lstm" type="462c0819:PsiDirectoryNode" />
               <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="gifs" type="462c0819:PsiDirectoryNode" />
+              <item name="train" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="model1" type="462c0819:PsiDirectoryNode" />
+              <item name="lstm" type="462c0819:PsiDirectoryNode" />
+              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
+              <item name="gifs" type="462c0819:PsiDirectoryNode" />
+              <item name="val" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="model1" type="462c0819:PsiDirectoryNode" />
-              <item name="basic_settings" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="model1" type="462c0819:PsiDirectoryNode" />
-              <item name="with_vgg_lower_lr" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+              <item name="hello_world" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -228,7 +281,13 @@
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -251,7 +310,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -267,16 +325,16 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
+      <recent name="$PROJECT_DIR$/datasets/h36m" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam" />
       <recent name="$PROJECT_DIR$/datasets/h36m" />
       <recent name="$PROJECT_DIR$/experiments/lstm" />
       <recent name="$PROJECT_DIR$/testing" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/adam" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/datasets/h36m" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,11 +384,16 @@
       <workItem from="1550657741168" duration="11216000" />
       <workItem from="1550678804889" duration="4000" />
       <workItem from="1550681139369" duration="7159000" />
+      <workItem from="1550746735346" duration="3080000" />
+      <workItem from="1550750422977" duration="3603000" />
+      <workItem from="1550759856530" duration="3099000" />
+      <workItem from="1550762969814" duration="31000" />
+      <workItem from="1550763019243" duration="6905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174177000" />
+    <option name="totallyTimeSpent" value="190895000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -345,11 +408,11 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33314887" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3530714" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -357,7 +420,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32937366" />
-      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.34557235" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.34557235" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -401,72 +464,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/models/model1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="134" column="20" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.PyCharm2018.3/system/python_stubs/218899242/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="2894" column="8" selection-start-line="2894" selection-start-column="8" selection-end-line="2894" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/prueba/config.json" />
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/test_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gifs/val/epoch4gt.gif" />
-    <entry file="file://$PROJECT_DIR$/gifs/val/epoch1gt.gif" />
-    <entry file="file://$PROJECT_DIR$/gifs/val/epoch2gt.gif" />
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/h36train.hdf5">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/val_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="3" lean-forward="true" selection-end-line="57" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/train_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch1.gif" />
-    <entry file="file://$PROJECT_DIR$/src/models/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing/addS11.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
@@ -491,16 +488,6 @@
     <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/val/epoch81.gif" />
     <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch20.gif" />
     <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/gifs/train/epoch110.gif" />
-    <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="83" column="30" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -578,11 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4336" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/plots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -594,28 +576,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/render_smpl.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/lstmsample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/lstmsample.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/lbs.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/posemapper.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/verts.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/serialization.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/hello_smpl.py" />
     <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/README.txt" />
-    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="26" selection-start-line="26" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/README.txt" />
     <entry file="file://$PROJECT_DIR$/testing/h36mTohdf5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -636,74 +604,161 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py" />
+    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py" />
+    <entry file="file://$PROJECT_DIR$/src/utils/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1125" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/serialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/hello_world/video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/main_parse_H36M_v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3766" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/data_utils_dataset.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/hello_world/hello_smpl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#34#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+          <folding>
+            <element signature="e#34#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pytest/test_network_vgg11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/README.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/prepare_session.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="74">
+            <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="e#34#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="345" selection-start-line="345" selection-end-line="345" />
+        <state relative-caret-position="-2235">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#64#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/serialization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="e#774#792#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/render_smpl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
-          <folding>
-            <element signature="e#1684#1702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="115" column="42" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/x32_poses_betas_verts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="240">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/hello_world/hello_smpl.py">
+    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="660">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
           <folding>
-            <element signature="e#1396#1445#0" expanded="true" />
+            <element signature="e#34#48#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smpl/smpl_webuser/hello_world/render_smpl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="102" column="6" lean-forward="true" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
+        <state relative-caret-position="359">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>

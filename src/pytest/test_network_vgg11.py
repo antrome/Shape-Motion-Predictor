@@ -18,5 +18,5 @@ nn = NetworksFactory.get_by_name(nn_type, **nn_hyper_params)
 # run
 img = torch.ones([B, n_img, S, S])
 y = nn(img)
-nn.print()
+nn.print_network()
 print(img.shape, y.shape)

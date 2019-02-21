@@ -1,3 +1,4 @@
+# -*- coding: future_fstrings -*-
 import os.path
 from src.data.dataset import DatasetBase
 import numpy as np

@@ -1,3 +1,4 @@
+# -*- coding: future_fstrings -*-
 import os.path
 from src.data.dataset import DatasetBase
 import numpy as np
@@ -43,7 +44,7 @@ class H36M(DatasetBase):
         self._read_dataset()
 
         # read meta
-        self._read_meta()
+        # self._read_meta()
 
         self.transform = transform
 
@@ -89,6 +90,7 @@ class H36M(DatasetBase):
     def __getitem__(self,index):
         assert (index < self._dataset_size)
 
+        #data = self._data[index]["x32"]
         data = self._data[index]
 
         # Pick a random camera
@@ -134,23 +136,24 @@ class H36M(DatasetBase):
         # load the picked numpy arrays
         self._data = []
         #self._targets = []
-        x_data=dict()
-        x_tensor=dict()
+        #x_data=dict()
+        #x_tensor=dict()
 
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
-
             for subseq in valid_ids_root:
-                x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
-                x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
-                x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
-                x_tensor["x32"] = torch.from_numpy(x_data["x32"])
-                x_tensor["betas"] = torch.from_numpy(x_data["betas"])
-                x_tensor["pose"] = torch.from_numpy(x_data["pose"])
+                x_data = f['{:03d}'.format(int(subseq))][:]
+                x_tensor = torch.from_numpy(x_data)
+                #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                #x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
+                #x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
+                #x_tensor["x32"] = torch.from_numpy(x_data["x32"])
+                #x_tensor["betas"] = torch.from_numpy(x_data["betas"])
+                #x_tensor["pose"] = torch.from_numpy(x_data["pose"])
 
-                for key in x_tensor.keys():
-                    # Pick only one each 2 frames
-                    x_tensor[key] = x_tensor[key][:, ::2, :, :]
+                #for key in x_tensor.keys():
+                #    # Pick only one each 2 frames
+                #    x_tensor[key] = x_tensor[key][:, ::2, :, :]
 
                 #Normalize the whole dataset, but this is done in the transform of get item
                 #x_tensor = (x_tensor - self._mean)/self._std

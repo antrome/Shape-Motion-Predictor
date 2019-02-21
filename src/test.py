@@ -1,3 +1,4 @@
+# -*- coding: future_fstrings -*-
 import argparse
 from src.options.config_parser import ConfigParser
 from src.data.custom_dataset_data_loader import CustomDatasetDataLoader

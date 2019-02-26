@@ -25,12 +25,12 @@ subactions = [1,2]
 cameras = [1,2,3,4]
 
 filepath=os.path.join(FILE_PATH, 'h36.hdf5')
-filepath2=os.path.join(SAVE_PATH, 'h36train_x32_beta_pose.hdf5')
+filepath2=os.path.join(SAVE_PATH, 'h36train_x32.hdf5')
 f = h5py.File(filepath,'r')
 g = h5py.File(filepath2,'a')
 
-cnt=0
-#cnt=180
+#cnt=0
+cnt=180
 
 for split in range(2):
 
@@ -47,17 +47,9 @@ for split in range(2):
                 if split == 0:
                     tmp = f["train/skeleton/"+folder_name_no_cam].get('x32').value
                     g['{:03d}'.format(cnt)+"/x32"]=tmp
-                    tmp = f["train/skeleton/"+folder_name_no_cam].get('betas').value
-                    g['{:03d}'.format(cnt)+"/betas"]=tmp
-                    tmp = f["train/skeleton/"+folder_name_no_cam].get('pose').value
-                    g['{:03d}'.format(cnt)+"/pose"]=tmp
                 else:
                     tmp = f["test/skeleton/"+folder_name_no_cam].get('x32').value
                     g['{:03d}'.format(cnt)+"/x32"]=tmp
-                    tmp = f["test/skeleton/"+folder_name_no_cam].get('betas').value
-                    g['{:03d}'.format(cnt)+"/betas"]=tmp
-                    tmp = f["test/skeleton/"+folder_name_no_cam].get('pose').value
-                    g['{:03d}'.format(cnt)+"/pose"]=tmp
                 cnt = cnt + 1
 
 print(list(g.keys()))

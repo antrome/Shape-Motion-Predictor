@@ -68,24 +68,48 @@ class H36M(DatasetBase):
         valid_ids_root = self._read_valid_ids(use_ids_filepath)
         # load the picked numpy arrays
         data = []
+        x_data=dict()
+        x_tensor=dict()
+        tensors=dict()
 
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
 
-                x_data = f['{:03d}'.format(int(subseq))][:]
-                x_tensor = torch.from_numpy(x_data)
+                #x_data = f['{:03d}'.format(int(subseq))][:]
+                #x_tensor = torch.from_numpy(x_data)
+                x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
+                x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
+                x_tensor["x32"] = torch.from_numpy(x_data["x32"])
+                x_tensor["betas"] = torch.from_numpy(x_data["betas"])
+                x_tensor["pose"] = torch.from_numpy(x_data["pose"])
+
+                for key in x_tensor.keys():
+                    # Pick only one each 2 frames
+                    x_tensor[key] = x_tensor[key][:, ::2, :, :]
 
                 data.append(x_tensor)
 
-        tensors = torch.cat([i for i in data],1)
+        for key in x_tensor.keys():
+            tensors[key] = torch.cat([i[key] for i in data],1)
 
-        self._mean = torch.mean(tensors,dim=(0,1,2),keepdim=True)
-        self._std = torch.sqrt(torch.mean((tensors - self._mean)**2,dim=(0,1,2),keepdim=True))
-
-        print(self._mean)
-        print(self._std)
+            if key=="x32":
+                self._mean = torch.mean(tensors[key],dim=(0,1,2),keepdim=True)
+                self._std = torch.sqrt(torch.mean((tensors[key] - self._mean)**2,dim=(0,1,2),keepdim=True))
+                print(self._mean)
+                print(self._std)
+            elif key=="pose":
+                self._mean = torch.mean(tensors[key],dim=(0,1,2),keepdim=True)
+                self._std = torch.sqrt(torch.mean((tensors[key] - self._mean)**2,dim=(0,1,2),keepdim=True))
+                print(self._mean)
+                print(self._std)
+            elif key=="betas":
+                self._mean = torch.mean(tensors[key],dim=(0,1,2,3),keepdim=True)
+                self._std = torch.sqrt(torch.mean((tensors[key] - self._mean)**2,dim=(0,1,2,3),keepdim=True))
+                print(self._mean)
+                print(self._std)
 
     def __getitem__(self,index):
         assert (index < self._dataset_size)
@@ -135,9 +159,8 @@ class H36M(DatasetBase):
         valid_ids_root = self._read_valid_ids(use_ids_filepath)
         # load the picked numpy arrays
         self._data = []
-        #self._targets = []
-        #x_data=dict()
-        #x_tensor=dict()
+        x_data=dict()
+        x_tensor=dict()
 
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
@@ -151,9 +174,8 @@ class H36M(DatasetBase):
                 #x_tensor["betas"] = torch.from_numpy(x_data["betas"])
                 #x_tensor["pose"] = torch.from_numpy(x_data["pose"])
 
-                #for key in x_tensor.keys():
-                #    # Pick only one each 2 frames
-                #    x_tensor[key] = x_tensor[key][:, ::2, :, :]
+                # Pick only one each 2 frames
+                x_tensor = x_tensor[:, ::2, :, :]
 
                 #Normalize the whole dataset, but this is done in the transform of get item
                 #x_tensor = (x_tensor - self._mean)/self._std

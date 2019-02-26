@@ -89,7 +89,7 @@ for i in range(1372):
         m.pose[:] = f['000'].get('pose').value[1][i][0]
         movs = f['000'].get('x32').value[1][i]
         movs =torch.from_numpy(movs)
-        print(movs.shape)
+        print(m.pose[:])
         ## Create OpenDR renderer
         rn = ColoredRenderer()
 

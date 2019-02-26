@@ -1,6 +1,6 @@
 {
   "H36M": {
-    "filename": "h36train_x32_beta_pose.hdf5",
+    "filename": "h36train_x32.hdf5",
     "root": "datasets/h36m/",
     "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",
@@ -87,8 +87,8 @@
     "normalize": {
       "type": "normalize",
       "general_args": {
-        "mean": [61.0654, 194.6125, 512.1083],
-        "std": [415.9541, 617.7456, 519.2516]
+        "mean": [222.9219, 149.8101, 892.8636],
+        "std": [674.7875, 964.6568, 480.9456]
       },
       "perkey_args": {
         "img": {},

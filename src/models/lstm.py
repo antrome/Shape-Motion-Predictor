@@ -72,12 +72,18 @@ class Lstm1(BaseModel):
     def _init_prefetch_inputs(self,opt):
         self._input_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc]).to(self._device_master)
         self._input_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
+        self._betas = torch.zeros([self._B, self._Sd, 1, 10], dtype=torch.float32).to(self._device_master)
         #opt for unormalize
         self._mean = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["mean"]).to(self._device_master)
         self._std = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["std"]).to(self._device_master)
 
     def set_input(self, input):
+        #print(input['img'].shape)
+        #print(input['target'].shape)
+        #print(input['betas'].shape)in
 
+        #Get Betas
+        self._betas.copy_(input['betas'])
         self._input_img.copy_(input['img'])
         #check input type
         if self._inputType == "hidden50FramesInput":
@@ -92,6 +98,7 @@ class Lstm1(BaseModel):
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)
         self._input_target = self._input_target.to(self._device_master)
+        self._betas = self._betas.to(self._device_master)
 
     def set_train(self):
         self._reg.train()
@@ -180,6 +187,11 @@ class Lstm1(BaseModel):
         moves_dict["moves_gt"] = self._inputUn
         moves_dict["moves_predicted"]=self._estimUn
         return moves_dict
+
+    def get_current_betas(self):
+        betas = OrderedDict()
+        betas["betas"] = self._betas
+        return betas
 
     def save(self, epoch_label, save_type, do_remove_prev=True):
         # save networks

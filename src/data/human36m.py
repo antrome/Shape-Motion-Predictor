@@ -24,6 +24,7 @@ import torchvision.transforms as transforms
 import torchvision.datasets as dsets
 import math
 import os
+import copy
 
 
 class H36M(DatasetBase):
@@ -68,20 +69,24 @@ class H36M(DatasetBase):
         valid_ids_root = self._read_valid_ids(use_ids_filepath)
         # load the picked numpy arrays
         data = []
-        x_data=dict()
-        x_tensor=dict()
-        tensors=dict()
-
+        data1 = []
+        data2 = []
+        tensors = dict()
+        x_data = dict()
+        x_tensor = dict()
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
-
                 #x_data = f['{:03d}'.format(int(subseq))][:]
                 #x_tensor = torch.from_numpy(x_data)
+                x_data1 = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                x_data2 = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
                 x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
                 x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
+                x_tensor1 = torch.from_numpy(x_data1)
+                x_tensor2 = torch.from_numpy(x_data2)
                 x_tensor["x32"] = torch.from_numpy(x_data["x32"])
                 x_tensor["betas"] = torch.from_numpy(x_data["betas"])
                 x_tensor["pose"] = torch.from_numpy(x_data["pose"])
@@ -90,9 +95,26 @@ class H36M(DatasetBase):
                     # Pick only one each 2 frames
                     x_tensor[key] = x_tensor[key][:, ::2, :, :]
 
-                data.append(x_tensor)
+                x_tensor1 = x_tensor1[:, ::2, :, :]
+                data1.append(x_tensor1)
+                data.append(copy.deepcopy(x_tensor))
+                x_tensor2 = x_tensor2[:, ::2, :, :]
+                data2.append(x_tensor2)
 
-        for key in x_tensor.keys():
+                x_tensor.clear()
+
+            tensors1 = torch.cat([i for i in data1],1)
+            self._mean = torch.mean(tensors1,dim=(0,1,2),keepdim=True)
+            self._std = torch.sqrt(torch.mean((tensors1 - self._mean)**2,dim=(0,1,2),keepdim=True))
+            print(self._mean)
+            print(self._std)
+            tensors2 = torch.cat([i for i in data2],1)
+            self._mean = torch.mean(tensors2,dim=(0,1,2),keepdim=True)
+            self._std = torch.sqrt(torch.mean((tensors2 - self._mean)**2,dim=(0,1,2),keepdim=True))
+            print(self._mean)
+            print(self._std)
+
+        for key in data[0].keys():
             tensors[key] = torch.cat([i[key] for i in data],1)
 
             if key=="x32":
@@ -114,8 +136,9 @@ class H36M(DatasetBase):
     def __getitem__(self,index):
         assert (index < self._dataset_size)
 
-        #data = self._data[index]["x32"]
-        data = self._data[index]
+        data = self._data[index]["x32"]
+        databetas = self._data[index]["betas"]
+        #data = self._data[index]
 
         # Pick a random camera
         cam = random.randint(0, 3)
@@ -128,14 +151,14 @@ class H36M(DatasetBase):
         #else:#DEFAULT H36M
         x_data_cam_frame = data[cam][frames:frames + 99][:][:]
         labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
-
+        betas_frame = databetas[cam][frames:frames + 99][:][:]
         self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
         self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
-
-        img, target = self.tensor_x, self.tensor_y
+        self.betas = torch.stack([torch.Tensor(i) for i in betas_frame])
+        img, target, betas = self.tensor_x, self.tensor_y, self.betas
 
         # pack data
-        sample = {'img': img, 'target': target}
+        sample = {'img': img, 'target': target, 'betas': betas}
 
         # apply transformations
         if self._transform is not None:
@@ -159,32 +182,37 @@ class H36M(DatasetBase):
         valid_ids_root = self._read_valid_ids(use_ids_filepath)
         # load the picked numpy arrays
         self._data = []
-        x_data=dict()
-        x_tensor=dict()
-
+        x_data = dict()
+        x_tensor = dict()
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
             for subseq in valid_ids_root:
-                x_data = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
+                x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
                 #x_data = f['{:03d}'.format(int(subseq))][:]
-                x_tensor = torch.from_numpy(x_data)
+                #x_tensor = torch.from_numpy(x_data)
                 #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 #x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
                 #x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
-                #x_tensor["x32"] = torch.from_numpy(x_data["x32"])
-                #x_tensor["betas"] = torch.from_numpy(x_data["betas"])
-                #x_tensor["pose"] = torch.from_numpy(x_data["pose"])
+                x_tensor["x32"] = torch.from_numpy(x_data["x32"])
+                x_tensor["pose"] = torch.from_numpy(x_data["pose"])
+                x_tensor["betas"] = torch.from_numpy(x_data["betas"])
 
                 # Pick only one each 2 frames
-                x_tensor = x_tensor[:, ::2, :, :]
+                x_tensor["x32"] = x_tensor["x32"][:, ::2, :, :]
+                x_tensor["pose"] = x_tensor["pose"][:, ::2, :, :]
+                x_tensor["betas"] = x_tensor["betas"][:, ::2, :, :]
 
                 #Normalize the whole dataset, but this is done in the transform of get item
                 #x_tensor = (x_tensor - self._mean)/self._std
 
-                self._data.append(x_tensor)
+                self._data.append(copy.deepcopy(x_tensor))
+                x_tensor.clear()
+
         # dataset size
         self._dataset_size = len(self._data)
-
+        print(self._dataset_size)
     def _read_meta(self):
         path = os.path.join(self._root, self._meta_file)
         with open(path, 'rb') as infile:

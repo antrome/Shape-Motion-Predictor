@@ -202,7 +202,8 @@ class Train:
                 val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
-
+                betas = self._model.get_current_betas()
+                betas = betas["betas"][0][0]
                 # keep visuals
                 if do_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,

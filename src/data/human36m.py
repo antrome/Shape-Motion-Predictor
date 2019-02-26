@@ -165,7 +165,8 @@ class H36M(DatasetBase):
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
             for subseq in valid_ids_root:
-                x_data = f['{:03d}'.format(int(subseq))][:]
+                x_data = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                #x_data = f['{:03d}'.format(int(subseq))][:]
                 x_tensor = torch.from_numpy(x_data)
                 #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 #x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]

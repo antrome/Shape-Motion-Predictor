@@ -1,6 +1,6 @@
 {
   "H36M": {
-    "filename": "h36train_x32.hdf5",
+    "filename": "h36train_x32_beta_pose.hdf5",
     "root": "datasets/h36m/",
     "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",

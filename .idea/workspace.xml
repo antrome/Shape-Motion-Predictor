@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOV.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/POSE.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
@@ -30,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="138" column="37" selection-start-line="138" selection-start-column="34" selection-end-line="138" selection-end-column="37" />
+            <state relative-caret-position="224">
+              <caret line="216" lean-forward="true" selection-start-line="216" selection-end-line="216" />
               <folding>
                 <element signature="e#34#48#0" expanded="true" />
               </folding>
@@ -45,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1017">
-              <caret line="277" column="47" selection-start-line="277" selection-start-column="39" selection-end-line="277" selection-end-column="47" />
+            <state relative-caret-position="74">
+              <caret line="506" column="74" selection-start-line="506" selection-start-column="74" selection-end-line="506" selection-end-column="74" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -55,61 +57,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasets/h36m/means.txt">
+        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="38" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="419">
+              <caret line="58" selection-start-line="55" selection-end-line="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1996">
-              <caret line="74" column="42" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="42" />
+            <state relative-caret-position="464">
+              <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="90" column="45" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/transforms/normalize.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasets/h36m/val_ids.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="3" selection-end-line="57" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasets/h36m/train_ids.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -125,36 +88,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>viz</find>
-      <find>torch.</find>
-      <find>torc</find>
-      <find>Pose</find>
-      <find>mean</find>
-      <find>nor</find>
-      <find>normalize</find>
-      <find>frames =</find>
-      <find>tensors</find>
-      <find>self._input_img</find>
-      <find>for</find>
-      <find>for</find>
-      <find>set_inpu</find>
-      <find>get_current_moves</find>
-      <find>get_c</find>
-      <find>get_current</find>
-      <find>get_currentº</find>
-      <find>get_ci</find>
-      <find>get_curr</find>
-      <find>self._input_betas</find>
-      <find>input_bet</find>
-      <find>copy</find>
-      <find>print(be</find>
-      <find>input_img</find>
-      <find>estimate</find>
-      <find>beta</find>
+      <find>cpu</find>
+      <find>m</find>
+      <find>print(</find>
       <find>betas</find>
-      <find>inputUn</find>
-      <find>input_b</find>
-      <find>input</find>
+      <find>reshape</find>
+      <find>print</find>
+      <find>get_current_moves</find>
+      <find>compute_metric</find>
+      <find>metric</find>
+      <find>self._criterion</find>
+      <find>rad</find>
+      <find>frame</find>
+      <find>estimUn</find>
+      <find>self._dataset_train</find>
+      <find>num_batchesper_epoch</find>
+      <find>moves_</find>
+      <find>num_batches</find>
+      <find>uint8</find>
+      <find>float</find>
+      <find>mov</find>
+      <find>mov</find>
+      <find>[mov]</find>
+      <find>display_shape</find>
+      <find>WARNING:root:Lossy conversion from float64 to uint8. Range [0, 1]. Convert image to uint8 prior to saving to suppress this warning.</find>
+      <find>gpu</find>
+      <find>display_shape_val</find>
+      <find>display_shape_train</find>
+      <find>frombuff</find>
+      <find>get_by_name</find>
+      <find>for</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,8 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdagrad/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesAdadelta/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/hiddenFramesSgd/config.json" />
         <option value="$PROJECT_DIR$/testing/hdf5trainaddhdf5s11.py" />
         <option value="$PROJECT_DIR$/datasets/h36m/val_ids.txt" />
@@ -190,7 +151,6 @@
         <option value="$PROJECT_DIR$/smpl/smpl_webuser/hello_world/hello_smpl.py" />
         <option value="$PROJECT_DIR$/src/utils/tb_visualizer.py" />
         <option value="$PROJECT_DIR$/src/networks/networks.py" />
-        <option value="$PROJECT_DIR$/experiments/prepare_session.sh" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/models/models.py" />
         <option value="$PROJECT_DIR$/smpl/smpl_webuser/hello_world/prueba.py" />
@@ -208,12 +168,15 @@
         <option value="$PROJECT_DIR$/models/__init__.py" />
         <option value="$PROJECT_DIR$/testing/x32.py" />
         <option value="$PROJECT_DIR$/testing/x32_poses_betas.py" />
-        <option value="$PROJECT_DIR$/datasets/h36m/train_ids.txt" />
         <option value="$PROJECT_DIR$/datasets/h36m/means.txt" />
-        <option value="$PROJECT_DIR$/src/options/config_default.json" />
-        <option value="$PROJECT_DIR$/src/models/lstm.py" />
-        <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/datasets/h36m/train_ids.txt" />
         <option value="$PROJECT_DIR$/src/data/human36m.py" />
+        <option value="$PROJECT_DIR$/src/smpl/smpl_webuser/lbs.py" />
+        <option value="$PROJECT_DIR$/src/utils/plots.py" />
+        <option value="$PROJECT_DIR$/experiments/prepare_session.sh" />
+        <option value="$PROJECT_DIR$/src/models/lstm.py" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/src/train.py" />
       </list>
     </option>
   </component>
@@ -268,31 +231,6 @@
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="gifs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenFramesAdam" type="462c0819:PsiDirectoryNode" />
-              <item name="gifs" type="462c0819:PsiDirectoryNode" />
-              <item name="train" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -310,13 +248,53 @@
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="loss" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="options" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl" type="462c0819:PsiDirectoryNode" />
+              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
+              <item name="hello_world" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -426,12 +404,14 @@
       <workItem from="1551192713807" duration="2543000" />
       <workItem from="1551195765301" duration="4095000" />
       <workItem from="1551200469180" duration="7849000" />
-      <workItem from="1551213478722" duration="5483000" />
+      <workItem from="1551213478722" duration="6653000" />
+      <workItem from="1551264643691" duration="7628000" />
+      <workItem from="1551277562663" duration="15362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222376000" />
+    <option name="totallyTimeSpent" value="246536000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,8 +426,8 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.38848922" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.39789706" />
+      <window_info id="Structure" order="1" sideWeight="0.50165015" side_tool="true" weight="0.39789706" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
@@ -472,7 +452,7 @@
       <window_info anchor="right" id="Database" order="5" weight="0.32982844" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31377974" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39291644" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -502,13 +482,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SMPL/lstmsample.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/lbs.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/posemapper.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/verts.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/serialization.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/hello_world/hello_smpl.py" />
-    <entry file="file://$PROJECT_DIR$/SMPL/SMPL_python_v.1.0.0/smpl/smpl_webuser/README.txt" />
     <entry file="file://$PROJECT_DIR$/SMPL/smpl/smpl_webuser/README.txt" />
     <entry file="file://$PROJECT_DIR$/testing/h36mTohdf5.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -548,16 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -583,23 +546,10 @@
         <state relative-caret-position="-315" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/README.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/posemapper.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/lbs.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/hello_world/video.py">
@@ -624,51 +574,10 @@
     <entry file="file://$PROJECT_DIR$/src/smpl/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/hello_world/render_smpl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
-          <folding>
-            <element signature="e#1683#1701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/viz.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
-          <folding>
-            <element signature="e#42#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/prepare_session.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
           <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/test_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -685,16 +594,6 @@
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="e#895#908#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prueba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#1677#1741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,37 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/transforms/normalize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/val_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="3" selection-end-line="57" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/train_ids.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="90" column="45" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/tb_visualizer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -770,39 +638,202 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
+    <entry file="file://$PROJECT_DIR$/datasets/h36m/means.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1996">
-          <caret line="74" column="42" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="42" />
+        <state relative-caret-position="210">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="22" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/transforms/normalize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/h36m/means.txt">
+    <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/lbs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="495">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
+    <entry file="file://$PROJECT_DIR$/src/prueba.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1017">
-          <caret line="277" column="47" selection-start-line="277" selection-start-column="39" selection-end-line="277" selection-end-column="47" />
+        <state relative-caret-position="-256">
+          <caret line="53" column="9" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smpl/smpl_webuser/hello_world/render_smpl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="71" column="37" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="37" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#1683#1701#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/prepare_session.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/hiddenFramesAdam/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/hdf5tohdf5trainhdf5test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/cifar10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-556">
+          <caret line="21" selection-start-line="21" selection-end-line="42" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/h36m/val_ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/h36m/test_ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/h36m/train_ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="31" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/viz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+          <folding>
+            <element signature="e#42#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/transforms/transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pytest/test_network_resnet18.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="138" column="37" selection-start-line="138" selection-start-column="34" selection-end-line="138" selection-end-column="37" />
+        <state relative-caret-position="224">
+          <caret line="216" lean-forward="true" selection-start-line="216" selection-end-line="216" />
           <folding>
             <element signature="e#34#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="506" column="74" selection-start-line="506" selection-start-column="74" selection-end-line="506" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="58" selection-start-line="55" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

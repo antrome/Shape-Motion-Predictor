@@ -5,6 +5,7 @@ from .models import BaseModel
 from src.networks.networks import NetworksFactory
 from src.utils.plots import plot_estim
 import numpy as np
+import random
 
 class Lstm1(BaseModel):
     def __init__(self, opt):
@@ -219,10 +220,12 @@ class Lstm1(BaseModel):
 
     def _compute_metric(self,estim):
         #unormalize
-        estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-        inputUn = (self._input_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-
-
+        if self._Id == 96:
+            estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
+            inputUn = (self._input_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
+        else:
+            estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+            inputUn = (self._input_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
 
         if self._loss_type == "euclidean":
             #Euclidean Distance
@@ -232,5 +235,7 @@ class Lstm1(BaseModel):
             self._metric = self._criterion(estimUn, inputUn)
 
         #Moves for Visualization
-        self._estimUn = torch.mean(estimUn,dim=0)
-        self._inputUn = torch.mean(inputUn,dim=0)
+        #self._estimUn = torch.mean(estimUn,dim=0)
+        #self._inputUn = torch.mean(inputUn,dim=0)
+        self._estimUn = estimUn
+        self._inputUn = inputUn

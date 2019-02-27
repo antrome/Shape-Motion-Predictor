@@ -19,7 +19,23 @@ from mpl_toolkits.mplot3d import Axes3D
 import imageio
 from PIL import Image
 import random
-
+import numpy as np
+from opendr.renderer import ColoredRenderer
+from opendr.lighting import LambertianPointLight
+from opendr.camera import ProjectPoints
+from src.smpl.smpl_webuser.serialization import load_model
+import h5py
+import cv2
+import matplotlib
+import matplotlib.pyplot as plt
+plt.switch_backend('agg')
+import matplotlib.animation as animation
+from mpl_toolkits.mplot3d import Axes3D
+import imageio
+from PIL import Image
+import random
+import src.utils.viz as viz
+import torch
 
 class Train:
     def __init__(self):
@@ -57,7 +73,8 @@ class Train:
         # get dataset properties
         self._dataset_train_size = len(data_loader_train)
         self._dataset_val_size = len(data_loader_val)
-        self._num_batchesper_epoch = len(self._dataset_train)
+        self._num_batchesper_epoch_train = len(self._dataset_train)
+        self._num_batchesper_epoch_val = len(self._dataset_val)
 
         # print(self._dataset_train_size)
         # print(self._dataset_val_size)
@@ -203,7 +220,7 @@ class Train:
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
                 betas = self._model.get_current_betas()
-                betas = betas["betas"][0][0]
+                betas = betas["betas"]
                 # keep visuals
                 if do_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -214,8 +231,9 @@ class Train:
         val_errors = mean_dictionary(val_errors)
         self._epoch_train_e = append_dictionaries(self._epoch_train_e, val_errors)
         # Print the movements
-        self._display_movements_train(val_gt_moves, val_predicted_moves, val_size, i_epoch)
-
+        #self._display_movements_train(val_gt_moves, val_predicted_moves, val_size, i_epoch)
+        # Print the shape
+        self._display_shape_train(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
         # visualize
         t = (time.time() - val_start_time)
         # self._tb_visualizer.print_current_validate_errors(i_epoch, val_errors, t)
@@ -253,7 +271,8 @@ class Train:
                 val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
-
+                betas = self._model.get_current_betas()
+                betas = betas["betas"]
                 # keep visuals
                 if keep_data_for_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -265,7 +284,9 @@ class Train:
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
 
             # Print the movements
-            self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch)
+            #self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch)
+            # Print the shape
+            self._display_shape_val(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
 
         # visualize
         t = (time.time() - val_start_time)
@@ -278,6 +299,7 @@ class Train:
     def _display_movements_train(self, gt_moves, predicted_moves, dataset_size, i_epoch):
         # Pick Up a Random Batch and Print it
         batch = random.randint(0, dataset_size) - 1
+        mov = random.randint(0, self._num_batchesper_epoch_train-1)
         images_gt = []
         images_predicted = []
         images = []
@@ -289,7 +311,7 @@ class Train:
 
         # Plot the conditioning ground truth
         for i in range(99):
-            ob.update(gt_moves["moves_gt"][batch][i, :].detach())
+            ob.update(gt_moves["moves_gt"][mov][batch][i, :].detach())
             plt.show(block=False)
             fig.canvas.draw()
             data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
@@ -299,7 +321,7 @@ class Train:
 
         # Plot the conditioning predicted
         for i in range(99):
-            ob.update(predicted_moves["moves_predicted"][batch][i, :].detach(), lcolor="#9b59b6", rcolor="#2ecc71")
+            ob.update(predicted_moves["moves_predicted"][mov][batch][i, :].detach(), lcolor="#9b59b6", rcolor="#2ecc71")
             plt.show(block=False)
             fig.canvas.draw()
             data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
@@ -318,6 +340,7 @@ class Train:
     def _display_movements_val(self, gt_moves, predicted_moves, dataset_size, i_epoch):
         # Pick Up a Random Batch and Print it
         batch = random.randint(0, dataset_size) - 1
+        mov = random.randint(0, self._num_batchesper_epoch_val-1)
         images_gt = []
         images_predicted = []
         images = []
@@ -329,7 +352,7 @@ class Train:
 
         # Plot the conditioning ground truth
         for i in range(99):
-            ob.update(gt_moves["moves_gt"][batch][i, :])
+            ob.update(gt_moves["moves_gt"][mov][batch][i, :])
             plt.show(block=False)
             fig.canvas.draw()
             data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
@@ -339,7 +362,7 @@ class Train:
 
         # Plot the conditioning predicted
         for i in range(99):
-            ob.update(predicted_moves["moves_predicted"][batch][i, :], lcolor="#9b59b6", rcolor="#2ecc71")
+            ob.update(predicted_moves["moves_predicted"][mov][batch][i, :], lcolor="#9b59b6", rcolor="#2ecc71")
             plt.show(block=False)
             fig.canvas.draw()
             data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
@@ -355,6 +378,153 @@ class Train:
 
         imageio.mimsave(os.path.join(self._gifs_save_path, "val", "epoch" + str(i_epoch) + ".gif"), images)
 
+    def _display_shape_train(self, gt_moves, predicted_moves, betas, dataset_size, i_epoch):
+        # Pick Up a Random Batch and Print it
+        batch = random.randint(0, dataset_size) - 1
+        mov = random.randint(0, self._num_batchesper_epoch_train-1)
+        images_gt = []
+        images_predicted = []
+        images = []
+        betasShow = betas[0][0]
+        betasShow = betasShow.reshape(betasShow.size(1))
+
+        ## Load SMPL model (here we load the female model)
+        m = load_model('src/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl')
+        m.betas[:] = betasShow.cpu().numpy()
+
+        # === Plot and animate ===
+        fig = plt.figure()
+        ax = plt.gca(projection='3d')
+        ob = viz.Ax3DPose(ax)
+        for i in range(99):
+            m.pose[:] = gt_moves["moves_gt"][mov][batch][i].cpu().numpy()
+            ## Create OpenDR renderer
+            rn = ColoredRenderer()
+
+            ## Assign attributes to renderer
+            w, h = (640, 480)
+
+            rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
+            rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
+            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+
+            ## Construct point light source
+            rn.vc = LambertianPointLight(
+                f=m.f,
+                v=rn.v,
+                num_verts=len(m),
+                light_pos=np.array([-1000,-1000,-2000]),
+                vc=np.ones_like(m)*.9,
+                light_color=np.array([1., 1., 1.]))
+
+            image = (rn.r * 255).round().astype(np.uint8)
+            # ## Show it using OpenCV
+            images_gt.append(image)
+
+        for i in range(99):
+            m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
+            ## Create OpenDR renderer
+            rn = ColoredRenderer()
+
+            ## Assign attributes to renderer
+            w, h = (640, 480)
+
+            rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
+            rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
+            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+
+            ## Construct point light source
+            rn.vc = LambertianPointLight(
+                f=m.f,
+                v=rn.v,
+                num_verts=len(m),
+                light_pos=np.array([-1000,-1000,-2000]),
+                vc=np.ones_like(m)*.9,
+                light_color=np.array([1., 1., 1.]))
+
+            image = (rn.r * 255).round().astype(np.uint8)
+            # ## Show it using OpenCV
+            images_predicted.append(image)
+
+        # Put the predicted and gt together
+        for i in range(0, len(images_gt)):
+            images.append(np.hstack((images_gt[i], images_predicted[i])))
+
+        imageio.mimsave(os.path.join(self._gifs_save_path, "train", "epoch" + str(i_epoch) + ".gif"), images)
+
+    def _display_shape_val(self, gt_moves, predicted_moves, betas, dataset_size, i_epoch):
+        # Pick Up a Random Batch and Print it
+        batch = random.randint(0, dataset_size) - 1
+        mov = random.randint(0, self._num_batchesper_epoch_val-1)
+        images_gt = []
+        images_predicted = []
+        images = []
+        betasShow = betas[0][0]
+        betasShow = betasShow.reshape(betasShow.size(1))
+
+        ## Load SMPL model (here we load the female model)
+        m = load_model('src/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl')
+        m.betas[:] = betasShow.cpu().numpy()
+
+        # === Plot and animate ===
+        fig = plt.figure()
+        ax = plt.gca(projection='3d')
+        ob = viz.Ax3DPose(ax)
+        for i in range(99):
+            m.pose[:] = gt_moves["moves_gt"][mov][batch][i].cpu().numpy()
+            ## Create OpenDR renderer
+            rn = ColoredRenderer()
+
+            ## Assign attributes to renderer
+            w, h = (640, 480)
+
+            rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
+            rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
+            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+
+            ## Construct point light source
+            rn.vc = LambertianPointLight(
+                f=m.f,
+                v=rn.v,
+                num_verts=len(m),
+                light_pos=np.array([-1000,-1000,-2000]),
+                vc=np.ones_like(m)*.9,
+                light_color=np.array([1., 1., 1.]))
+
+            image = (rn.r * 255).round().astype(np.uint8)
+            # ## Show it using OpenCV
+            images_gt.append(image)
+
+        for i in range(99):
+            m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
+            ## Create OpenDR renderer
+            rn = ColoredRenderer()
+
+            ## Assign attributes to renderer
+            w, h = (640, 480)
+
+            rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
+            rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
+            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+
+            ## Construct point light source
+            rn.vc = LambertianPointLight(
+                f=m.f,
+                v=rn.v,
+                num_verts=len(m),
+                light_pos=np.array([-1000,-1000,-2000]),
+                vc=np.ones_like(m)*.9,
+                light_color=np.array([1., 1., 1.]))
+
+            image = (rn.r * 255).round().astype(np.uint8)
+            # ## Show it using OpenCV
+            images_predicted.append(image)
+
+        # Put the predicted and gt together
+        for i in range(0, len(images_gt)):
+            images.append(np.hstack((images_gt[i], images_predicted[i])))
+
+        imageio.mimsave(os.path.join(self._gifs_save_path, "val", "epoch" + str(i_epoch) + ".gif"), images)
 
 if __name__ == "__main__":
     Train()

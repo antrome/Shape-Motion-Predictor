@@ -136,7 +136,7 @@ class H36M(DatasetBase):
     def __getitem__(self,index):
         assert (index < self._dataset_size)
 
-        data = self._data[index]["x32"]
+        data = self._data[index]["pose"]
         databetas = self._data[index]["betas"]
         #data = self._data[index]
 
@@ -168,8 +168,13 @@ class H36M(DatasetBase):
         #self.tensor_x = self.tensor_x.reshape(self.tensor_x.size(0), self.tensor_x.size(1) * self.tensor_x.size(2))
         #self.tensor_y = self.tensor_y.reshape(self.tensor_y.size(0), self.tensor_y.size(1) * self.tensor_y.size(2))
 
-        sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
-        sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
+        #X32
+        if sample['img'].size(1) == 32 and sample['img'].size(2) == 3:
+            sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
+            sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
+        else:
+            sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(2))
+            sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(2))
 
         return sample
 
@@ -212,7 +217,6 @@ class H36M(DatasetBase):
 
         # dataset size
         self._dataset_size = len(self._data)
-        print(self._dataset_size)
     def _read_meta(self):
         path = os.path.join(self._root, self._meta_file)
         with open(path, 'rb') as infile:

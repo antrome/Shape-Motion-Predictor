@@ -239,3 +239,4 @@ class Lstm1(BaseModel):
         #self._inputUn = torch.mean(inputUn,dim=0)
         self._estimUn = estimUn
         self._inputUn = inputUn
+

@@ -44,8 +44,8 @@
   },
 
   "train": {
-    "nepochs_no_decay": 40,
-    "nepochs_decay": 760,
+    "nepochs_no_decay": 200,
+    "nepochs_decay": 1800,
     "reg_lr": 0.001,
     "num_iters_validate": 10,
     "optim": "sgd",

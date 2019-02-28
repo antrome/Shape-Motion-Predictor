@@ -233,7 +233,8 @@ class Train:
         # Print the movements
         #self._display_movements_train(val_gt_moves, val_predicted_moves, val_size, i_epoch)
         # Print the shape
-        self._display_shape_train(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
+        if i_epoch % 200 == 0:
+            self._display_shape_train(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
         # visualize
         t = (time.time() - val_start_time)
         # self._tb_visualizer.print_current_validate_errors(i_epoch, val_errors, t)
@@ -286,7 +287,8 @@ class Train:
             # Print the movements
             #self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch)
             # Print the shape
-            self._display_shape_val(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
+            if i_epoch % 200 == 0:
+                self._display_shape_val(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch)
 
         # visualize
         t = (time.time() - val_start_time)

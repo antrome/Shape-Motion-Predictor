@@ -86,10 +86,9 @@ ob = viz.Ax3DPose(ax)
 for i in range(1372):
 
     if i%100 == 0:
-        m.pose[:] = f['000'].get('pose').value[1][i][0]
-        movs = f['000'].get('x32').value[1][i]
+        m.pose[:] = f['015'].get('pose').value[1][i][0]
+        movs = f['015'].get('x32').value[1][i]
         movs =torch.from_numpy(movs)
-        print(m.pose[:])
         ## Create OpenDR renderer
         rn = ColoredRenderer()
 
@@ -138,8 +137,6 @@ for i in range(1372):
 
 # Put the predicted and gt together
 for i in range(0, len(imgsMov)):
-    print(imgsPose[i])
-    print(imgsMov[i])
     images.append(np.hstack((imgsMov[i], imgsPose[i])))
 
 imageio.mimsave("POSE.gif", imgsPose)

@@ -40,7 +40,7 @@
     "load_epoch": -1,
     "type": "lstm",
     "master_gpu": 0,
-    "reg_gpus": [0,2]
+    "reg_gpus": [0,1,2]
   },
 
   "train": {

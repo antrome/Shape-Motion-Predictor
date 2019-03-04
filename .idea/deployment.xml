@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="aromero@visen2:22" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="visen2" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="aromero@visen2:22">
+      <paths name="visen2">
         <serverdata>
           <mappings>
             <mapping deploy="/Shape-Motion-Predictor" local="$PROJECT_DIR$" web="/" />

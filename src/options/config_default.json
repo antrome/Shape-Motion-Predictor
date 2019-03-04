@@ -39,8 +39,8 @@
   "model": {
     "load_epoch": -1,
     "type": "lstm",
-    "master_gpu": 0,
-    "reg_gpus": [0,1,2]
+    "master_gpu": 2,
+    "reg_gpus": [2]
   },
 
   "train": {

@@ -86,6 +86,9 @@ class Lstm1(BaseModel):
         #Get Betas
         self._betas.copy_(input['betas'])
         self._input_img.copy_(input['img'])
+        #Defauly Input Type
+        self._input_target.copy_(input['target'])
+
         #check input type
         if self._inputType == "hidden50FramesInput":
             self._input_img[:, 50:99, :] = torch.zeros(
@@ -93,8 +96,8 @@ class Lstm1(BaseModel):
                 self._input_img[:, 50:99, :].size(1),
                 self._input_img[:, 50:99, :].size(2), dtype=torch.float32)
 
-        #Defauly Input Type
-        self._input_target.copy_(input['target'])
+        self._input_img[:, :, 0:6] = 0
+        self._input_target[:, :, 0:6] = 0
 
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)

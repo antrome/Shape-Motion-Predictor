@@ -21,7 +21,7 @@ import math
 import os
 
 class LSTMModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols,dropout):
         super(LSTMModel, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
@@ -38,10 +38,13 @@ class LSTMModel(nn.Module):
         # Output dimensions
         self.output_dim = output_dim
 
+        # Dropout
+        self.dropout = dropout
+
         # Building your LSTM
         # batch_first=True causes input/output tensors to be of shape
         # (batch_dim, seq_dim, feature_dim)
-        self.lstm = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True)
+        self.lstm = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
 
         # Readout layer
         self.fc = nn.Linear(hidden_dim, output_dim)

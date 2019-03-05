@@ -38,11 +38,8 @@ class ConfigParser:
             self._opt = json.load(f)
     def _overwrite_default_opt(self):
         # parse experiment specific config
-        #CAMBIAR QUEDA MUY CUTRE
-        relFile = os.path.dirname(self._exp_dir)
-        relFile = relFile.split("/")
-        relFile = relFile[1]+"/"+relFile[2]
-        with open(os.path.join(os.path.dirname(experiments.__file__),relFile, 'config.json'), 'r') as f:
+        print(self._exp_dir)
+        with open(os.path.join(os.path.dirname(experiments.__file__),self._exp_dir[12:], 'config.json'), 'r') as f:
             specific_opt = json.load(f)
         # recursively overwrite options
         self._override_json(self._opt, specific_opt)

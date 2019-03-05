@@ -45,6 +45,8 @@ class Lstm1(BaseModel):
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
         self._loss_type = self._opt["train"]["loss"]                    # loss type
+        self._weight_decay = self._opt["train"]["weight_decay"]         # weight decay
+        self._dropout = self._opt["networks"]["reg"]["hyper_params"]["dropout"]# dropout
 
     def _init_create_networks(self):
         # create reg
@@ -57,15 +59,20 @@ class Lstm1(BaseModel):
         self._current_lr = self._opt["train"]["reg_lr"]
 
         if self._optim == "adam":
-            self._optimizer = torch.optim.Adam(self._reg.parameters(), lr=self._current_lr)
+            self._optimizer = torch.optim.Adam(self._reg.parameters(), lr=self._current_lr,
+                                               weight_decay=self._weight_decay)
         elif self._optim == "adamax":
-            self._optimizer = torch.optim.Adamax(self._reg.parameters(), lr=self._current_lr)
+            self._optimizer = torch.optim.Adamax(self._reg.parameters(), lr=self._current_lr,
+                                                 weight_decay=self._weight_decay)
         elif self._optim == "adadelta":
-            self._optimizer = torch.optim.Adadelta(self._reg.parameters(), lr=self._current_lr)
+            self._optimizer = torch.optim.Adadelta(self._reg.parameters(), lr=self._current_lr,
+                                                   weight_decay=self._weight_decay)
         elif self._optim == "adagrad":
-            self._optimizer = torch.optim.Adagrad(self._reg.parameters(), lr=self._current_lr)
+            self._optimizer = torch.optim.Adagrad(self._reg.parameters(), lr=self._current_lr,
+                                                  weight_decay=self._weight_decay)
         else:#Default SGD
-            self._optimizer = torch.optim.SGD(self._reg.parameters(), lr=self._current_lr)
+            self._optimizer = torch.optim.SGD(self._reg.parameters(), lr=self._current_lr,
+                                              weight_decay=self._weight_decay)
 
     def _init_losses(self):
         self._criterion = torch.nn.MSELoss().to(self._device_master)

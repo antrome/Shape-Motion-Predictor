@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/testing/generateScripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/human36m.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/human36m.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing/generateScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/generateScripts.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,64 +30,49 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+        <entry file="file://$PROJECT_DIR$/testing/generateScripts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="330">
+              <caret line="22" column="154" selection-start-line="22" selection-start-column="154" selection-end-line="22" selection-end-column="154" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
+        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="271" column="18" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="240">
+                <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/config.json">
+        <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus2/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="15">
+              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+        <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus2/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -147,32 +126,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/optimAdam/weightDecay1EMinus4/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/optimAdam/config.json" />
-        <option value="$PROJECT_DIR$/src/options/config_parser.py" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout0/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout0/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/dropout0/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0/dropout5/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0/dropout3/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0/dropout0/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/src/options/config_default.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/config.json" />
@@ -196,8 +154,29 @@
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay0/dropout1/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay0/dropout0/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/testing/generateScripts.py" />
         <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout0/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout1/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout3/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout5/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subNone/optimAdam/weightDecay1EMinus5/dropout5/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/optimAdam/weightDecay1EMinus5/dropout5/config.json" />
+        <option value="$PROJECT_DIR$/src/models/lstm.py" />
+        <option value="$PROJECT_DIR$/experiments/lstm/lr/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus3/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus4/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus5/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus3/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus4/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus5/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus6/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus6/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus2/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus2/config.json" />
+        <option value="$PROJECT_DIR$/testing/generateScripts.py" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -208,11 +187,72 @@
     <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="options" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="testing" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="options" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="testing" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,11 +263,6 @@
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="datasets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -235,26 +270,6 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="lstm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="lstm" type="462c0819:PsiDirectoryNode" />
-              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
-              <item name="subEven" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -271,53 +286,13 @@
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="loss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="networks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="options" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl" type="462c0819:PsiDirectoryNode" />
-              <item name="smpl_webuser" type="462c0819:PsiDirectoryNode" />
-              <item name="hello_world" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -352,7 +327,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/datasets/h36m" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -364,13 +339,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/experiments/lstm/learningRates" />
+      <recent name="$PROJECT_DIR$/experiments/lstm/lr" />
       <recent name="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames" />
       <recent name="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5" />
       <recent name="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay0" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus5" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/datasets/h36m" />
@@ -451,12 +427,16 @@
       <workItem from="1551707105667" duration="11638000" />
       <workItem from="1551726644635" duration="11486000" />
       <workItem from="1551746289918" duration="7859000" />
-      <workItem from="1551783797973" duration="749000" />
+      <workItem from="1551783797973" duration="2918000" />
+      <workItem from="1551790942317" duration="6495000" />
+      <workItem from="1551804567743" duration="6554000" />
+      <workItem from="1551867423373" duration="2005000" />
+      <workItem from="1551872533548" duration="48000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306564000" />
+    <option name="totallyTimeSpent" value="323835000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -471,7 +451,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.2434975" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.25456557" />
       <window_info id="Structure" order="1" sideWeight="0.50165015" side_tool="true" weight="0.39789706" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -497,7 +477,7 @@
       <window_info anchor="right" id="Database" order="5" weight="0.32982844" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.46264526" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.2434975" />
       <window_info id="Structure" order="1" sideWeight="0.50165015" side_tool="true" weight="0.39789706" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -527,193 +507,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay0/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus4/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus4/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus4/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus4/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus4/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay5EMinus5/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus4/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus4/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus4/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus4/dropout1/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus4/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay0/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay0/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay0/dropout3/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay0/dropout1/config.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -735,13 +528,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/optimAdam/weightDecay0/dropout5/config.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/generateScripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus4/dropout0/config.json">
       <provider selected="true" editor-type-id="text-editor" />
@@ -766,6 +552,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2111">
+          <caret line="248" column="54" lean-forward="true" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -773,27 +569,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout3/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout1/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout0/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay1EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subNone/optimAdam/weightDecay1EMinus5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subNone/optimAdam/weightDecay1EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subOdd/optimAdam/weightDecay1EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/optimAdam/weightDecay1EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay1EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow300/optimAdam/weightDecay5EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="1710">
+          <caret line="253" column="44" selection-start-line="253" selection-end-line="254" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout0/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout3/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout5/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subEven/optimAdam/weightDecay5EMinus5/dropout1/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="271" column="18" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus5/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus4/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/inputHiddenFrames/subWindow200/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus6/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus6/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus3/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus4/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus4/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus6/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus3/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus4/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus5/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus5/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus6/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/generateScripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="154" selection-start-line="22" selection-start-column="154" selection-end-line="22" selection-end-column="154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr1EMinus2/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus2/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="240">
+            <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

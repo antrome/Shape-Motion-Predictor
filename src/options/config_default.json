@@ -6,7 +6,7 @@
     "train_ids_file": "train_ids.txt",
     "val_ids_file": "val_ids.txt",
     "test_ids_file": "test_ids.txt",
-    "subsampling": "none"
+    "subsampling": "window200"
   },
 
   "dataset": {
@@ -46,11 +46,11 @@
   "train": {
     "nepochs_no_decay": 100,
     "nepochs_decay": 1900,
-    "reg_lr": 0.00005,
+    "reg_lr": 5e-5,
     "num_iters_validate": 10,
     "optim": "adam",
     "loss": "mse",
-    "weight_decay": 0,
+    "weight_decay": 5e-5,
     "dropout": 0.0
   },
 

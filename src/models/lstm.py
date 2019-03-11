@@ -1,6 +1,6 @@
 import torch
 from collections import OrderedDict
-from src.utils import util
+from src.utils import util, data_utils, pytorchangles
 from .models import BaseModel
 from src.networks.networks import NetworksFactory
 from src.utils.plots import plot_estim
@@ -81,6 +81,10 @@ class Lstm1(BaseModel):
         self._input_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc]).to(self._device_master)
         self._input_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         self._betas = torch.zeros([self._B, self._Sd, 1, 10], dtype=torch.float32).to(self._device_master)
+        self._global_translation_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
+        self._global_translation_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
+        self._input_target_zeros = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
+        self._input_img_zeros = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         #opt for unormalize
         self._mean = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["mean"]).to(self._device_master)
         self._std = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["std"]).to(self._device_master)
@@ -95,21 +99,24 @@ class Lstm1(BaseModel):
         self._input_img.copy_(input['img'])
         #Defauly Input Type
         self._input_target.copy_(input['target'])
+        self._input_target_zeros.copy_(input['target'])
+        self._input_img_zeros.copy_(input['img'])
+        self._global_translation_target.copy_(input['target'])
+        self._global_translation_img.copy_(input['img'])
 
         #check input type
         if self._inputType == "hidden50FramesInput":
-            self._input_img[:, 50:99, :] = torch.zeros(
-                self._input_img[:, 50:99, :].size(0),
-                self._input_img[:, 50:99, :].size(1),
-                self._input_img[:, 50:99, :].size(2), dtype=torch.float32)
-
-        self._input_img[:, :, 0:6] = 0
-        self._input_target[:, :, 0:6] = 0
+            self._input_img[:, 50:99, 7:] = torch.zeros(
+                self._input_img[:, 50:99, 7:].size(0),
+                self._input_img[:, 50:99, 7:].size(1),
+                self._input_img[:, 50:99, 7:].size(2), dtype=torch.float32)
 
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)
         self._input_target = self._input_target.to(self._device_master)
         self._betas = self._betas.to(self._device_master)
+        self._global_translation_target = self._global_translation_target.to(self._device_master)
+        self._global_translation_img = self._global_translation_img.to(self._device_master)
 
     def set_train(self):
         self._reg.train()
@@ -152,12 +159,24 @@ class Lstm1(BaseModel):
 
     def forward(self, keep_data_for_visuals=False, estimate_loss=True):
         # generate img
+        self._input_img[:, :, 0:6] = torch.zeros(
+            self._input_img[:, :, 0:6].size(0),
+            self._input_img[:, :, 0:6].size(1),
+            self._input_img[:, :, 0:6].size(2), dtype=torch.float32)
+
+
+        self._input_target[:, :, 0:6] = torch.zeros(
+            self._input_target[:, :, 0:6].size(0),
+            self._input_target[:, :, 0:6].size(1),
+            self._input_target[:, :, 0:6].size(2), dtype=torch.float32)
+
         estim = self._estimate(self._input_img)
 
         # estimate loss
         if estimate_loss:
             self._loss_gt = self._criterion(estim, self._input_target)
             self._compute_metric(estim)
+            self._compute_movement(estim)
             total_loss = self._loss_gt
         else:
             total_loss = -1
@@ -183,6 +202,7 @@ class Lstm1(BaseModel):
         loss_dict = OrderedDict()
         loss_dict["loss_gt"] = self._loss_gt.item()
         loss_dict["unloss_gt"] = self._metric.item()
+        loss_dict["unloss_euler_gt"] = self._metricEuler.item()
         return loss_dict
 
     def get_current_scalars(self):
@@ -237,16 +257,32 @@ class Lstm1(BaseModel):
             estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
             inputUn = (self._input_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
 
+        estimUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(estimUn, self._device_master),
+                                            self._device_master)
+
+        inputUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(inputUn, self._device_master),
+                                            self._device_master)
+
         if self._loss_type == "euclidean":
             #Euclidean Distance
             self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
+            self._metricEuler = torch.mean(torch.sqrt(torch.sum((inputUnEuler-estimUnEuler)**2,dim=-1)))
         else:#DEFAULT
             #MSE Square Error
             self._metric = self._criterion(estimUn, inputUn)
+            self._metricEuler = self._criterion(estimUnEuler, inputUnEuler)
+
+    def _compute_movement(self,estim):
+        #unormalize
+        if self._Id == 96:
+            estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
+            inputUn = (self._global_translation_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
+        else:
+            estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+            inputUn = (self._global_translation_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
 
         #Moves for Visualization
-        #self._estimUn = torch.mean(estimUn,dim=0)
-        #self._inputUn = torch.mean(inputUn,dim=0)
         self._estimUn = estimUn
         self._inputUn = inputUn
+        self._estimUn[:,:,0:6] = self._global_translation_img[:,:,0:6]*self._std[0:6]+self._mean[0:6]
 

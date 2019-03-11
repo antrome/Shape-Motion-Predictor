@@ -39,17 +39,17 @@
   "model": {
     "load_epoch": -1,
     "type": "lstm",
-    "master_gpu": 2,
-    "reg_gpus": [2]
+    "master_gpu": 0,
+    "reg_gpus": [0]
   },
 
   "train": {
     "nepochs_no_decay": 100,
     "nepochs_decay": 1900,
-    "reg_lr": 5e-5,
+    "reg_lr": 5e-3,
     "num_iters_validate": 10,
     "optim": "adam",
-    "loss": "mse",
+    "loss": "euclidean",
     "weight_decay": 5e-5,
     "dropout": 0.0
   },

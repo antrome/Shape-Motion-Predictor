@@ -54,6 +54,7 @@ class H36M(DatasetBase):
         self._meta_file = opt[self._name]["meta_file"]
         self._filename = opt[self._name]["filename"]
         self._subsampling = opt[self._name]["subsampling"]
+        self._seq_dim = opt["dataset"]["seq_dim"]
 
         if self._is_for == "train":
             self._ids_filename = self._opt[self._name]["train_ids_file"]
@@ -145,47 +146,43 @@ class H36M(DatasetBase):
         cam = random.randint(0, 3)
 
         if self._subsampling == "window200":
-            frames = random.randint(0, data.shape[1] - 201)
-            x_data_cam_frame = np.zeros((99, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            labels_data_cam_frame = np.zeros((99, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][frames:frames + 99][:][:]
+            frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*2+1))
+            x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+            labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
 
-            for i in range(99):
+            for i in range(self._seq_dim):
                 # Pick a random frame for the subsampling
                 win = random.randint(0, 1)
                 x_data_cam_frame[i] = data[cam][frames + win][:][:]
                 labels_data_cam_frame[i] = data[cam][frames + win + 2][:][:]
                 frames = frames + 2
         elif self._subsampling == "window300":
-            frames = random.randint(0, data.shape[1] - 301)
-            x_data_cam_frame = np.zeros((99, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            labels_data_cam_frame = np.zeros((99, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][frames:frames + 99][:][:]
+            frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*3+1))
+            x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+            labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
 
-            for i in range(99):
+            for i in range(self._seq_dim):
                 # Pick a random frame for the subsampling
                 win = random.randint(0, 2)
                 x_data_cam_frame[i] = data[cam][frames + win][:][:]
                 labels_data_cam_frame[i] = data[cam][frames + win + 3][:][:]
                 frames = frames + 3
-        elif self._subsampling == "even":
-            data = data[:, ::2, :, :]
-            frames = random.randint(0, data.shape[1] - 101)
-            x_data_cam_frame = data[cam][frames:frames + 99][:][:]
-            labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
-            betas_frame = databetas[cam][frames:frames + 99][:][:]
         elif self._subsampling == "odd":
             data = data[:, 1::2, :, :]
-            frames = random.randint(0, data.shape[1] - 101)
-            x_data_cam_frame = data[cam][frames:frames + 99][:][:]
-            labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
-            betas_frame = databetas[cam][frames:frames + 99][:][:]
-        #NoSubSampling
+            frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
+            x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+            labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
+            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+        #EvenSubSampling
         else:
-            frames = random.randint(0, data.shape[1] - 101)
-            x_data_cam_frame = data[cam][frames:frames + 99][:][:]
-            labels_data_cam_frame = data[cam][frames + 1:frames + 100][:][:]
-            betas_frame = databetas[cam][frames:frames + 99][:][:]
+            data = data[:, ::2, :, :]
+            frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
+            x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+            labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
+            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+
 
         self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
         self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
@@ -198,10 +195,6 @@ class H36M(DatasetBase):
         # apply transformations
         if self._transform is not None:
             sample = self._transform(sample)
-
-        # reshape
-        #self.tensor_x = self.tensor_x.reshape(self.tensor_x.size(0), self.tensor_x.size(1) * self.tensor_x.size(2))
-        #self.tensor_y = self.tensor_y.reshape(self.tensor_y.size(0), self.tensor_y.size(1) * self.tensor_y.size(2))
 
         #X32
         if sample['img'].size(1) == 32 and sample['img'].size(2) == 3:

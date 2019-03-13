@@ -14,16 +14,32 @@ for i in input:
                     exp="experiments/lstm/input"+i+"/sub"+j+"/optim"+k+"/weightDecay"+l+"/dropout"+m+"/"
                     print("clear;rm -r "+exp+"events/ "+";rm -r "+exp+"gifs/;. experiments/prepare_session.sh 0,1,2;python src/train.py --exp_dir "+exp+";")
 """
-
-#lr=["1EMinus3","1EMinus4","1EMinus5","1EMinus6"]
-#lr=["5EMinus3","5EMinus4","5EMinus5","5EMinus6"]
-#lr=["1EMinus2"]
-layerDim=["4"]
+"""
+layerDim=["2"]
+hiddenDim=["512"]
 #hiddenDim=["64","128","256","512","1024","2048"]
-#hiddenDim=["64","256","1024"]
-hiddenDim=["128","512","2048"]
+#hiddenDim=["64","256", "1024"]
+#hiddenDim=["128","512","2048"]
 
 for i in layerDim:
     for j in hiddenDim:
         exp = "experiments/lstm/lstmConfig/layerDim" + i + "/hiddenDim" + j + "/"
         print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2;python src/train.py --exp_dir " + exp + ";")
+"""
+
+"""
+#subSampling=["window300","odd"]
+#subSampling=["window200","even"]
+subSampling=["none1"]
+
+for i in subSampling:
+    exp = "experiments/lstm/subSampling/" + i + "/"
+    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2;python src/train.py --exp_dir " + exp + ";")
+"""
+
+#seqDim=["49","149"]
+seqDim=["199","99"]
+
+for i in seqDim:
+    exp = "experiments/lstm/seqDim/d" + i + "/"
+    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2,3;python src/train.py --exp_dir " + exp + ";")

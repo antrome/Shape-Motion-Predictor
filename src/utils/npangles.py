@@ -187,7 +187,7 @@ def expmap_to_rotmat(r):
     base_shape = [int(d) for d in r.shape][:-1]
     zero_dim = np.zeros(base_shape)
 
-    theta = np.sqrt(np.sum(np.square(r), axis=-1, keepdims=True) + 1e-8)
+    theta = np.sqrt(np.sum(np.square(r), axis=-1, keepdims=True, dtype=np.float32) + 1e-8)
     r0 = r / theta
 
     r0x = np.reshape(

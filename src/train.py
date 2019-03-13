@@ -98,6 +98,7 @@ class Train:
         self._display_freq_s = self._opt["logs"]["display_freq_s"]
         self._num_iters_validate = self._opt["train"]["num_iters_validate"]
         self._gifs_save_path = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"])
+        self._seq_dim = self._opt["dataset"]["seq_dim"]
 
     def _check_options(self):
         assert self._opt["dataset_train"]["batch_size"] == self._opt["dataset_val"]["batch_size"], \
@@ -312,7 +313,7 @@ class Train:
         ob = viz.Ax3DPose(ax)
 
         # Plot the conditioning ground truth
-        for i in range(99):
+        for i in range(self._seq_dim):
             ob.update(gt_moves["moves_gt"][mov][batch][i, :].detach())
             plt.show(block=False)
             fig.canvas.draw()
@@ -322,7 +323,7 @@ class Train:
             images_gt.append(data)
 
         # Plot the conditioning predicted
-        for i in range(99):
+        for i in range(self._seq_dim):
             ob.update(predicted_moves["moves_predicted"][mov][batch][i, :].detach(), lcolor="#9b59b6", rcolor="#2ecc71")
             plt.show(block=False)
             fig.canvas.draw()
@@ -353,7 +354,7 @@ class Train:
         ob = viz.Ax3DPose(ax)
 
         # Plot the conditioning ground truth
-        for i in range(99):
+        for i in range(self._seq_dim):
             ob.update(gt_moves["moves_gt"][mov][batch][i, :])
             plt.show(block=False)
             fig.canvas.draw()
@@ -363,7 +364,7 @@ class Train:
             images_gt.append(data)
 
         # Plot the conditioning predicted
-        for i in range(99):
+        for i in range(self._seq_dim):
             ob.update(predicted_moves["moves_predicted"][mov][batch][i, :], lcolor="#9b59b6", rcolor="#2ecc71")
             plt.show(block=False)
             fig.canvas.draw()
@@ -416,7 +417,7 @@ class Train:
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
-        for i in range(99):
+        for i in range(self._seq_dim):
             m.pose[:] = gt_moves["moves_gt"][mov][batch][i].cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
@@ -441,7 +442,7 @@ class Train:
             # ## Show it using OpenCV
             images_gt.append(image)
 
-        for i in range(99):
+        for i in range(self._seq_dim):
             m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
@@ -508,7 +509,7 @@ class Train:
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
-        for i in range(99):
+        for i in range(self._seq_dim):
             m.pose[:] = gt_moves["moves_gt"][mov][batch][i].cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
@@ -533,7 +534,7 @@ class Train:
             # ## Show it using OpenCV
             images_gt.append(image)
 
-        for i in range(99):
+        for i in range(self._seq_dim):
             m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()

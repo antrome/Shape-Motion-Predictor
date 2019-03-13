@@ -2,7 +2,6 @@
   "H36M": {
     "filename": "h36train_x32_beta_pose.hdf5",
     "root": "datasets/h36m/",
-    "meta_file": "mov_dict.pickle",
     "train_ids_file": "train_ids.txt",
     "val_ids_file": "val_ids.txt",
     "test_ids_file": "test_ids.txt",
@@ -57,7 +56,10 @@
   "logs": {
     "print_freq_s": 50,
     "display_freq_s": 30,
-    "save_latest_freq_s": 10
+    "save_latest_freq_s": 10,
+    "save_epoch": 200,
+    "print_epoch": 20,
+    "print_shape_epoch": 20
   },
 
   "networks": {

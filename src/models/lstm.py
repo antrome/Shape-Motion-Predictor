@@ -80,7 +80,7 @@ class Lstm1(BaseModel):
     def _init_prefetch_inputs(self,opt):
         self._input_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc]).to(self._device_master)
         self._input_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
-        self._betas = torch.zeros([self._B, self._Sd, 1, 10], dtype=torch.float32).to(self._device_master)
+        self._betas = torch.zeros([self._B, 1, 10], dtype=torch.float32).to(self._device_master)
         self._global_translation_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         self._global_translation_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         self._input_target_zeros = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
@@ -90,10 +90,6 @@ class Lstm1(BaseModel):
         self._std = torch.FloatTensor(opt["transforms"]["normalize"]["general_args"]["std"]).to(self._device_master)
 
     def set_input(self, input):
-        #print(input['img'].shape)
-        #print(input['target'].shape)
-        #print(input['betas'].shape)in
-
         #Get Betas
         self._betas.copy_(input['betas'])
         self._input_img.copy_(input['img'])

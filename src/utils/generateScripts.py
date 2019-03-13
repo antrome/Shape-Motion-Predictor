@@ -28,7 +28,7 @@ for i in layerDim:
 """
 
 """
-#subSampling=["window300","odd"]
+#subSampling=["widow300","odd"]
 #subSampling=["window200","even"]
 subSampling=["none1"]
 

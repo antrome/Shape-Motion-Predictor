@@ -64,7 +64,7 @@ class ConfigParser:
         # create necessary directories
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["checkpoints"]))
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["events"]))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"]))
+        #mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"]))
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"], "train"))
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"], "val"))
 

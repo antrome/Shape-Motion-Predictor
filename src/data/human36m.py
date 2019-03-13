@@ -51,7 +51,6 @@ class H36M(DatasetBase):
 
     def _init_meta(self, opt):
         self._root = opt[self._name]["root"]
-        self._meta_file = opt[self._name]["meta_file"]
         self._filename = opt[self._name]["filename"]
         self._subsampling = opt[self._name]["subsampling"]
         self._seq_dim = opt["dataset"]["seq_dim"]
@@ -80,8 +79,6 @@ class H36M(DatasetBase):
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
-                #x_data = f['{:03d}'.format(int(subseq))][:]
-                #x_tensor = torch.from_numpy(x_data)
                 x_data1 = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data2 = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
                 x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
@@ -93,14 +90,8 @@ class H36M(DatasetBase):
                 x_tensor["betas"] = torch.from_numpy(x_data["betas"])
                 x_tensor["pose"] = torch.from_numpy(x_data["pose"])
 
-                #for key in x_tensor.keys():
-                #    # Pick only one each 2 frames
-                #    x_tensor[key] = x_tensor[key][:, ::2, :, :]
-
-                #x_tensor1 = x_tensor1[:, ::2, :, :]
                 data1.append(x_tensor1)
                 data.append(copy.deepcopy(x_tensor))
-                #x_tensor2 = x_tensor2[:, ::2, :, :]
                 data2.append(x_tensor2)
 
                 x_tensor.clear()
@@ -140,7 +131,6 @@ class H36M(DatasetBase):
 
         data = self._data[index]["pose"]
         databetas = self._data[index]["betas"]
-        #data = self._data[index]
 
         # Pick a random camera
         cam = random.randint(0, 3)
@@ -149,7 +139,7 @@ class H36M(DatasetBase):
             frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*2+1))
             x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
             labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+            betas_frame = databetas[cam][0][:][:]
 
             for i in range(self._seq_dim):
                 # Pick a random frame for the subsampling
@@ -223,22 +213,9 @@ class H36M(DatasetBase):
                 x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
                 x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
-                #x_data = f['{:03d}'.format(int(subseq))][:]
-                #x_tensor = torch.from_numpy(x_data)
-                #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
-                #x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
-                #x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
                 x_tensor["x32"] = torch.from_numpy(x_data["x32"])
                 x_tensor["pose"] = torch.from_numpy(x_data["pose"])
                 x_tensor["betas"] = torch.from_numpy(x_data["betas"])
-
-                # Pick only one each 2 frames
-                #x_tensor["x32"] = x_tensor["x32"][:, ::2, :, :]
-                #x_tensor["pose"] = x_tensor["pose"][:, ::2, :, :]
-                #x_tensor["betas"] = x_tensor["betas"][:, ::2, :, :]
-
-                #Normalize the whole dataset, but this is done in the transform of get item
-                #x_tensor = (x_tensor - self._mean)/self._std
 
                 self._data.append(copy.deepcopy(x_tensor))
                 x_tensor.clear()

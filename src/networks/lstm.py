@@ -21,7 +21,7 @@ import math
 import os
 
 class LSTMModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols,dropout):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols,dropout,seq_dim):
         super(LSTMModel, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
@@ -41,6 +41,9 @@ class LSTMModel(nn.Module):
         # Dropout
         self.dropout = dropout
 
+        # Sequence dimension
+        self._seq_dim = seq_dim
+
         # Building your LSTM
         # batch_first=True causes input/output tensors to be of shape
         # (batch_dim, seq_dim, feature_dim)
@@ -49,20 +52,12 @@ class LSTMModel(nn.Module):
         # Readout layer
         self.fc = nn.Linear(hidden_dim, output_dim)
 
-        #Batch Normalization
-        #self.bn1 = nn.BatchNorm1d(3)
-
     def forward(self, x):
 
         x = x.reshape(x.size(0),x.size(1),self.input_rows,self.input_cols)
 
         # reshape
         out = x.reshape(x.size(0), x.size(1) * x.size(2), x.size(3))
-        out = out.permute(0, 2, 1)
-
-        #out = self.bn1(out)
-
-        out = out.permute(0, 1, 2)
 
         out = out.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
 
@@ -82,7 +77,6 @@ class LSTMModel(nn.Module):
         for f in range(out.size(1)):
             outFrames.append(self.fc(out[:, f, :]))
             # Index hidden state of last time step
-
 
         out = torch.stack(outFrames,dim=1)
 

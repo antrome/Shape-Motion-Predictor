@@ -155,16 +155,16 @@ class Lstm1(BaseModel):
 
     def forward(self, keep_data_for_visuals=False, estimate_loss=True):
         # generate img
-        self._input_img[:, :, 0:6] = torch.zeros(
-            self._input_img[:, :, 0:6].size(0),
-            self._input_img[:, :, 0:6].size(1),
-            self._input_img[:, :, 0:6].size(2), dtype=torch.float32)
+        self._input_img[:, :, 0:3] = torch.zeros(
+            self._input_img[:, :, 0:3].size(0),
+            self._input_img[:, :, 0:3].size(1),
+            self._input_img[:, :, 0:3].size(2), dtype=torch.float32)
 
 
-        self._input_target[:, :, 0:6] = torch.zeros(
-            self._input_target[:, :, 0:6].size(0),
-            self._input_target[:, :, 0:6].size(1),
-            self._input_target[:, :, 0:6].size(2), dtype=torch.float32)
+        self._input_target[:, :, 0:3] = torch.zeros(
+            self._input_target[:, :, 0:3].size(0),
+            self._input_target[:, :, 0:3].size(1),
+            self._input_target[:, :, 0:3].size(2), dtype=torch.float32)
 
         estim = self._estimate(self._input_img)
 
@@ -280,5 +280,5 @@ class Lstm1(BaseModel):
         #Moves for Visualization
         self._estimUn = estimUn
         self._inputUn = inputUn
-        self._estimUn[:,:,0:6] = self._global_translation_img[:,:,0:6]*self._std[0:6]+self._mean[0:6]
+        self._estimUn[:,:,0:3] = self._global_translation_img[:,:,0:3]*self._std[0:3]+self._mean[0:3]
 

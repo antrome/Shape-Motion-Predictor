@@ -27,19 +27,20 @@ for i in layerDim:
         print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2;python src/train.py --exp_dir " + exp + ";")
 """
 
-"""
-#subSampling=["widow300","odd"]
-#subSampling=["window200","even"]
-subSampling=["none1"]
+
+#subSampling=["window300","odd"]
+subSampling=["window200","even"]
 
 for i in subSampling:
     exp = "experiments/lstm/subSampling/" + i + "/"
-    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2;python src/train.py --exp_dir " + exp + ";")
-"""
+    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2,3;python src/train.py --exp_dir " + exp + ";")
 
+
+"""
 #seqDim=["49","149"]
 seqDim=["199","99"]
 
 for i in seqDim:
     exp = "experiments/lstm/seqDim/d" + i + "/"
     print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2,3;python src/train.py --exp_dir " + exp + ";")
+"""

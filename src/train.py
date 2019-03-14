@@ -222,7 +222,7 @@ class Train:
         # Print the movements
         #self._display_movements(val_gt_moves, val_predicted_moves, val_size, i_epoch, is_train=True)
         # Print the shape
-        if i_epoch % self._print_shape_epoch == 0 or i_epoch == 1:
+        if i_epoch % self._print_shape_epoch == 0:
             self._display_shape(val_gt_moves, val_predicted_moves, betas, train_size, i_epoch, is_train=True)
         # visualize
         t = (time.time() - val_start_time)
@@ -275,7 +275,7 @@ class Train:
             # Print the movements
             #self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch, is_train=False)
             # Print the shape
-            if i_epoch % self._print_shape_epoch == 0 or i_epoch == 1:
+            if i_epoch % self._print_shape_epoch == 0:
                 self._display_shape(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch, is_train=False)
 
         # visualize

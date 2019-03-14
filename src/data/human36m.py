@@ -151,7 +151,7 @@ class H36M(DatasetBase):
             frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*3+1))
             x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
             labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+            betas_frame = databetas[cam][0][:][:]
 
             for i in range(self._seq_dim):
                 # Pick a random frame for the subsampling
@@ -164,14 +164,14 @@ class H36M(DatasetBase):
             frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
             x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
             labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
-            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+            betas_frame = databetas[cam][0][:][:]
         #EvenSubSampling
         else:
             data = data[:, ::2, :, :]
             frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
             x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
             labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
-            betas_frame = databetas[cam][frames:frames + self._seq_dim][:][:]
+            betas_frame = databetas[cam][0][:][:]
 
 
         self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])

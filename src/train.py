@@ -190,6 +190,8 @@ class Train:
         val_gt_moves_aux = dict()
         val_predicted_moves = dict()
         val_predicted_moves_aux = dict()
+        val_betas = torch.zeros(0,1,10,dtype=torch.float32)
+        val_betas_aux = dict()
         train_size = len(list(enumerate(self._dataset_train)))
         do_visuals = False
 
@@ -209,7 +211,9 @@ class Train:
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
                 betas = self._model.get_current_betas()
-                betas = betas["betas"]
+                val_betas_aux = torch.stack([i.cpu() for i in betas["betas"]])
+                val_betas = torch.cat((val_betas,val_betas_aux))
+
                 # keep visuals
                 if do_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -222,8 +226,8 @@ class Train:
         # Print the movements
         #self._display_movements(val_gt_moves, val_predicted_moves, val_size, i_epoch, is_train=True)
         # Print the shape
-        if i_epoch % self._print_shape_epoch == 0 or i_epoch == 1:
-            self._display_shape(val_gt_moves, val_predicted_moves, betas, train_size, i_epoch, is_train=True)
+        if i_epoch % self._print_shape_epoch == 0:
+            self._display_shape(val_gt_moves, val_predicted_moves, val_betas, train_size, self._train_batch_size,i_epoch, is_train=True)
         # visualize
         t = (time.time() - val_start_time)
         self._tb_visualizer.plot_scalars(val_errors, total_steps, is_train=True)
@@ -240,9 +244,11 @@ class Train:
         val_gt_moves_aux = dict()
         val_predicted_moves = dict()
         val_predicted_moves_aux = dict()
+        val_betas = torch.zeros(0,1,10,dtype=torch.float32)
+        val_betas_aux = dict()
         val_size = len(list(enumerate(self._dataset_val)))
         with torch.no_grad():
-            vis_batch_idx = np.random.randint(min(self._num_iters_validate, self._dataset_val_size))
+            #vis_batch_idx = np.random.randint(min(self._num_iters_validate, self._dataset_val_size))
             for i_val_batch, val_batch in enumerate(self._dataset_val):
                 if i_val_batch == self._num_iters_validate:
                     break
@@ -261,7 +267,9 @@ class Train:
                 val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
                 val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
                 betas = self._model.get_current_betas()
-                betas = betas["betas"]
+                val_betas_aux = torch.stack([i.cpu() for i in betas["betas"]])
+                val_betas = torch.cat((val_betas,val_betas_aux))
+
                 # keep visuals
                 if keep_data_for_visuals:
                     self._tb_visualizer.display_current_results(self._model.get_current_visuals(), total_steps,
@@ -271,12 +279,11 @@ class Train:
             # store error
             val_errors = mean_dictionary(val_errors)
             self._epoch_val_e = append_dictionaries(self._epoch_val_e, val_errors)
-
             # Print the movements
             #self._display_movements_val(val_gt_moves, val_predicted_moves, val_size, i_epoch, is_train=False)
             # Print the shape
-            if i_epoch % self._print_shape_epoch == 0 or i_epoch == 1:
-                self._display_shape(val_gt_moves, val_predicted_moves, betas, val_size, i_epoch, is_train=False)
+            if i_epoch % self._print_shape_epoch == 0:
+                self._display_shape(val_gt_moves, val_predicted_moves, val_betas, val_size, self._val_batch_size, i_epoch, is_train=False)
 
         # visualize
         t = (time.time() - val_start_time)
@@ -335,15 +342,11 @@ class Train:
         else:
             imageio.mimsave(os.path.join(self._gifs_save_path, "val", "epoch" + str(i_epoch) + ".gif"), images)
 
-    def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, i_epoch, is_train):
+    def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
         # Pick Up a Random Batch and Print it
 
-        if is_train:
-            mov = random.randint(0, self._num_batchesper_epoch_train - 1)
-        else:
-            mov = random.randint(0, self._num_batchesper_epoch_val - 1)
-
-        batch = random.randint(0, dataset_size) - 1
+        mov = random.randint(0, dataset_size - 1)
+        batch = random.randint(0, batch_size) - 1
         images_gt = []
         images_predicted = []
         images = []

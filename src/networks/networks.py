@@ -18,6 +18,9 @@ class NetworksFactory:
         elif network_name == 'lstm':
             from .lstm import LSTMModel
             network = LSTMModel(*args, **kwargs)
+        elif network_name == 'conv1d':
+            from .conv1d import Conv1D
+            network = Conv1D(*args, **kwargs)
         else:
             raise ValueError("Network %s not recognized." % network_name)
 

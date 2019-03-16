@@ -35,18 +35,18 @@ class Lstm1(BaseModel):
 
     def _init_set_input_params(self):
         self._B = self._opt[self._dataset_type]["batch_size"]           # batch
-        self._Id = self._opt["networks"]["reg"]["hyper_params"]["input_dim"]           # input dimension
-        self._Idr = self._opt["networks"]["reg"]["hyper_params"]["input_rows"]         # input dimension rows
-        self._Idc = self._opt["networks"]["reg"]["hyper_params"]["input_cols"]         # input dimension cols
-        self._Hd = self._opt["networks"]["reg"]["hyper_params"]["hidden_dim"]          # hidden dimension
-        self._Ld = self._opt["networks"]["reg"]["hyper_params"]["layer_dim"]           # layer dimension
-        self._Od = self._opt["networks"]["reg"]["hyper_params"]["output_dim"]          # output dimension
-        self._Sd = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]             # sequence dimension
+        self._Id = self._opt[self._dataset_type]["input_dim"]           # input dimension
+        self._Idr = self._opt[self._dataset_type]["input_rows"]         # input dimension rows
+        self._Idc = self._opt[self._dataset_type]["input_cols"]         # input dimension cols
+        self._Hd = self._opt[self._dataset_type]["hidden_dim"]          # hidden dimension
+        self._Ld = self._opt[self._dataset_type]["layer_dim"]           # layer dimension
+        self._Od = self._opt[self._dataset_type]["output_dim"]          # output dimension
+        self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
         self._loss_type = self._opt["train"]["loss"]                    # loss type
         self._weight_decay = self._opt["train"]["weight_decay"]         # weight decay
-        self._dropout = self._opt["networks"]["reg"]["hyper_params"]["dropout"]# dropout
+        self._dropout = self._opt["train"]["dropout"]                   # dropout
 
     def _init_create_networks(self):
         # create reg
@@ -80,7 +80,7 @@ class Lstm1(BaseModel):
     def _init_prefetch_inputs(self,opt):
         self._input_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc]).to(self._device_master)
         self._input_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
-        self._betas = torch.zeros([self._B, 1, 10], dtype=torch.float32).to(self._device_master)
+        self._betas1 = torch.zeros([self._B, 1, 10], dtype=torch.float32).to(self._device_master)
         self._global_translation_target = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         self._global_translation_img = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
         self._input_target_zeros = torch.zeros([self._B, self._Sd, self._Idr*self._Idc], dtype=torch.float32).to(self._device_master)
@@ -91,7 +91,7 @@ class Lstm1(BaseModel):
 
     def set_input(self, input):
         #Get Betas
-        self._betas.copy_(input['betas'])
+        self._betas1.copy_(input['betas'])
         self._input_img.copy_(input['img'])
         #Defauly Input Type
         self._input_target.copy_(input['target'])
@@ -110,7 +110,7 @@ class Lstm1(BaseModel):
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)
         self._input_target = self._input_target.to(self._device_master)
-        self._betas = self._betas.to(self._device_master)
+        self._betas1 = self._betas1.to(self._device_master)
         self._global_translation_target = self._global_translation_target.to(self._device_master)
         self._global_translation_img = self._global_translation_img.to(self._device_master)
 
@@ -281,4 +281,4 @@ class Lstm1(BaseModel):
         self._estimUn = estimUn
         self._inputUn = inputUn
         self._estimUn[:,:,0:3] = self._global_translation_img[:,:,0:3]*self._std[0:3]+self._mean[0:3]
-
+        self._betas = self._betas1

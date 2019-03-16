@@ -64,9 +64,17 @@
 
   "networks": {
     "reg": {
-      "type": "",
-      "input_type": "",
+      "type": "lstm",
+      "input_type": "hidden50FramesInput",
       "hyper_params": {
+        "input_dim": 72,
+        "hidden_dim": 512,
+        "layer_dim": 3,
+        "output_dim": 72,
+        "input_rows": 24,
+        "input_cols": 3,
+        "dropout": 0.0,
+        "seq_dim": 99
       }
     }
   },

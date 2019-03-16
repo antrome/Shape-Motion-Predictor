@@ -28,12 +28,12 @@ for i in layerDim:
 """
 
 
-#subSampling=["window300","odd"]
-subSampling=["window200","even"]
+subSampling=["window300","odd"]
+#subSampling=["window200","even"]
 
 for i in subSampling:
     exp = "experiments/lstm/subSampling/" + i + "/"
-    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/;. experiments/prepare_session.sh 0,1,2,3;python src/train.py --exp_dir " + exp + ";")
+    print("clear;rm -r " + exp + "events/ " + ";rm -r " + exp + "gifs/ " + "; rm -r " + exp + "checkpoints/ "+";. experiments/prepare_session.sh 0,1,2,3;python src/train.py --exp_dir " + exp + ";")
 
 
 """

@@ -321,6 +321,8 @@ class Train:
             plt.pause(0.01)
             images_gt.append(data)
 
+        plt.close(fig)
+
         # Plot the conditioning predicted
         for i in range(self._seq_dim):
             ob.update(predicted_moves["moves_predicted"][mov][batch][i, :].detach(), lcolor="#9b59b6", rcolor="#2ecc71")

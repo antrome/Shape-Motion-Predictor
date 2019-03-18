@@ -21,6 +21,9 @@ class NetworksFactory:
         elif network_name == 'conv1d':
             from .conv1d import Conv1D
             network = Conv1D(*args, **kwargs)
+        elif network_name == 'reslstm':
+            from .reslstm import ResLSTM
+            network = ResLSTM(*args, **kwargs)
         else:
             raise ValueError("Network %s not recognized." % network_name)
 

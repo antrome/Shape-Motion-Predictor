@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/networks/conv1d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/options/config_default_lstm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/networks/reslstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networks/networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/networks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/config_default3.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/generateScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/generateScripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/x32_poses_betas.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/x32_poses_betas.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,31 +29,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/reslstm/prueba/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="1" lean-forward="true" selection-end-line="17" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/networks/reslstm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="81" column="102" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="102" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiments/conv1d/prueba/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-251">
+              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -69,63 +60,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/train.py">
+        <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="192" column="39" selection-start-line="192" selection-start-column="36" selection-end-line="192" selection-end-column="39" />
+            <state relative-caret-position="30">
+              <caret line="23" column="91" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="91" />
               <folding>
-                <element signature="e#0#64#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/reslstm/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/conv1d/config.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiments/lstm/prueba/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state>
+              <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/options/config_default_lstm.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="64" selection-start-line="64" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-161">
-              <caret line="162" column="22" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="22" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/experiments/reslstm/prueba/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -139,7 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>c</find>
       <find>i_epoch == 1</find>
       <find>self._betas</find>
       <find>numpy</find>
@@ -169,6 +139,7 @@
       <find>dt</find>
       <find>19,</find>
       <find>10,</find>
+      <find>input_</find>
     </findStrings>
     <replaceStrings>
       <replace>0:3</replace>
@@ -180,11 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim2/hiddenDim256/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim3/hiddenDim256/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim4/hiddenDim128/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim4/hiddenDim64/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim4/hiddenDim256/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim4/hiddenDim512/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/lstmConfig/layerDim4/hiddenDim1024/config.json" />
         <option value="$PROJECT_DIR$/src/utils/tfangles.py" />
@@ -215,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/models/conv1d.py" />
         <option value="$PROJECT_DIR$/src/models/models.py" />
         <option value="$PROJECT_DIR$/src/networks/lstm.py" />
-        <option value="$PROJECT_DIR$/src/networks/networks.py" />
         <option value="$PROJECT_DIR$/src/networks/conv1d.py" />
         <option value="$PROJECT_DIR$/src/options/config_default1.json" />
         <option value="$PROJECT_DIR$/experiments/conv1d/prueba/config.json" />
@@ -229,8 +194,14 @@
         <option value="$PROJECT_DIR$/src/models/lstm.py" />
         <option value="$PROJECT_DIR$/src/options/config_default.json" />
         <option value="$PROJECT_DIR$/src/utils/util.py" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba/config.json" />
+        <option value="$PROJECT_DIR$/src/networks/residualLstm.py" />
         <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/experiments/lstm/prueba/config.json" />
+        <option value="$PROJECT_DIR$/experiments/lstm/config.json" />
+        <option value="$PROJECT_DIR$/experiments/reslstm/prueba/config.json" />
+        <option value="$PROJECT_DIR$/experiments/reslstm/config.json" />
+        <option value="$PROJECT_DIR$/src/networks/reslstm.py" />
+        <option value="$PROJECT_DIR$/src/networks/networks.py" />
       </list>
     </option>
   </component>
@@ -335,6 +306,19 @@
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="reslstm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="reslstm" type="462c0819:PsiDirectoryNode" />
+              <item name="prueba" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -394,19 +378,19 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/experiments/lstm" />
-      <recent name="$PROJECT_DIR$/experiments/conv1d" />
-      <recent name="$PROJECT_DIR$/src/models" />
-      <recent name="$PROJECT_DIR$/src/networks" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/seqDim" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/experiments/conv1d/prueba" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/experiments/lstm" />
       <recent name="$PROJECT_DIR$/experiments/lstm/learningRates/lr5EMinus5" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/experiments" />
+      <recent name="$PROJECT_DIR$/src/networks" />
+      <recent name="$PROJECT_DIR$/experiments/lstm" />
+      <recent name="$PROJECT_DIR$/experiments/conv1d" />
+      <recent name="$PROJECT_DIR$/src/models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -495,12 +479,12 @@
       <workItem from="1552403318023" duration="1964000" />
       <workItem from="1552409058316" duration="6452000" />
       <workItem from="1552477296441" duration="58858000" />
-      <workItem from="1552753220316" duration="9970000" />
+      <workItem from="1552753220316" duration="14616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458444000" />
+    <option name="totallyTimeSpent" value="463090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,12 +555,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/experiments/pytest/test_dataset_cifar10/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/pytest/test_network_vgg11/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/pytest/test_network_resnet18/config.json" />
-    <entry file="file://$PROJECT_DIR$/experiments/prepare_session.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/loss/loss.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -709,23 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/conv1d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="84" column="18" selection-start-line="84" selection-end-line="85" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/viz.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -742,9 +703,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/conv1d/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -765,13 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -809,30 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default_lstm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="64" selection-start-line="64" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/prueba/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="192" column="39" selection-start-line="192" selection-start-column="36" selection-end-line="192" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-101">
@@ -840,21 +767,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+    <entry file="file://$PROJECT_DIR$/src/options/config_default_lstm.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
+        <state relative-caret-position="1215">
           <caret line="81" column="102" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="102" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/conv1d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="34" column="76" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="323" column="22" selection-start-line="323" selection-start-column="22" selection-end-line="323" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/reslstm/prueba/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="23" column="91" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/lstm/prueba/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/conv1d/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/reslstm/prueba/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/reslstm/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/reslstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-251">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

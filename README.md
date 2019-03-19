@@ -36,8 +36,7 @@ sudo reboot
     conda install matplotlib opencv pillow scikit-learn scikit-image cython tqdm
     pip install tensorboardX
     pip install future-fstrings
-    pip install h5py
-    pip install opendr
+    pip install opendr (utilizar versión Nov 2018)
     pip install pandas
     ```
 4. Deactivate environment

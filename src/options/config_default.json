@@ -59,7 +59,7 @@
     "save_latest_freq_s": 10,
     "save_epoch": 200,
     "print_epoch": 20,
-    "print_shape_epoch": 20
+    "print_shape_epoch": 200
   },
 
   "networks": {

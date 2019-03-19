@@ -101,12 +101,24 @@ class Lstm1(BaseModel):
         self._global_translation_img.copy_(input['img'])
 
         #check input type
-        if self._inputType == "hidden50FramesInput":
-            self._input_img[:, 50:99, 7:] = torch.zeros(
-                self._input_img[:, 50:99, 7:].size(0),
-                self._input_img[:, 50:99, 7:].size(1),
-                self._input_img[:, 50:99, 7:].size(2), dtype=torch.float32)
-
+        if self._inputType == "hidden50FramesInput69par":
+            self._input_img[:, 50:99, 3:] = torch.zeros(
+                self._input_img[:, 50:99, 3:].size(0),
+                self._input_img[:, 50:99, 3:].size(1),
+                self._input_img[:, 50:99, 3:].size(2), dtype=torch.float32)
+        elif self._inputType == "hidden50FramesInput66par":
+            self._input_img[:, 50:99, 6:] = torch.zeros(
+                self._input_img[:, 50:99, 6:].size(0),
+                self._input_img[:, 50:99, 6:].size(1),
+                self._input_img[:, 50:99, 6:].size(2), dtype=torch.float32)
+        elif self._inputType == "repeatedFrame50Input69par":
+            temp_tensor = torch.zeros(self._input_img[:, 50, 3:].size(0),49,self._input_img[:, 50, 3:].size(1), dtype=torch.float32)
+            temp_tensor = torch.stack([self._input_img[:, 50, 3:] for i in range(49)],dim=1)
+            self._input_img[:, 50:, 3:] = temp_tensor
+        elif self._inputType == "repeatedFrame50Input66par":
+            temp_tensor = torch.zeros(self._input_img[:, 50, 6:].size(0),49,self._input_img[:, 50, 6:].size(1), dtype=torch.float32)
+            temp_tensor = torch.stack([self._input_img[:, 50, 6:] for i in range(49)],dim=1)
+            self._input_img[:, 50:, 6:] = temp_tensor
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)
         self._input_target = self._input_target.to(self._device_master)
@@ -280,5 +292,10 @@ class Lstm1(BaseModel):
         #Moves for Visualization
         self._estimUn = estimUn
         self._inputUn = inputUn
-        self._estimUn[:,:,0:3] = self._global_translation_img[:,:,0:3]*self._std[0:3]+self._mean[0:3]
+
+        if self._inputType == "hidden50FramesInput69par" or self._inputType == "repeatedFrame50Input69par":
+            self._estimUn[:,:,0:3] = self._global_translation_img[:,:,0:3]*self._std[0:3]+self._mean[0:3]
+        else:
+            self._estimUn[:,:,0:6] = self._global_translation_img[:,:,0:6]*self._std[0:6]+self._mean[0:6]
+
         self._betas = self._betas1

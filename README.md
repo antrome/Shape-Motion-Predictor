@@ -33,11 +33,10 @@ sudo reboot
     ```
 3. Install other rand dependencies
     ```
-    conda install matplotlib opencv pillow scikit-learn scikit-image cython tqdm
-    pip install tensorboardX
-    pip install future-fstrings
-    pip install opendr (utilizar versión Nov 2018)
-    pip install pandas
+    conda install matplotlib pillow scikit-learn scikit-image cython tqdm
+    conda install -c menpo opencv
+    pip install tensorboardX future-fstrings pandas
+    pip install opendr-0.77.tar.gz 
     ```
 4. Deactivate environment
     ```

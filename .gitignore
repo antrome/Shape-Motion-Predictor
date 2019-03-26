@@ -111,3 +111,9 @@ venv.bak/
 
 #EXPERIMENTS
 /experiments
+
+#HMP
+/src/hmr
+
+#VIDEOS
+/videos

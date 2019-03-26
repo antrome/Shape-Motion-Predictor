@@ -394,7 +394,7 @@ class Train:
             w, h = (640, 480)
 
             rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
-            rn.frustum = {'nar': 1., 'far': 10., 'width': w, 'height': h}
+            rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
             rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
 
             ## Construct point light source

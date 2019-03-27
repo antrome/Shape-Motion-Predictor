@@ -142,7 +142,7 @@ class Lstm1(BaseModel):
 
         # estimate object categories
         with torch.no_grad():
-            eval = self.forward(keep_data_for_visuals=False, estimate_loss=True)
+            eval = self.forward(keep_data_for_visuals=False, estimate_loss=False)
             #eval = np.transpose(self._vis_input_img, (1, 2, 0))
 
         # set model back to train if necessary
@@ -184,10 +184,11 @@ class Lstm1(BaseModel):
         if estimate_loss:
             self._loss_gt = self._criterion(estim, self._input_target)
             self._compute_metric(estim)
-            self._compute_movement(estim)
             total_loss = self._loss_gt
         else:
             total_loss = -1
+
+        self._compute_movement(estim)
 
         # keep visuals
         if keep_data_for_visuals:

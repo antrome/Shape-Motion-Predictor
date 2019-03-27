@@ -14,7 +14,6 @@ while success:
   f=count+i
   cv2.imwrite("../../videos/frames/frame%d.jpg" % f, image)     # save frame as JPEG file
   success,image = vidcap.read()
-  #print('Read a new frame: ', success)
   count += 1
 
   if count == 100:

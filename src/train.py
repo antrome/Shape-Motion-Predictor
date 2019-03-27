@@ -348,7 +348,7 @@ class Train:
         # Pick Up a Random Batch and Print it
 
         mov = random.randint(0, dataset_size - 1)
-        batch = random.randint(0, batch_size) - 1
+        batch = random.randint(0, batch_size - 1)
         images_gt = []
         images_predicted = []
         images = []

@@ -68,67 +68,82 @@ class H36M(DatasetBase):
         data = self._data[index]["pose"]
         databetas = self._data[index]["betas"]
 
-        # Pick a random camera
-        cam = random.randint(0, 3)
+        if not self._is_for == "test":
 
-        if self._subsampling == "window200":
-            frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*2+1))
-            x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][0][:][:]
+            # Pick a random camera
+            cam = random.randint(0, 3)
 
-            for i in range(self._seq_dim):
-                # Pick a random frame for the subsampling
-                win = random.randint(0, 1)
-                x_data_cam_frame[i] = data[cam][frames + win][:][:]
-                labels_data_cam_frame[i] = data[cam][frames + win + 2][:][:]
-                frames = frames + 2
-        elif self._subsampling == "window300":
-            frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*3+1))
-            x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
-            betas_frame = databetas[cam][0][:][:]
+            if self._subsampling == "window200":
+                frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*2+1))
+                x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+                labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+                betas_frame = databetas[cam][0][:][:]
 
-            for i in range(self._seq_dim):
-                # Pick a random frame for the subsampling
-                win = random.randint(0, 2)
-                x_data_cam_frame[i] = data[cam][frames + win][:][:]
-                labels_data_cam_frame[i] = data[cam][frames + win + 3][:][:]
-                frames = frames + 3
-        elif self._subsampling == "odd":
-            data = data[:, 1::2, :, :]
-            frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
-            x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
-            labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
-            betas_frame = databetas[cam][0][:][:]
-        #EvenSubSampling
+                for i in range(self._seq_dim):
+                    # Pick a random frame for the subsampling
+                    win = random.randint(0, 1)
+                    x_data_cam_frame[i] = data[cam][frames + win][:][:]
+                    labels_data_cam_frame[i] = data[cam][frames + win + 2][:][:]
+                    frames = frames + 2
+            elif self._subsampling == "window300":
+                frames = random.randint(0, data.shape[1] - ((self._seq_dim+1)*3+1))
+                x_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+                labels_data_cam_frame = np.zeros((self._seq_dim, data[cam][frames][:][:].shape[0], data[cam][frames][:][:].shape[1]))
+                betas_frame = databetas[cam][0][:][:]
+
+                for i in range(self._seq_dim):
+                    # Pick a random frame for the subsampling
+                    win = random.randint(0, 2)
+                    x_data_cam_frame[i] = data[cam][frames + win][:][:]
+                    labels_data_cam_frame[i] = data[cam][frames + win + 3][:][:]
+                    frames = frames + 3
+            elif self._subsampling == "odd":
+                data = data[:, 1::2, :, :]
+                frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
+                x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+                labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
+                betas_frame = databetas[cam][0][:][:]
+            #EvenSubSampling
+            else:
+                data = data[:, ::2, :, :]
+                frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
+                x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+                labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
+                betas_frame = databetas[cam][0][:][:]
+
+            self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
+            self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
+            self.betas = torch.stack([torch.Tensor(i) for i in betas_frame])
+            img, target, betas = self.tensor_x, self.tensor_y, self.betas
+
+            # pack data
+            sample = {'img': img, 'target': target, 'betas': betas}
+
+            # apply transformations
+            if self._transform is not None:
+                sample = self._transform(sample)
+
+            #X32
+            if sample['img'].size(1) == 32 and sample['img'].size(2) == 3:
+                sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
+                sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
+            else:
+                sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(2))
+                sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(2))
+
+        #testing
         else:
-            data = data[:, ::2, :, :]
-            frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
-            x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
-            labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
-            betas_frame = databetas[cam][0][:][:]
+            x_data_cam_frame = data[0:self._seq_dim][:]
+            labels_data_cam_frame = data[1:(self._seq_dim + 1)][:]
+            betas_frame = databetas[0][:]
 
+            self.tensor_x = torch.Tensor(x_data_cam_frame)
+            self.tensor_y = torch.Tensor(labels_data_cam_frame)
+            self.betas = torch.Tensor(betas_frame)
+            img, target, betas = self.tensor_x, self.tensor_y, self.betas
 
-        self.tensor_x = torch.stack([torch.Tensor(i) for i in x_data_cam_frame])
-        self.tensor_y = torch.stack([torch.Tensor(i) for i in labels_data_cam_frame])
-        self.betas = torch.stack([torch.Tensor(i) for i in betas_frame])
-        img, target, betas = self.tensor_x, self.tensor_y, self.betas
-
-        # pack data
-        sample = {'img': img, 'target': target, 'betas': betas}
-
-        # apply transformations
-        if self._transform is not None:
-            sample = self._transform(sample)
-
-        #X32
-        if sample['img'].size(1) == 32 and sample['img'].size(2) == 3:
-            sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
-            sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
-        else:
-            sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(2))
-            sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(2))
+            # pack data
+            sample = {'img': img, 'target': target, 'betas': betas}
 
         return sample
 
@@ -145,13 +160,14 @@ class H36M(DatasetBase):
         x_tensor = dict()
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
+            print(f.keys())
             for subseq in valid_ids_root:
-                x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
                 x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
-                x_tensor["x32"] = torch.from_numpy(x_data["x32"])
-                x_tensor["pose"] = torch.from_numpy(x_data["pose"])
-                x_tensor["betas"] = torch.from_numpy(x_data["betas"])
+                #x_tensor["x32"] = torch.from_numpy(x_data["x32"]).float()
+                x_tensor["pose"] = torch.from_numpy(x_data["pose"]).float()
+                x_tensor["betas"] = torch.from_numpy(x_data["betas"]).float()
 
                 self._data.append(copy.deepcopy(x_tensor))
                 x_tensor.clear()
@@ -178,18 +194,18 @@ class H36M(DatasetBase):
         with h5py.File(filepath, 'r') as f:
 
             for subseq in valid_ids_root:
-                x_data1 = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                #x_data1 = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data2 = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
-                x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
+                #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data["betas"] = f['{:03d}'.format(int(subseq))].get("betas")[()][:]
                 x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]
-                x_tensor1 = torch.from_numpy(x_data1)
+                #x_tensor1 = torch.from_numpy(x_data1)
                 x_tensor2 = torch.from_numpy(x_data2)
-                x_tensor["x32"] = torch.from_numpy(x_data["x32"])
+                #x_tensor["x32"] = torch.from_numpy(x_data["x32"])
                 x_tensor["betas"] = torch.from_numpy(x_data["betas"])
                 x_tensor["pose"] = torch.from_numpy(x_data["pose"])
 
-                data1.append(x_tensor1)
+                #data1.append(x_tensor1)
                 data.append(copy.deepcopy(x_tensor))
                 data2.append(x_tensor2)
 

@@ -10,7 +10,7 @@ import cv2
 import random
 from src.hmr import demo
 
-def readFrames(subject,action,subaction,camera,savefolder):
+def readFrames(subject,action,subaction,camera,cnt,savefolder):
     #Define detections path, subjects, actions, subactions and cameras
     IMAGE_PATH="/media/finuxs/HDD/H36M/H36M_skeleton/images/"
     SAVE_PATH = "/home/finuxs/Shape-Motion-Predictor/datasets/h36m/"
@@ -35,10 +35,14 @@ def readFrames(subject,action,subaction,camera,savefolder):
             f=j+i
             cv2.imwrite("./"+savefolder+"/frame%d.jpg" % f, fr)  # save frame as JPEG file
 
-    cnt=206
+    print(list(g.keys()))
     shapes, betas = demo.main(savefolder)
     g['{:03d}'.format(cnt) + "/betas"] = betas
     g['{:03d}'.format(cnt) + "/pose"] = shapes
-    print(list(g.keys()))
     g.close()
+
+    for frame in sorted(glob.iglob("./"+savefolder+"/"+"*.jpg")):
+        os.remove(frame)
+
+    os.rmdir("./"+savefolder+"/")
 

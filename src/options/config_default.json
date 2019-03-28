@@ -73,7 +73,7 @@
 
   "transforms_train": ["normalize"],
   "transforms_val": ["normalize"],
-  "transforms_test": [],
+  "transforms_test": ["normalize"],
   "transforms": {
     "to_tensor": {
       "type": "to_tensor",

@@ -77,7 +77,10 @@ class Test:
         self._test_dataset()
 
     def _add_data(self):
-        readFrames(1,2,2,1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], self._save_folder, "wildFrames"))
+        cnt=206
+        readFrames(1,2,1,1,cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
+        readFrames(5,3,2,2,cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
+        readFrames(9,7,1,3,cnt+2,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
 
     def _prepare_data(self):
         data_loader_test = CustomDatasetDataLoader(self._opt, is_for="test")
@@ -98,17 +101,16 @@ class Test:
 
     def _set_output(self):
         self._save_folder = time.strftime("%d_%m_%H_%M_%S")
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], self._save_folder))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], self._save_folder, "wildFrames"))
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"]))
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
 
     def _test_dataset(self):
         self._model.set_eval()
 
         total_time = 0
         n_total_time = 0
-        cnt=0
+        cnt=206
         for i_test_batch, test_batch in tqdm(enumerate(self._dataset_test), total=len(self._dataset_test)):
-            cnt += 1
             # set inputs
             self._model.set_input(test_batch)
 
@@ -127,6 +129,7 @@ class Test:
                                 cnt,is_train=False)
             total_time += time.time() - start_wait
             n_total_time += 1
+            cnt += 1
             # store estimate
             #self._save_img(estimate, i_test_batch)
         print(f"mean time per sample: {total_time/n_total_time}")
@@ -166,11 +169,6 @@ class Test:
             m = load_model('src/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl')
 
         m.betas[:] = betasShow
-
-        """
-        for i in range(int(len(predicted_moves)/2)-5,int(len(predicted_moves)/2)+5):
-            predicted_moves["moves_predicted"][mov][batch][i,:] = (predicted_moves["moves_predicted"][mov][batch][i,:]+predicted_moves["moves_predicted"][mov][batch][i+1,:])/2
-        """
 
         # === Plot and animate ===
         fig = plt.figure()
@@ -240,7 +238,7 @@ class Test:
 
             images.append(img)
 
-        imageio.mimsave(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], self._save_folder, "epoch" + str(i_epoch) + ".gif"), images)
+        imageio.mimsave(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "test" + str(i_epoch) + ".gif"), images)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

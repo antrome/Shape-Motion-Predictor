@@ -145,6 +145,10 @@ class H36M(DatasetBase):
             # pack data
             sample = {'img': img, 'target': target, 'betas': betas}
 
+            # apply transformations
+            if self._transform is not None:
+                sample = self._transform(sample)
+
         return sample
 
     def __len__(self):
@@ -160,7 +164,6 @@ class H36M(DatasetBase):
         x_tensor = dict()
         filepath = os.path.join("./"+self._root, self._filename)
         with h5py.File(filepath, 'r') as f:
-            print(f.keys())
             for subseq in valid_ids_root:
                 #x_data["x32"] = f['{:03d}'.format(int(subseq))].get("x32")[()][:]
                 x_data["pose"] = f['{:03d}'.format(int(subseq))].get("pose")[()][:]

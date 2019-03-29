@@ -17,6 +17,9 @@ class ModelsFactory:
         elif model_name == 'lstm':
             from .lstm import Lstm1
             model = Lstm1(*args, **kwargs)
+        elif model_name == 'reslstm':
+            from .reslstm import ResLstm
+            model = ResLstm(*args, **kwargs)
         else:
             raise ValueError("Model %s not recognized." % model_name)
 

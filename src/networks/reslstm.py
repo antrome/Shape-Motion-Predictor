@@ -46,10 +46,17 @@ class ResLSTM(nn.Module):
 
         # Building your LSTM
         self.encoder = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
-        self.decoder = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
+        self.future = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
+        self.input = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
 
         # Readout layer
         self.fc = nn.Linear(hidden_dim, output_dim)
+
+    def flip(self, x, dim):
+        indices = [slice(None)] * x.dim()
+        indices[dim] = torch.arange(x.size(dim) - 1, -1, -1,
+                                    dtype=torch.long, device=x.device)
+        return x[tuple(indices)]
 
     def forward(self, x):
 
@@ -64,6 +71,7 @@ class ResLSTM(nn.Module):
 
         out = out.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
         outh = outh.reshape(xh.size(0), xh.size(1), xh.size(2)*xh.size(3))
+        outi = self.flip(out,1)
 
         # Initialize hidden state with zeros
         h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
@@ -78,21 +86,26 @@ class ResLSTM(nn.Module):
 
         # One time step
         outh, (hnh, cnh) = self.encoder(outh, (h0h, c0h))
-        #out, (hn, cn) = self.lstm(out, (h0, c0))
 
-        out, (hn, cn) = self.decoder(out, (hnh, cnh))
+        outf, (hn, cn) = self.future(out, (hnh, cnh))
+        outi, (hn, cn) = self.input(outi, (hnh, cnh))
 
-        outFrames = []
-        for f in range(out.size(1)):
-            outFrames.append(self.fc(out[:, f, :]))
-            # Index hidden state of last time step
+        outFramesf = []
+        outFramesi = []
 
-        out = torch.stack(outFrames,dim=1)
+        for f in range(outf.size(1)):
+            outFramesf.append(self.fc(outf[:, f, :]))
+            outFramesi.append(self.fc(outi[:, f, :]))
 
-        out = out.reshape(x.size(0), x.size(1), x.size(2), x.size(3))
+        outf = torch.stack(outFramesf,dim=1)
+        outf = outf.reshape(x.size(0), x.size(1), x.size(2), x.size(3))
+        outf = outf + x
+        outf = outf.reshape(x.size(0),x.size(1),self.output_dim)
 
-        out = out + x
+        outi = torch.stack(outFramesi,dim=1)
+        outi = outi.reshape(x.size(0), x.size(1), x.size(2), x.size(3))
+        outi = outi + x
+        outi = outi.reshape(x.size(0),x.size(1),self.output_dim)
 
-        out = out.reshape(x.size(0),x.size(1),self.output_dim)
 
-        return out
+        return outf, outi

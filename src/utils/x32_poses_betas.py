@@ -19,9 +19,12 @@ DETC_PATH="/media/finuxs/HDD/H36M/H36M_skeleton/detections/"
 SHAPE_PATH="/media/finuxs/HDD/H36M/H36M_shape/data/"
 FILE_PATH="/media/finuxs/HDD/"
 SAVE_PATH="/home/finuxs/Shape-Motion-Predictor/datasets/h36m/"
-#subjects = [[1,5,6,7,8], [9]] #11 Missing
-#actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-#cnt=0
+
+"""
+subjects = [[1,5,6,7,8], [9]] #11 Missing
+actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+cnt=0
+"""
 
 subjects = [[],[11]]
 actions = [3,4,5,7,8,9,10,11,12,13,14,15,16]

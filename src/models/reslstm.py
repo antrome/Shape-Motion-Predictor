@@ -183,7 +183,7 @@ class ResLstm(BaseModel):
         # estimate loss
         if estimate_loss:
             self._loss_gtf = self._criterion(estimf, self._input_target)
-            self._loss_gti = self._criterion(estimi, self._input_target)
+            self._loss_gti = self._criterion(estimi, self._input_target[:,:50,:])
             self._compute_metric(estimf)
             total_loss = self._loss_gtf+self._loss_gti
         else:

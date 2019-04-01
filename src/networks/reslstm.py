@@ -71,7 +71,7 @@ class ResLSTM(nn.Module):
 
         out = out.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
         outh = outh.reshape(xh.size(0), xh.size(1), xh.size(2)*xh.size(3))
-        outi = self.flip(out,1)
+        outi = self.flip(outh,1)
 
         # Initialize hidden state with zeros
         h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
@@ -95,6 +95,8 @@ class ResLSTM(nn.Module):
 
         for f in range(outf.size(1)):
             outFramesf.append(self.fc(outf[:, f, :]))
+
+        for f in range(outi.size(1)):
             outFramesi.append(self.fc(outi[:, f, :]))
 
         outf = torch.stack(outFramesf,dim=1)
@@ -103,9 +105,9 @@ class ResLSTM(nn.Module):
         outf = outf.reshape(x.size(0),x.size(1),self.output_dim)
 
         outi = torch.stack(outFramesi,dim=1)
-        outi = outi.reshape(x.size(0), x.size(1), x.size(2), x.size(3))
-        outi = outi + x
-        outi = outi.reshape(x.size(0),x.size(1),self.output_dim)
+        outi = outi.reshape(xh.size(0), xh.size(1), xh.size(2), xh.size(3))
+        outi = outi + xh
+        outi = outi.reshape(xh.size(0),xh.size(1),self.output_dim)
 
 
         return outf, outi

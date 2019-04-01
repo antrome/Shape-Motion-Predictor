@@ -56,10 +56,7 @@ class LSTMModel(nn.Module):
 
         x = x.reshape(x.size(0),x.size(1),self.input_rows,self.input_cols)
 
-        # reshape
-        out = x.reshape(x.size(0), x.size(1) * x.size(2), x.size(3))
-
-        out = out.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
+        out = x.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
 
         # Initialize hidden state with zeros
         h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)

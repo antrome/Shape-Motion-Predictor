@@ -20,9 +20,9 @@ import torchvision.datasets as dsets
 import math
 import os
 
-class ResLSTM(nn.Module):
+class Srivastava(nn.Module):
     def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols,dropout,seq_dim):
-        super(ResLSTM, self).__init__()
+        super(Srivastava, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
 
@@ -65,12 +65,8 @@ class ResLSTM(nn.Module):
         x = x.reshape(x.size(0),x.size(1),self.input_rows,self.input_cols)
         xh = xh.reshape(xh.size(0),xh.size(1),self.input_rows,self.input_cols)
 
-        # reshape
-        out = x.reshape(x.size(0), x.size(1) * x.size(2), x.size(3))
-        outh = xh.reshape(xh.size(0), xh.size(1) * xh.size(2), xh.size(3))
-
-        out = out.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
-        outh = outh.reshape(xh.size(0), xh.size(1), xh.size(2)*xh.size(3))
+        out = x.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
+        outh = xh.reshape(xh.size(0), xh.size(1), xh.size(2)*xh.size(3))
         outi = self.flip(outh,1)
 
         # Initialize hidden state with zeros

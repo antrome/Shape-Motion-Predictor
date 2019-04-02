@@ -14,12 +14,12 @@ class ModelsFactory:
         if model_name == 'model1':
             from .model1 import Model1
             model = Model1(*args, **kwargs)
-        elif model_name == 'lstm':
-            from .lstm import Lstm1
-            model = Lstm1(*args, **kwargs)
-        elif model_name == 'reslstm':
-            from .reslstm import ResLstm
-            model = ResLstm(*args, **kwargs)
+        elif model_name == 'martinez':
+            from .martinez import Martinez
+            model = Martinez(*args, **kwargs)
+        elif model_name == 'srivastava':
+            from .srivastava import Srivastava
+            model = Srivastava(*args, **kwargs)
         else:
             raise ValueError("Model %s not recognized." % model_name)
 

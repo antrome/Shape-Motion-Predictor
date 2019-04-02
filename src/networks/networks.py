@@ -15,15 +15,15 @@ class NetworksFactory:
         elif network_name == 'vgg11':
             from .vgg11 import VGG11
             network = VGG11(*args, **kwargs)
-        elif network_name == 'lstm':
-            from .lstm import LSTMModel
-            network = LSTMModel(*args, **kwargs)
+        elif network_name == 'martinez':
+            from .martinez import Martinez
+            network = Martinez(*args, **kwargs)
         elif network_name == 'conv1d':
             from .conv1d import Conv1D
             network = Conv1D(*args, **kwargs)
-        elif network_name == 'reslstm':
-            from .reslstm import ResLSTM
-            network = ResLSTM(*args, **kwargs)
+        elif network_name == 'srivastava':
+            from .srivastava import Srivastava
+            network = Srivastava(*args, **kwargs)
         else:
             raise ValueError("Network %s not recognized." % network_name)
 

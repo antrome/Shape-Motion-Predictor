@@ -7,9 +7,9 @@ from src.utils.plots import plot_estim
 import numpy as np
 import random
 
-class ResLstm(BaseModel):
+class Srivastava(BaseModel):
     def __init__(self, opt):
-        super(ResLstm, self).__init__(opt)
+        super(Srivastava, self).__init__(opt)
         self._name = 'lstm'
 
         # init input params

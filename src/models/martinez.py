@@ -40,6 +40,7 @@ class Martinez(BaseModel):
         self._Idc = self._opt[self._dataset_type]["input_cols"]         # input dimension cols
         self._Od = self._opt["networks"]["reg"]["hyper_params"]["output_dim"]          # output dimension
         self._Sd = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]             # sequence dimension
+        self._Pd = self._opt["networks"]["reg"]["hyper_params"]["pred_dim"]             # predicted dimension
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
         self._loss_type = self._opt["train"]["loss"]                    # loss type
@@ -208,6 +209,8 @@ class Martinez(BaseModel):
         loss_dict["loss_gt"] = self._loss_gt.item()
         loss_dict["unloss_gt"] = self._metric.item()
         loss_dict["unloss_euler_gt"] = self._metricEuler.item()
+        loss_dict["unloss_predicted_gt"] = self._metricPredicted.item()
+        loss_dict["unloss_euler_predicted_gt"] = self._metricEulerPredicted.item()
         return loss_dict
 
     def get_current_scalars(self):
@@ -271,11 +274,15 @@ class Martinez(BaseModel):
         if self._loss_type == "euclidean":
             #Euclidean Distance
             self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
+            self._metricPredicted = torch.mean(torch.sqrt(torch.sum((inputUn[:,self._Pd:,:]-estimUn[:,self._Pd:,:])**2,dim=-1)))
             self._metricEuler = torch.mean(torch.sqrt(torch.sum((inputUnEuler-estimUnEuler)**2,dim=-1)))
+            self._metricEulerPredicted = torch.mean(torch.sqrt(torch.sum((inputUnEuler[:,self._Pd:,:]-estimUnEuler[:,self._Pd:,:])**2,dim=-1)))
         else:#DEFAULT
             #MSE Square Error
             self._metric = self._criterion(estimUn, inputUn)
             self._metricEuler = self._criterion(estimUnEuler, inputUnEuler)
+            self._metricPredicted = self._criterion(estimUn[:,self._Pd:,:], inputUn[:,self._Pd:,:])
+            self._metricEulerPredicted = self._criterion(estimUnEuler[:,self._Pd:,:], inputUnEuler[:,self._Pd:,:])
 
     def _compute_movement(self,estim):
         #unormalize

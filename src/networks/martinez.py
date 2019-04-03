@@ -21,7 +21,7 @@ import math
 import os
 
 class MartinezSimple(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim,pred_dim):
         super(MartinezSimple, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim

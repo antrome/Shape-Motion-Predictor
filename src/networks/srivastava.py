@@ -21,7 +21,7 @@ import math
 import os
 
 class Srivastava(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim,pred_dim):
         super(Srivastava, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
@@ -36,7 +36,10 @@ class Srivastava(nn.Module):
         self.dropout = dropout
 
         # Sequence dimension
-        self._seq_dim = seq_dim
+        self.seq_dim = seq_dim
+
+        # Predicted frames
+        self.pred_dim = pred_dim
 
         # Building your LSTM
         self.encoder = nn.LSTM(input_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)

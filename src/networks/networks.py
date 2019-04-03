@@ -15,6 +15,9 @@ class NetworksFactory:
         elif network_name == 'vgg11':
             from .vgg11 import VGG11
             network = VGG11(*args, **kwargs)
+        elif network_name == 'martinezSimple':
+            from .martinez import MartinezSimple
+            network = MartinezSimple(*args, **kwargs)
         elif network_name == 'martinez':
             from .martinez import Martinez
             network = Martinez(*args, **kwargs)

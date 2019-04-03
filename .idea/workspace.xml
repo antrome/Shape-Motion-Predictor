@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3da3aa08-4c26-4637-9bc9-03316d59f1bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/martinez.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/reslstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/srivastava.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/martinez.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/martinez.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/martinez.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/srivastava.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/srivastava.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/martinez.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/martinez.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/networks/networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/networks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networks/reslstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/srivastava.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networks/srivastava.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/networks/srivastava.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/config_default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/config_default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,30 +34,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/networks/conv1d.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/networks/martinez.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="50" column="45" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="45" />
+            <state relative-caret-position="375">
+              <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -65,79 +46,82 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+        <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par66/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par66/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par69/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par66/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par69/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par66/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par69/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par66/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/networks/srivastava.py">
+        <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par69/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/pytorchangles.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/martinez.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="272" column="64" lean-forward="true" selection-start-line="272" selection-start-column="64" selection-end-line="272" selection-end-column="64" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/srivastava.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="113" column="58" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/prueba/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="46" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="240">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -153,17 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>visualzie</find>
-      <find>add</find>
-      <find>visualize</find>
-      <find>self</find>
-      <find>get_current_moves</find>
-      <find>display_shape</find>
-      <find>transforms</find>
-      <find>save_folder</find>
-      <find>add d</find>
-      <find>print(</find>
-      <find>print</find>
       <find>i_epoch</find>
       <find>cnt</find>
       <find>model</find>
@@ -176,13 +149,24 @@
       <find>input</find>
       <find>:50</find>
       <find>sampl</find>
-      <find>dropou</find>
       <find>network</find>
       <find>if</find>
       <find>self._loss</find>
       <find>repeated</find>
       <find>if</find>
+      <find>martin</find>
+      <find>loss_gt</find>
+      <find>50</find>
+      <find>hidden50</find>
+      <find>self._Hd</find>
+      <find>self._Ld</find>
+      <find>self._Od</find>
+      <find>self._Sd</find>
+      <find>dropou</find>
+      <find>mse</find>
+      <find>hidd</find>
       <find>hidden</find>
+      <find>flatten_para</find>
     </findStrings>
     <replaceStrings>
       <replace>0:3</replace>
@@ -194,28 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus4/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus4/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus5/dropout0/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus5/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus5/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay1EMinus5/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay5EMinus5/dropout0/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay5EMinus5/dropout1/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay5EMinus5/dropout3/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/prueba69par/inputHiddenFrames/weightDecay/weightDecay5EMinus5/dropout5/config.json" />
-        <option value="$PROJECT_DIR$/src/networks/reslstm.py" />
-        <option value="$PROJECT_DIR$/experiments/reslstm/prueba66par/config.json" />
-        <option value="$PROJECT_DIR$/src/networks/lstm3lr.py" />
-        <option value="$PROJECT_DIR$/src/models/martinez.py" />
-        <option value="$PROJECT_DIR$/src/models/srivastava.py" />
-        <option value="$PROJECT_DIR$/src/networks/srivastava.py" />
-        <option value="$PROJECT_DIR$/src/networks/martinez.py" />
-        <option value="$PROJECT_DIR$/src/networks/networks.py" />
-        <option value="$PROJECT_DIR$/experiments/lstm/par69/inputHiddenFrames/config.json" />
-        <option value="$PROJECT_DIR$/src/models/models.py" />
-        <option value="$PROJECT_DIR$/experiments/lstm/par66/inputRepeatedFrame50/config.json" />
-        <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/learningRates/lr1EMinus3/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/learningRates/lr1EMinus5/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/learningRates/lr1EMinus4/config.json" />
@@ -244,7 +206,29 @@
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim4/hiddenDim256/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim4/hiddenDim512/config.json" />
         <option value="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim4/hiddenDim1024/config.json" />
+        <option value="$PROJECT_DIR$/src/networks/martinez2.py" />
+        <option value="$PROJECT_DIR$/src/networks/networks.py" />
+        <option value="$PROJECT_DIR$/src/options/config_default.json" />
+        <option value="$PROJECT_DIR$/src/models/martinez.py" />
         <option value="$PROJECT_DIR$/experiments/martinez/par69/prueba/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinez/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinez/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/srivastava/prueba66par/config.json" />
+        <option value="$PROJECT_DIR$/src/models/srivastava.py" />
+        <option value="$PROJECT_DIR$/src/networks/srivastava.py" />
+        <option value="$PROJECT_DIR$/src/networks/martinez.py" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par69/config.json" />
+        <option value="$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par66/config.json" />
+        <option value="$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par69/config.json" />
       </list>
     </option>
   </component>
@@ -282,7 +266,7 @@
               <item name="Shape-Motion-Predictor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="networks" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="options" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -335,6 +319,12 @@
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="datasets" type="462c0819:PsiDirectoryNode" />
+              <item name="h36m" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -348,6 +338,56 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+              <item name="par66" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+              <item name="par66" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
               <item name="par69" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -355,7 +395,7 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="martinez" type="462c0819:PsiDirectoryNode" />
-              <item name="par69" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
               <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -363,8 +403,18 @@
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="experiments" type="462c0819:PsiDirectoryNode" />
               <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+              <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
+              <item name="par66" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="martinez" type="462c0819:PsiDirectoryNode" />
+              <item name="martinezSimple" type="462c0819:PsiDirectoryNode" />
+              <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
               <item name="par69" type="462c0819:PsiDirectoryNode" />
-              <item name="prueba" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -375,7 +425,59 @@
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+              <item name="par66" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputHiddenFrames" type="462c0819:PsiDirectoryNode" />
+              <item name="par69" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
+              <item name="par66" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="srivastava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputRepeatedFrame50" type="462c0819:PsiDirectoryNode" />
+              <item name="par69" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shape-Motion-Predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shape-Motion-Predictor" type="b2602c69:ProjectViewProjectNode" />
@@ -435,11 +537,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/experiments/martinez/par69/prueba" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim4" />
-      <recent name="$PROJECT_DIR$/experiments/lstm" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50" />
-      <recent name="$PROJECT_DIR$/experiments/lstm/par66" />
+      <recent name="$PROJECT_DIR$/experiments/srivastava" />
+      <recent name="$PROJECT_DIR$/experiments/martinez/martinezSimple" />
+      <recent name="$PROJECT_DIR$/experiments/martinez/martinez/inputRepeatedFrame50" />
+      <recent name="$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames" />
+      <recent name="$PROJECT_DIR$/experiments/martinez/martinez" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50" />
@@ -555,12 +657,12 @@
       <workItem from="1554133507822" duration="5943000" />
       <workItem from="1554145922769" duration="4438000" />
       <workItem from="1554156029707" duration="841000" />
-      <workItem from="1554194245764" duration="5768000" />
+      <workItem from="1554194245764" duration="22215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="617240000" />
+    <option name="totallyTimeSpent" value="633687000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -575,7 +677,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.38959602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.384062" />
       <window_info id="Structure" order="1" sideWeight="0.50165015" side_tool="true" weight="0.39789706" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -631,204 +733,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputHiddenFrames/weightDecay/weightDecay5EMinus5/dropout0/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputHiddenFrames/weightDecay/weightDecay1EMinus5/dropout5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/srivastava/prueba66par/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/srivastava/repeatedprueba66par/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par66/inputRepeatedFrame50/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par66/inputHiddenFrames/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr1EMinus6/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr5EMinus2/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr5EMinus3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr5EMinus4/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr5EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="12" lean-forward="true" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr5EMinus6/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr1EMinus2/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr1EMinus5/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr1EMinus4/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/learningRates/lr1EMinus3/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/lstmConfig/layerDim2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputHiddenFrames/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim2/hiddenDim2048/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/lstm/par69/inputRepeatedFrame50/lstmConfig/layerDim3/hiddenDim2048/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim4/hiddenDim64/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim2/hiddenDim128/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim2/hiddenDim256/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim2/hiddenDim512/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim2/hiddenDim1024/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim3/hiddenDim64/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim3/hiddenDim128/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim3/hiddenDim256/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputRepeatedFrame50/lstmConfig/layerDim3/hiddenDim512/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -903,10 +807,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/conv1d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/pytorchangles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="6" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/par66/prueba/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/par66/prueba/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/martinez2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="92" column="18" selection-start-line="22" selection-end-line="92" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/human36m.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="25" lean-forward="true" selection-end-line="23" selection-end-column="1" />
+          <caret line="16" column="25" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/inputHiddenFrames/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="1" selection-end-line="23" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -919,51 +891,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiments/martinez/par69/prueba/config.json">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="1" lean-forward="true" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options/config_default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/par66/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par66/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputRepeatedFrame50/par66/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputRepeatedFrame50/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputRepeatedFrame50/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par66/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/pytorchangles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/martinez.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="272" column="64" lean-forward="true" selection-start-line="272" selection-start-column="64" selection-end-line="272" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/srivastava.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="113" column="58" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="105">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/conv1d.py">
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/prueba66par/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="240">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/srivastava.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2516">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par66/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/martinez.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="277" column="11" selection-start-line="277" selection-start-column="11" selection-end-line="277" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/networks/srivastava.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -972,31 +1008,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/networks/martinez.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="45" />
+        <state relative-caret-position="375">
+          <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/networks.py">
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par66/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/networks/srivastava.py">
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputHiddenFrames/par69/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinezSimple/inputRepeatedFrame50/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/martinez/martinez/inputHiddenFrames/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputHiddenFrames/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par66/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/srivastava/inputRepeatedFrame50/par69/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>

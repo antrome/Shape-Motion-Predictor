@@ -92,7 +92,7 @@ class Train:
         self._display_freq_s = self._opt["logs"]["display_freq_s"]
         self._num_iters_validate = self._opt["train"]["num_iters_validate"]
         self._gifs_save_path = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"])
-        self._seq_dim = self._opt["dataset"]["seq_dim"]
+        self._seq_dim = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]
         self._save_epoch = self._opt["logs"]["save_epoch"]
         self._print_epoch = self._opt["logs"]["print_epoch"]
         self._print_shape_epoch = self._opt["logs"]["print_shape_epoch"]

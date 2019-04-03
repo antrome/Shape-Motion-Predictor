@@ -38,15 +38,13 @@ class Martinez(BaseModel):
         self._Id = self._opt[self._dataset_type]["input_dim"]           # input dimension
         self._Idr = self._opt[self._dataset_type]["input_rows"]         # input dimension rows
         self._Idc = self._opt[self._dataset_type]["input_cols"]         # input dimension cols
-        self._Hd = self._opt[self._dataset_type]["hidden_dim"]          # hidden dimension
-        self._Ld = self._opt[self._dataset_type]["layer_dim"]           # layer dimension
-        self._Od = self._opt[self._dataset_type]["output_dim"]          # output dimension
-        self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
+        self._Od = self._opt["networks"]["reg"]["hyper_params"]["output_dim"]          # output dimension
+        self._Sd = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]             # sequence dimension
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
         self._loss_type = self._opt["train"]["loss"]                    # loss type
         self._weight_decay = self._opt["train"]["weight_decay"]         # weight decay
-        self._dropout = self._opt["train"]["dropout"]                   # dropout
+        self._dropout = self._opt["networks"]["reg"]["hyper_params"]["dropout"]                   # dropout
 
     def _init_create_networks(self):
         # create reg
@@ -112,12 +110,10 @@ class Martinez(BaseModel):
                 self._input_img[:, 50:99, 6:].size(1),
                 self._input_img[:, 50:99, 6:].size(2), dtype=torch.float32)
         elif self._inputType == "repeatedFrame50Input69par":
-            temp_tensor = torch.zeros(self._input_img[:, 50, 3:].size(0),49,self._input_img[:, 50, 3:].size(1), dtype=torch.float32)
-            temp_tensor = torch.stack([self._input_img[:, 50, 3:] for i in range(49)],dim=1)
+            temp_tensor = torch.stack([self._input_img[:, 49, 3:] for i in range(49)],dim=1)
             self._input_img[:, 50:, 3:] = temp_tensor
         elif self._inputType == "repeatedFrame50Input66par":
-            temp_tensor = torch.zeros(self._input_img[:, 50, 6:].size(0),49,self._input_img[:, 50, 6:].size(1), dtype=torch.float32)
-            temp_tensor = torch.stack([self._input_img[:, 50, 6:] for i in range(49)],dim=1)
+            temp_tensor = torch.stack([self._input_img[:, 49, 6:] for i in range(49)],dim=1)
             self._input_img[:, 50:, 6:] = temp_tensor
         # move to gpu
         self._input_img = self._input_img.to(self._device_master)

@@ -21,19 +21,13 @@ import math
 import os
 
 class Srivastava(nn.Module):
-    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim, input_rows, input_cols,dropout,seq_dim):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim):
         super(Srivastava, self).__init__()
         # Hidden dimensions
         self.hidden_dim = hidden_dim
 
         # Number of hidden layers
         self.layer_dim = layer_dim
-
-        # Number of input rows for coordinates
-        self.input_rows = input_rows
-
-        # Number of input columns for coordinates
-        self.input_cols = input_cols
 
         # Output dimensions
         self.output_dim = output_dim
@@ -62,12 +56,7 @@ class Srivastava(nn.Module):
 
         xh = x[:,:50,:]
 
-        x = x.reshape(x.size(0),x.size(1),self.input_rows,self.input_cols)
-        xh = xh.reshape(xh.size(0),xh.size(1),self.input_rows,self.input_cols)
-
-        out = x.reshape(x.size(0), x.size(1), x.size(2)*x.size(3))
-        outh = xh.reshape(xh.size(0), xh.size(1), xh.size(2)*xh.size(3))
-        outi = self.flip(outh,1)
+        outi = self.flip(xh,1)
 
         # Initialize hidden state with zeros
         h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
@@ -81,9 +70,9 @@ class Srivastava(nn.Module):
         self.encoder.flatten_parameters()
 
         # One time step
-        outh, (hnh, cnh) = self.encoder(outh, (h0h, c0h))
+        outh, (hnh, cnh) = self.encoder(xh, (h0h, c0h))
 
-        outf, (hn, cn) = self.future(out, (hnh, cnh))
+        outf, (hn, cn) = self.future(x, (hnh, cnh))
         outi, (hn, cn) = self.input(outi, (hnh, cnh))
 
         outFramesf = []
@@ -96,14 +85,9 @@ class Srivastava(nn.Module):
             outFramesi.append(self.fc(outi[:, f, :]))
 
         outf = torch.stack(outFramesf,dim=1)
-        outf = outf.reshape(x.size(0), x.size(1), x.size(2), x.size(3))
         outf = outf + x
-        outf = outf.reshape(x.size(0),x.size(1),self.output_dim)
 
         outi = torch.stack(outFramesi,dim=1)
-        outi = outi.reshape(xh.size(0), xh.size(1), xh.size(2), xh.size(3))
         outi = outi + xh
-        outi = outi.reshape(xh.size(0),xh.size(1),self.output_dim)
-
 
         return outf, outi

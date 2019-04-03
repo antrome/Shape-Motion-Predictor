@@ -38,15 +38,13 @@ class Srivastava(BaseModel):
         self._Id = self._opt[self._dataset_type]["input_dim"]           # input dimension
         self._Idr = self._opt[self._dataset_type]["input_rows"]         # input dimension rows
         self._Idc = self._opt[self._dataset_type]["input_cols"]         # input dimension cols
-        self._Hd = self._opt[self._dataset_type]["hidden_dim"]          # hidden dimension
-        self._Ld = self._opt[self._dataset_type]["layer_dim"]           # layer dimension
-        self._Od = self._opt[self._dataset_type]["output_dim"]          # output dimension
-        self._Sd = self._opt[self._dataset_type]["seq_dim"]             # sequence dimension
+        self._Od = self._opt["networks"]["reg"]["hyper_params"]["output_dim"]          # output dimension
+        self._Sd = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]             # sequence dimension
         self._optim = self._opt["train"]["optim"]                       # optimizer used for the training
         self._inputType = self._opt["networks"]["reg"]["input_type"]    # input type of the network
         self._loss_type = self._opt["train"]["loss"]                    # loss type
         self._weight_decay = self._opt["train"]["weight_decay"]         # weight decay
-        self._dropout = self._opt["train"]["dropout"]                   # dropout
+        self._dropout = self._opt["networks"]["reg"]["hyper_params"]["dropout"]                   # dropout
 
     def _init_create_networks(self):
         # create reg

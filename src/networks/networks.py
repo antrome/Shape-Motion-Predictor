@@ -15,18 +15,33 @@ class NetworksFactory:
         elif network_name == 'vgg11':
             from .vgg11 import VGG11
             network = VGG11(*args, **kwargs)
-        elif network_name == 'martinezSimple':
-            from .martinez import MartinezSimple
-            network = MartinezSimple(*args, **kwargs)
-        elif network_name == 'martinez':
-            from .martinez import Martinez
-            network = Martinez(*args, **kwargs)
-        elif network_name == 'conv1d':
-            from .conv1d import Conv1D
-            network = Conv1D(*args, **kwargs)
-        elif network_name == 'srivastava':
-            from .srivastava import Srivastava
-            network = Srivastava(*args, **kwargs)
+        elif network_name == 'martinezSimpleLSTM':
+            from .martinez import MartinezSimpleLSTM
+            network = MartinezSimpleLSTM(*args, **kwargs)
+        elif network_name == 'martinezSimpleGRU':
+            from .martinez import MartinezSimpleGRU
+            network = MartinezSimpleGRU(*args, **kwargs)
+        elif network_name == 'martinezSimpleRNN':
+            from .martinez import MartinezSimpleRNN
+            network = MartinezSimpleRNN(*args, **kwargs)
+        elif network_name == 'martinezLSTM':
+            from .martinez import MartinezLSTM
+            network = MartinezLSTM(*args, **kwargs)
+        elif network_name == 'martinezGRU':
+            from .martinez import MartinezGRU
+            network = MartinezGRU(*args, **kwargs)
+        elif network_name == 'martinezRNN':
+            from .martinez import MartinezRNN
+            network = MartinezRNN(*args, **kwargs)
+        elif network_name == 'srivastavaLSTM':
+            from .srivastava import SrivastavaLSTM
+            network = SrivastavaLSTM(*args, **kwargs)
+        elif network_name == 'srivastavaGRU':
+            from .srivastava import SrivastavaGRU
+            network = SrivastavaGRU(*args, **kwargs)
+        elif network_name == 'srivastavaRNN':
+            from .srivastava import SrivastavaRNN
+            network = SrivastavaRNN(*args, **kwargs)
         else:
             raise ValueError("Network %s not recognized." % network_name)
 

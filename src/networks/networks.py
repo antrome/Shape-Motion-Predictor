@@ -30,6 +30,12 @@ class NetworksFactory:
         elif network_name == 'martinezGRU':
             from .martinez import MartinezGRU
             network = MartinezGRU(*args, **kwargs)
+        elif network_name == 'ERDGRU':
+            from .martinez import ERDGRU
+            network = ERDGRU(*args, **kwargs)
+        elif network_name == 'ERDLSTM':
+            from .martinez import ERDLSTM
+            network = ERDLSTM(*args, **kwargs)
         elif network_name == 'martinezRNN':
             from .martinez import MartinezRNN
             network = MartinezRNN(*args, **kwargs)

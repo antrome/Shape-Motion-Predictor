@@ -15,6 +15,7 @@ import torch.utils.data as utils
 import random
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
 import math
@@ -272,3 +273,123 @@ class MartinezGRU(nn.Module):
         out = torch.cat([x[:, :self.pred_dim, :],out],dim=1)
 
         return out
+
+class ERDGRU(nn.Module):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim,pred_dim,res_conn):
+        super(ERDGRU, self).__init__()
+        # Hidden dimensions
+        self.hidden_dim = hidden_dim
+
+        # Number of hidden layers
+        self.layer_dim = layer_dim
+
+        # Output dimensions
+        self.output_dim = output_dim
+
+        # Dropout
+        self.dropout = dropout
+
+        # Sequence dimension
+        self._seq_dim = seq_dim
+
+        self.res_conn = res_conn
+
+        # Encoder
+        self.fc_in = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.LeakyReLU(2e-1, True),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
+
+        self.lstm = nn.GRU(hidden_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
+        #Flatten Parameters
+        self.lstm.flatten_parameters()
+
+        # Decoder
+        self.fc_out = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.LeakyReLU(2e-1, True),
+            nn.Linear(hidden_dim, output_dim)
+        )
+
+    def forward(self, x):
+
+        def _apply_module(module, seq):
+            outFrames = []
+            for f in range(seq.size(1)):
+                outFrames.append(module(seq[:, f, :]))
+            seq = torch.stack(outFrames, dim=1)
+            return seq
+
+        out = _apply_module(self.fc_in, x)
+
+        h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
+        out, hn = self.lstm(out, h0)
+
+        out = _apply_module(self.fc_out, out)
+
+        if self.res_conn:
+            out = out + x
+
+        return out
+
+class ERDLSTM(nn.Module):
+    def __init__(self, input_dim, hidden_dim, layer_dim, output_dim,dropout,seq_dim,pred_dim,res_conn):
+        super(ERDLSTM, self).__init__()
+        # Hidden dimensions
+        self.hidden_dim = hidden_dim
+
+        # Number of hidden layers
+        self.layer_dim = layer_dim
+
+        # Output dimensions
+        self.output_dim = output_dim
+
+        # Dropout
+        self.dropout = dropout
+
+        # Sequence dimension
+        self._seq_dim = seq_dim
+
+        self.res_conn = res_conn
+
+        # Encoder
+        self.fc_in = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.LeakyReLU(2e-1, True),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
+
+        self.lstm = nn.GRU(hidden_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
+        #Flatten Parameters
+        self.lstm.flatten_parameters()
+
+        # Decoder
+        self.fc_out = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.LeakyReLU(2e-1, True),
+            nn.Linear(hidden_dim, output_dim)
+        )
+
+    def forward(self, x):
+
+        def _apply_module(module, seq):
+            outFrames = []
+            for f in range(seq.size(1)):
+                outFrames.append(module(seq[:, f, :]))
+            seq = torch.stack(outFrames, dim=1)
+            return seq
+
+        out = _apply_module(self.fc_in, x)
+
+        h0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
+        c0 = torch.zeros(self.layer_dim, x.size(0), self.hidden_dim).requires_grad_().to(x.device)
+        out, (hn,cn) = self.lstm(out, (h0,c0))
+
+        out = _apply_module(self.fc_out, out)
+
+        if self.res_conn:
+            out = out + x
+
+        return out
+

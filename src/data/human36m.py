@@ -103,9 +103,13 @@ class H36M(DatasetBase):
                 x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
                 labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
                 betas_frame = databetas[cam][0][:][:]
-            #EvenSubSampling
-            else:
+            elif self._subsampling == "even":
                 data = data[:, ::2, :, :]
+                frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
+                x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+                labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]
+                betas_frame = databetas[cam][0][:][:]
+            else:
                 frames = random.randint(0, data.shape[1] - (self._seq_dim+2))
                 x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
                 labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim+1)][:][:]

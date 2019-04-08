@@ -21,14 +21,21 @@ FILE_PATH="/media/finuxs/HDD/"
 SAVE_PATH="/home/finuxs/Shape-Motion-Predictor/datasets/h36m/"
 
 """
-subjects = [[1,5,6,7,8], [9]] #11 Missing
+subjects = [[1,6,7,8], [9]] #11 Missing
 actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 cnt=0
 """
 
+"""
 subjects = [[],[11]]
 actions = [3,4,5,7,8,9,10,11,12,13,14,15,16]
-cnt=180
+cnt=150
+"""
+
+subjects = [[5], []] #11 Missing
+actions = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+cnt=176
+
 
 subactions = [1,2]
 cameras = [1,2,3,4]

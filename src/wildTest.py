@@ -54,14 +54,11 @@ class Test:
         self._opt = config_parser.get_config()
         self._opt["model"]["is_train"] = False
 
-        self._seq_dim = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]
-        self._pred_dim = self._opt["networks"]["reg"]["hyper_params"]["pred_dim"]
-
         # set output dir
         self._set_output()
 
         # add data
-        # self._add_data()
+        self._add_data()
 
         # prepare data
         self._prepare_data()
@@ -89,7 +86,7 @@ class Test:
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         readFrames(9,7,1,3,cnt+2,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         """
-        cnt=208
+        cnt=206
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         """
@@ -123,45 +120,33 @@ class Test:
 
     def _test_dataset(self):
         self._model.set_eval()
-        val_errors = np.zeros((1000,self._seq_dim-self._pred_dim))
-        val_gt_moves = dict()
-        val_gt_moves_aux = dict()
-        val_predicted_moves = dict()
-        val_predicted_moves_aux = dict()
-        val_betas = torch.zeros(0,1,10,dtype=torch.float32)
-        val_betas_aux = dict()
-        val_size = len(list(enumerate(self._dataset_test)))
 
         total_time = 0
         n_total_time = 0
-        cnt=178
-        for i in range(1,1000):
-            if i%100 == 0:
-                print(i)
-            for i_test_batch, test_batch in enumerate(self._dataset_test):
-                # set inputs
-                self._model.set_input(test_batch)
+        cnt=206
+        for i_test_batch, test_batch in tqdm(enumerate(self._dataset_test), total=len(self._dataset_test)):
+            # set inputs
+            self._model.set_input(test_batch)
 
-                moves_gt = dict()
-                moves_predicted = dict()
+            moves_gt = dict()
+            moves_predicted = dict()
 
-                # get estimate
-                start_wait = time.time()
-                estimate = self._model.evaluate()
-                val_errors[i+i_test_batch-1,:] = estimate.detach().cpu().numpy()
-
-                moves = self._model.get_current_moves()
-                val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
-                val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
-                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
-                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
-                betas = self._model.get_current_betas()
-                betas = betas['betas']
-
-        #self._display_shape(moves_gt, moves_predicted, betas, 1, 1,
-        #                    cnt,is_train=False)
-
-        print(np.mean(val_errors, axis=0))
+            # get estimate
+            start_wait = time.time()
+            estimate = self._model.evaluate()
+            moves = self._model.get_current_moves()
+            moves_gt["moves_gt"] = moves["moves_gt"]
+            moves_predicted["moves_predicted"] = moves["moves_predicted"]
+            betas = self._model.get_current_betas()
+            betas = betas["betas"]
+            self._display_shape(moves_gt, moves_predicted, betas, 1, 1,
+                                cnt,is_train=False)
+            total_time += time.time() - start_wait
+            n_total_time += 1
+            cnt += 1
+            # store estimate
+            #self._save_img(estimate, i_test_batch)
+        print(f"mean time per sample: {total_time/n_total_time}")
 
     def _save_img(self, img, id):
         filename = "{0:05d}.png".format(id)
@@ -171,8 +156,6 @@ class Test:
 
     def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
         # Pick Up a Random Batch and Print it
-
-        mov = random.randint(0, dataset_size - 1)
         batch = random.randint(0, batch_size - 1)
         images_gt = []
         images_predicted = []
@@ -201,18 +184,12 @@ class Test:
 
         m.betas[:] = betasShow
 
-        """
-        for i in range(int(len(predicted_moves)/2)-5,int(len(predicted_moves)/2)+5):
-            predicted_moves["moves_predicted"][mov][batch][i,:] = (predicted_moves["moves_predicted"][mov][batch][i,:]+predicted_moves["moves_predicted"][mov][batch][i+1,:])/2
-        """
-
         # === Plot and animate ===
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
-        print(gt_moves.keys())
-        for i in range(self._seq_dim):
-            m.pose[:] = gt_moves["moves_gt"][mov][batch][i].detach().cpu().numpy()
+        for i in range(99):
+            m.pose[:] = gt_moves["moves_gt"][0][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
 
@@ -235,8 +212,8 @@ class Test:
             image = (rn.r * 255).round().astype(np.uint8)
             images_gt.append(image)
 
-        for i in range(self._seq_dim):
-            m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
+        for i in range(99):
+            m.pose[:] = predicted_moves["moves_predicted"][0][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
 
@@ -275,7 +252,7 @@ class Test:
 
             images.append(img)
 
-        imageio.mimsave(os.path.join(self._gifs_save_path, "test", "mov" + str(i_epoch) + ".gif"), images)
+        imageio.mimsave(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "test" + str(i_epoch) + ".gif"), images)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

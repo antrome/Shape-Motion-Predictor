@@ -11,8 +11,8 @@ from os import listdir
 from os.path import isfile, join
 import glob
 
-SAVE_PATH="/home/finuxs/TFM/write/imagesWriting/tensorboard/martSimpvs2Fc/unlossPredictedEuler/"
-save = 'unlossPredictedEuler.png'
+SAVE_PATH="/home/finuxs/TFM/write/imagesWriting/tensorboard/martinezSimple/train/loss/"
+save = 'loss.png'
 files = [f for f in sorted(glob.iglob(SAVE_PATH + "*.csv")) if isfile(join(SAVE_PATH, f))]
 loss = np.zeros((len(files), 101))
 epoch = np.zeros((len(files), 101))
@@ -33,11 +33,10 @@ for i in range(len(files)):
         loss[i] = savgol_filter(loss[i], 51, 3)  # window size 51, polynomial order 3
 
     plt.plot(epoch[i], loss[i])
-plt.yscale('log')
-plt.legend(['2fcHiddenGRU', '2fcRepeatedGRU', 'simpleHiddenGRU','simpleRepeatedGRU'], loc='upper right')
-plt.title('Validation Loss vs Epoch')
+plt.legend(['hidden GRU', 'hidden LSTM', 'repeated GRU', 'repeated LSTM'], loc='upper right')
+plt.title('Train Loss vs Epoch')
 plt.xlabel('Epoch')
-plt.ylabel('Validation Loss')
+plt.ylabel('Train Loss')
 plt.tight_layout()
 plt.savefig(os.path.join(SAVE_PATH,save))
 plt.draw()

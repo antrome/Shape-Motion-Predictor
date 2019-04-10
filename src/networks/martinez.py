@@ -360,7 +360,7 @@ class ERDLSTM(nn.Module):
             nn.Linear(hidden_dim, hidden_dim)
         )
 
-        self.lstm = nn.GRU(hidden_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
+        self.lstm = nn.LSTM(hidden_dim, hidden_dim, layer_dim, batch_first=True,dropout=dropout)
         #Flatten Parameters
         self.lstm.flatten_parameters()
 

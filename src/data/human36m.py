@@ -137,9 +137,13 @@ class H36M(DatasetBase):
 
         #testing
         else:
-            x_data_cam_frame = data[0:self._seq_dim][:]
-            labels_data_cam_frame = data[1:(self._seq_dim + 1)][:]
-            betas_frame = databetas[0][:]
+            # Pick a random camera
+            cam = random.randint(0, 3)
+
+            frames = random.randint(0, data.shape[1] - (self._seq_dim + 2))
+            x_data_cam_frame = data[cam][frames:frames + self._seq_dim][:][:]
+            labels_data_cam_frame = data[cam][frames + 1:frames + (self._seq_dim + 1)][:][:]
+            betas_frame = databetas[cam][0][:][:]
 
             self.tensor_x = torch.Tensor(x_data_cam_frame)
             self.tensor_y = torch.Tensor(labels_data_cam_frame)
@@ -152,6 +156,14 @@ class H36M(DatasetBase):
             # apply transformations
             if self._transform is not None:
                 sample = self._transform(sample)
+
+            #X32
+            if sample['img'].size(1) == 32 and sample['img'].size(2) == 3:
+                sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(1) * sample['img'].size(2))
+                sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(1) * sample['target'].size(2))
+            else:
+                sample['img'] = sample['img'].reshape(sample['img'].size(0), sample['img'].size(2))
+                sample['target'] = sample['target'].reshape(sample['target'].size(0), sample['target'].size(2))
 
         return sample
 

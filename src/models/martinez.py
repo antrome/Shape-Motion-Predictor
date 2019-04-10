@@ -183,7 +183,8 @@ class Martinez(BaseModel):
             self._compute_metric(estim)
             total_loss = self._loss_gt
         else:
-            total_loss = -1
+            self._compute_metric_test(estim)
+            total_loss = self._metricEulerPredicted
 
         self._compute_movement(estim)
 
@@ -258,18 +259,21 @@ class Martinez(BaseModel):
 
     def _compute_metric(self,estim):
         #unormalize
-        if self._Id == 96:
-            estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-            inputUn = (self._input_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-        else:
-            estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
-            inputUn = (self._input_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+        estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+        inputUn = (self._input_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+
+        estimUn = estimUn.view(self._B,self._Sd,self._Idr,self._Idc)
+        inputUn = inputUn.view(self._B,self._Sd,self._Idr,self._Idc)
 
         estimUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(estimUn, self._device_master),
                                             self._device_master)
 
         inputUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(inputUn, self._device_master),
                                             self._device_master)
+
+        estimUnEuler = estimUnEuler.view(self._B,self._Sd,self._Idr*self._Idc)
+        inputUnEuler = inputUnEuler.view(self._B,self._Sd,self._Idr*self._Idc)
+
 
         if self._loss_type == "euclidean":
             #Euclidean Distance
@@ -284,14 +288,41 @@ class Martinez(BaseModel):
             self._metricPredicted = self._criterion(estimUn[:,self._Pd:,:], inputUn[:,self._Pd:,:])
             self._metricEulerPredicted = self._criterion(estimUnEuler[:,self._Pd:,:], inputUnEuler[:,self._Pd:,:])
 
+    def _compute_metric_test(self,estim):
+        #unormalize
+        estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+        inputUn = (self._input_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+
+        estimUn = estimUn.view(self._B,self._Sd,self._Idr,self._Idc)
+        inputUn = inputUn.view(self._B,self._Sd,self._Idr,self._Idc)
+
+        estimUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(estimUn, self._device_master),
+                                            self._device_master)
+
+        inputUnEuler = pytorchangles.rotmat_to_euler(pytorchangles.expmap_to_rotmat(inputUn, self._device_master),
+                                            self._device_master)
+
+        estimUnEuler = estimUnEuler.view(self._B,self._Sd,self._Idr*self._Idc)
+        inputUnEuler = inputUnEuler.view(self._B,self._Sd,self._Idr*self._Idc)
+
+
+        if self._loss_type == "euclidean":
+            #Euclidean Distance
+            self._metric = torch.mean(torch.sqrt(torch.sum((inputUn-estimUn)**2,dim=-1)))
+            self._metricPredicted = torch.mean(torch.sqrt(torch.sum((inputUn[:,self._Pd:,:]-estimUn[:,self._Pd:,:])**2,dim=-1)))
+            self._metricEuler = torch.mean(torch.sqrt(torch.sum((inputUnEuler-estimUnEuler)**2,dim=-1)),dim=0)
+            self._metricEulerPredicted = torch.mean(torch.sqrt(torch.sum((inputUnEuler[:,self._Pd:,:]-estimUnEuler[:,self._Pd:,:])**2,dim=-1)),dim=0)
+        else:#DEFAULT
+            #MSE Square Error
+            self._metric = self._criterion(estimUn, inputUn)
+            self._metricEuler = self._criterion(estimUnEuler, inputUnEuler)
+            self._metricPredicted = self._criterion(estimUn[:,self._Pd:,:], inputUn[:,self._Pd:,:],dim=0)
+            self._metricEulerPredicted = self._criterion(estimUnEuler[:,self._Pd:,:], inputUnEuler[:,self._Pd:,:],dim=0)
+
     def _compute_movement(self,estim):
         #unormalize
-        if self._Id == 96:
-            estimUn = (estim.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-            inputUn = (self._global_translation_target.view(self._B,self._Sd,self._Idr,self._Idc)*self._std)+self._mean
-        else:
-            estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
-            inputUn = (self._global_translation_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+        estimUn = (estim.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
+        inputUn = (self._global_translation_target.view(self._B,self._Sd,self._Idr*self._Idc)*self._std)+self._mean
 
         #Moves for Visualization
         self._estimUn = estimUn

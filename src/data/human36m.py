@@ -137,6 +137,7 @@ class H36M(DatasetBase):
 
         #testing
         else:
+            #NORMAL TEST
             # Pick a random camera
             cam = random.randint(0, 3)
 

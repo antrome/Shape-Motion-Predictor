@@ -1,53 +1,27 @@
 # -*- coding: future_fstrings -*-
 from __future__ import print_function, division, absolute_import
 import argparse
+from src.utils.util import mkdir
 from src.options.config_parser import ConfigParser
 from src.data.custom_dataset_data_loader import CustomDatasetDataLoader
 from src.models.models import ModelsFactory
-from src.utils.util import mkdir, tensor2im
-from tqdm import tqdm
+from src.utils.util import append_dictionaries
 import time
 import os
-import cv2
-from src.utils.wildUtils import readFrames, readFramesVideo
-from src.hmr import demo
-from src.options.config_parser import ConfigParser
-from src.data.custom_dataset_data_loader import CustomDatasetDataLoader
-from src.models.models import ModelsFactory
-from src.utils.tb_visualizer import TBVisualizer
-import torch
-import torch.backends.cudnn as cudnn
-from src.utils.util import append_dictionaries, mean_dictionary
-import numpy as np
-import time
-import h5py
-import os
-import src.utils.viz as viz
-import matplotlib
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
-import matplotlib.animation as animation
-from mpl_toolkits.mplot3d import Axes3D
-import imageio
-from PIL import Image
-import random
 import numpy as np
 from opendr.renderer import ColoredRenderer
 from opendr.lighting import LambertianPointLight
 from opendr.camera import ProjectPoints
 from src.smpl.smpl_webuser.serialization import load_model
-import h5py
 import cv2
-import matplotlib
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
-import matplotlib.animation as animation
-from mpl_toolkits.mplot3d import Axes3D
 import imageio
 from PIL import Image,ImageFont,ImageDraw
 import random
 import src.utils.viz as viz
-import torch
 class Test:
     def __init__(self, args):
         config_parser = ConfigParser(set_master_gpu=False)
@@ -59,9 +33,6 @@ class Test:
 
         # set output dir
         self._set_output()
-
-        # add data
-        # self._add_data()
 
         # prepare data
         self._prepare_data()
@@ -78,27 +49,6 @@ class Test:
 
         # test
         self._test_dataset()
-
-    def _add_data(self):
-        """
-        cnt=206
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames1"))
-        readFrames(1,2,1,1,cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames1"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
-        readFrames(5,3,2,2,cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        readFrames(9,7,1,3,cnt+2,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        """
-        cnt=208
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        """
-        readFramesVideo("walkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        readFramesVideo("walkFemale",cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames5"))
-        readFramesVideo("walkExhaustedMale",cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames5"))
-        """
 
     def _prepare_data(self):
         data_loader_test = CustomDatasetDataLoader(self._opt, is_for="test")
@@ -123,45 +73,30 @@ class Test:
 
     def _test_dataset(self):
         self._model.set_eval()
-        val_errors = np.zeros((1000,self._seq_dim-self._pred_dim))
+        val_errors = np.zeros((10,self._seq_dim-self._pred_dim))
         val_gt_moves = dict()
         val_gt_moves_aux = dict()
         val_predicted_moves = dict()
         val_predicted_moves_aux = dict()
-        val_betas = torch.zeros(0,1,10,dtype=torch.float32)
-        val_betas_aux = dict()
-        val_size = len(list(enumerate(self._dataset_test)))
+        test_size = len(list(enumerate(self._dataset_test)))
 
-        total_time = 0
-        n_total_time = 0
-        cnt=178
-        for i in range(1,1000):
-            if i%100 == 0:
-                print(i)
-            for i_test_batch, test_batch in enumerate(self._dataset_test):
-                # set inputs
-                self._model.set_input(test_batch)
+        for i_test_batch, test_batch in enumerate(self._dataset_test):
+            # set inputs
+            self._model.set_input(test_batch)
 
-                moves_gt = dict()
-                moves_predicted = dict()
+            # get estimate
+            estimate = self._model.evaluate()
 
-                # get estimate
-                start_wait = time.time()
-                estimate = self._model.evaluate()
-                val_errors[i+i_test_batch-1,:] = estimate.detach().cpu().numpy()
+            moves = self._model.get_current_moves()
+            val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
+            val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
+            val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
+            val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
+            betas = self._model.get_current_betas()
+            betas = betas['betas']
 
-                moves = self._model.get_current_moves()
-                val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
-                val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
-                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
-                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
-                betas = self._model.get_current_betas()
-                betas = betas['betas']
-
-        #self._display_shape(moves_gt, moves_predicted, betas, 1, 1,
-        #                    cnt,is_train=False)
-
-        print(np.mean(val_errors, axis=0))
+        self._display_shape(val_gt_moves, val_predicted_moves, betas, test_size, 1,
+                            i_test_batch,is_train=False)
 
     def _save_img(self, img, id):
         filename = "{0:05d}.png".format(id)
@@ -170,8 +105,8 @@ class Test:
         cv2.imwrite(filepath, img)
 
     def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
+        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames")
         # Pick Up a Random Batch and Print it
-
         mov = random.randint(0, dataset_size - 1)
         batch = random.randint(0, batch_size - 1)
         images_gt = []
@@ -193,6 +128,7 @@ class Test:
         for i in range(len(femaleBetas)):
             femaleBetas[i] = [ '%.2f' % elem for elem in femaleBetas[i]]
 
+        #LOAD FEMALE MODEL
         if betasShowList in femaleBetas:
             m = load_model('src/smpl/models/basicModel_f_lbs_10_207_0_v1.0.0.pkl')
         #LOAD MALE MODEL
@@ -201,17 +137,12 @@ class Test:
 
         m.betas[:] = betasShow
 
-        """
-        for i in range(int(len(predicted_moves)/2)-5,int(len(predicted_moves)/2)+5):
-            predicted_moves["moves_predicted"][mov][batch][i,:] = (predicted_moves["moves_predicted"][mov][batch][i,:]+predicted_moves["moves_predicted"][mov][batch][i+1,:])/2
-        """
-
         # === Plot and animate ===
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
-        print(gt_moves.keys())
-        for i in range(self._seq_dim):
+
+        for i in range(99):
             m.pose[:] = gt_moves["moves_gt"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
@@ -235,7 +166,7 @@ class Test:
             image = (rn.r * 255).round().astype(np.uint8)
             images_gt.append(image)
 
-        for i in range(self._seq_dim):
+        for i in range(99):
             m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
@@ -257,15 +188,12 @@ class Test:
                 light_color=np.array([1., 1., 1.]))
 
             image = (rn.r * 255).round().astype(np.uint8)
-            # ## Show it using OpenCV
             images_predicted.append(image)
 
         # Put the predicted and gt together
         for i in range(0, len(images_gt)):
             img = Image.fromarray(np.hstack((images_gt[i], images_predicted[i])))
             draw = ImageDraw.Draw(img)
-            # font = ImageFont.truetype(<font-file>, <font-size>)
-            # draw.text((x, y),"Sample Text",(r,g,b))
             if i < len(images_gt)/2:
                 draw.text((275, 0), "Ground Truth", (255, 255, 255))
                 draw.text((925, 0), "Ground Truth", (255, 255, 255))
@@ -275,7 +203,7 @@ class Test:
 
             images.append(img)
 
-        imageio.mimsave(os.path.join(self._gifs_save_path, "test", "mov" + str(i_epoch) + ".gif"), images)
+        imageio.mimsave(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "test" + str(i_epoch) + ".gif"), images)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

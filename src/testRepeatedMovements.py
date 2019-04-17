@@ -48,18 +48,21 @@ from PIL import Image,ImageFont,ImageDraw
 import random
 import src.utils.viz as viz
 import torch
-import glob
 class Test:
     def __init__(self, args):
         config_parser = ConfigParser(set_master_gpu=False)
         self._opt = config_parser.get_config()
         self._opt["model"]["is_train"] = False
 
+        self._seq_dim = self._opt["networks"]["reg"]["hyper_params"]["seq_dim"]
+        self._pred_dim = self._opt["networks"]["reg"]["hyper_params"]["pred_dim"]
+        self._gifs_save_path = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["gifs"])
+
         # set output dir
         self._set_output()
 
         # add data
-        self._add_data()
+        # self._add_data()
 
         # prepare data
         self._prepare_data()
@@ -87,7 +90,7 @@ class Test:
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         readFrames(9,7,1,3,cnt+2,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         """
-        cnt=206
+        cnt=208
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         """
@@ -121,33 +124,33 @@ class Test:
 
     def _test_dataset(self):
         self._model.set_eval()
+        val_errors = np.zeros((10,self._seq_dim-self._pred_dim))
+        val_gt_moves = dict()
+        val_gt_moves_aux = dict()
+        val_predicted_moves = dict()
+        val_predicted_moves_aux = dict()
+        for i in range(1):
+            if i%100 == 0:
+                print(i)
+            for i_test_batch, test_batch in enumerate(self._dataset_test):
+                # set inputs
+                self._model.set_input(test_batch)
 
-        total_time = 0
-        n_total_time = 0
-        cnt=206
-        for i_test_batch, test_batch in enumerate(self._dataset_test):
-            # set inputs
-            self._model.set_input(test_batch)
+                estimate = self._model.evaluate()
+                val_errors[i+i_test_batch-1,:] = estimate.detach().cpu().numpy()
 
-            moves_gt = dict()
-            moves_predicted = dict()
+                moves = self._model.get_current_moves()
+                val_gt_moves_aux["moves_gt"] = moves["moves_gt"]
+                val_predicted_moves_aux["moves_predicted"] = moves["moves_predicted"]
+                val_gt_moves = append_dictionaries(val_gt_moves, val_gt_moves_aux)
+                val_predicted_moves = append_dictionaries(val_predicted_moves, val_predicted_moves_aux)
+                betas = self._model.get_current_betas()
+                betas = betas['betas']
 
-            # get estimate
-            start_wait = time.time()
-            estimate = self._model.evaluate()
-            moves = self._model.get_current_moves()
-            moves_gt["moves_gt"] = moves["moves_gt"]
-            moves_predicted["moves_predicted"] = moves["moves_predicted"]
-            betas = self._model.get_current_betas()
-            betas = betas["betas"]
-            self._display_shape(moves_gt, moves_predicted, betas, 1, 1,
-                                cnt,is_train=False)
-            total_time += time.time() - start_wait
-            n_total_time += 1
-            cnt += 1
-            # store estimate
-            #self._save_img(estimate, i_test_batch)
-        print(f"mean time per sample: {total_time/n_total_time}")
+        self._display_shape(val_gt_moves, val_predicted_moves, betas, 1, 1,
+                            cnt,is_train=False)
+
+        print(np.mean(val_errors, axis=0))
 
     def _save_img(self, img, id):
         filename = "{0:05d}.png".format(id)
@@ -156,9 +159,10 @@ class Test:
         cv2.imwrite(filepath, img)
 
     def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
-        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames")
-
         # Pick Up a Random Batch and Print it
+        print(dataset_size)
+        print(batch_size)
+        mov = random.randint(0, dataset_size - 1)
         batch = random.randint(0, batch_size - 1)
         images_gt = []
         images_predicted = []
@@ -191,20 +195,14 @@ class Test:
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
-
-        frames = sorted(glob.iglob(filepath + "/*.jpg"))
-
-
-        for i in range(99):
-            m.pose[:] = gt_moves["moves_gt"][0][i].detach().cpu().numpy()
+        print(gt_moves.keys())
+        for i in range(self._seq_dim):
+            m.pose[:] = gt_moves["moves_gt"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
 
             ## Assign attributes to renderer
             w, h = (640, 480)
-
-            im = Image.open(frames[i])
-            rn.background_image = im
 
             rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
             rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
@@ -220,18 +218,25 @@ class Test:
                 light_color=np.array([1., 1., 1.]))
 
             image = (rn.r * 255).round().astype(np.uint8)
+            image = image[:, 200:450]
             images_gt.append(image)
 
-        for i in range(99):
-            m.pose[:] = predicted_moves["moves_predicted"][0][i].detach().cpu().numpy()
+        #for i in [0,10,20,30,40,49,51,53,57,59,69,79,89,98]:
+        #    im = Image.fromarray(images_gt[i])
+        #    im.save(os.path.join(self._gifs_save_path, "test", "gtFrame" + str(i) + ".jpg"))
+
+        im = Image.fromarray(np.hstack((images_gt[51], images_gt[53],images_gt[57], images_gt[59],
+                                        images_gt[69], images_gt[79],images_gt[89], images_gt[98])))
+        im.save(os.path.join(self._gifs_save_path, "test", "gtFrames"  + ".jpg"))
+
+
+        for i in range(self._seq_dim):
+            m.pose[:] = predicted_moves["moves_predicted"][mov][batch][i].detach().cpu().numpy()
             ## Create OpenDR renderer
             rn = ColoredRenderer()
 
             ## Assign attributes to renderer
             w, h = (640, 480)
-
-            im = Image.open(frames[i])
-            rn.background_image = im
 
             rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
             rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
@@ -247,15 +252,20 @@ class Test:
                 light_color=np.array([1., 1., 1.]))
 
             image = (rn.r * 255).round().astype(np.uint8)
+            image = image[:, 200:450]
+
             # ## Show it using OpenCV
             images_predicted.append(image)
+
+        im = Image.fromarray(np.hstack((images_predicted[51], images_predicted[53],images_predicted[57], images_predicted[59],
+                                        images_predicted[69], images_predicted[79],images_predicted[89], images_predicted[98])))
+        im.save(os.path.join(self._gifs_save_path, "test", "prFrame" + ".jpg"))
+
 
         # Put the predicted and gt together
         for i in range(0, len(images_gt)):
             img = Image.fromarray(np.hstack((images_gt[i], images_predicted[i])))
             draw = ImageDraw.Draw(img)
-            # font = ImageFont.truetype(<font-file>, <font-size>)
-            # draw.text((x, y),"Sample Text",(r,g,b))
             if i < len(images_gt)/2:
                 draw.text((275, 0), "Ground Truth", (255, 255, 255))
                 draw.text((925, 0), "Ground Truth", (255, 255, 255))
@@ -263,9 +273,10 @@ class Test:
                 draw.text((275, 0), "Ground Truth", (255, 255, 255))
                 draw.text((925, 0), "Predicted", (255, 255, 255))
 
+
             images.append(img)
 
-        imageio.mimsave(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "test" + str(i_epoch) + ".gif"), images)
+        imageio.mimsave(os.path.join(self._gifs_save_path, "test", "mov" + str(i_epoch) + ".gif"), images)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

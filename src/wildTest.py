@@ -59,7 +59,7 @@ class Test:
         self._set_output()
 
         # add data
-        self._add_data()
+        # self._add_data()
 
         # prepare data
         self._prepare_data()
@@ -78,25 +78,16 @@ class Test:
         self._test_dataset()
 
     def _add_data(self):
-        """
+
         cnt=206
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames1"))
-        readFrames(1,2,1,1,cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames1"))
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
+        readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
+        cnt=207
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
-        readFrames(5,3,2,2,cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
+        readFramesVideo("walkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
+        cnt=208
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        readFrames(9,7,1,3,cnt+2,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        """
-        cnt=206
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
-        """
-        readFramesVideo("walkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        readFramesVideo("walkFemale",cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
-        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames5"))
-        readFramesVideo("walkExhaustedMale",cnt+1,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames5"))
-        """
+        readFramesVideo("walkExhaustedMale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
 
     def _prepare_data(self):
         data_loader_test = CustomDatasetDataLoader(self._opt, is_for="test")
@@ -124,7 +115,7 @@ class Test:
 
         total_time = 0
         n_total_time = 0
-        cnt=206
+        cnt=208
         for i_test_batch, test_batch in enumerate(self._dataset_test):
             # set inputs
             self._model.set_input(test_batch)
@@ -156,7 +147,7 @@ class Test:
         cv2.imwrite(filepath, img)
 
     def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
-        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames")
+        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3")
 
         # Pick Up a Random Batch and Print it
         batch = random.randint(0, batch_size - 1)
@@ -185,15 +176,16 @@ class Test:
         else:
             m = load_model('src/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl')
 
-        m.betas[:] = betasShow
+        #m.betas[:] = betasShow
 
         # === Plot and animate ===
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
 
-        frames = sorted(glob.iglob(filepath + "/*.jpg"))
-
+        frames = sorted(glob.iglob(filepath + "/superposedS*.jpg"))
+        print(frames)
+        print(filepath)
 
         for i in range(99):
             m.pose[:] = gt_moves["moves_gt"][0][i].detach().cpu().numpy()
@@ -203,12 +195,12 @@ class Test:
             ## Assign attributes to renderer
             w, h = (640, 480)
 
-            im = Image.open(frames[i])
-            rn.background_image = im
+            #im = Image.open(frames[i])
+            #rn.background_image = im
 
             rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
             rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
-            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+            rn.set(v=m, f=m.f, bgcolor=np.ones(3))
 
             ## Construct point light source
             rn.vc = LambertianPointLight(
@@ -230,12 +222,12 @@ class Test:
             ## Assign attributes to renderer
             w, h = (640, 480)
 
-            im = Image.open(frames[i])
-            rn.background_image = im
+            #im = Image.open(frames[i])
+            #rn.background_image = im
 
             rn.camera = ProjectPoints(v=m, rt=np.zeros(3), t=np.array([0, 0, 2.]), f=np.array([w,w])/2., c=np.array([w,h])/2., k=np.zeros(5))
             rn.frustum = {'near': 1., 'far': 10., 'width': w, 'height': h}
-            rn.set(v=m, f=m.f, bgcolor=np.zeros(3))
+            rn.set(v=m, f=m.f, bgcolor=np.ones(3))
 
             ## Construct point light source
             rn.vc = LambertianPointLight(
@@ -252,16 +244,19 @@ class Test:
 
         # Put the predicted and gt together
         for i in range(0, len(images_gt)):
-            img = Image.fromarray(np.hstack((images_gt[i], images_predicted[i])))
+            im = Image.open(frames[i])
+            img = Image.fromarray(np.hstack((im,images_gt[i], images_predicted[i])))
             draw = ImageDraw.Draw(img)
             # font = ImageFont.truetype(<font-file>, <font-size>)
             # draw.text((x, y),"Sample Text",(r,g,b))
+            draw.text((275, 0), "Original", (0, 0, 0))
+
             if i < len(images_gt)/2:
-                draw.text((275, 0), "Ground Truth", (255, 255, 255))
-                draw.text((925, 0), "Ground Truth", (255, 255, 255))
+                draw.text((925, 0), "Ground Truth", (0, 0, 0))
+                draw.text((1575, 0), "Ground Truth", (0, 0, 0))
             else:
-                draw.text((275, 0), "Ground Truth", (255, 255, 255))
-                draw.text((925, 0), "Predicted", (255, 255, 255))
+                draw.text((925, 0), "Ground Truth", (0, 0, 0))
+                draw.text((1575, 0), "Predicted", (0, 0, 0))
 
             images.append(img)
 

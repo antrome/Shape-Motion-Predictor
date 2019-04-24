@@ -58,7 +58,8 @@ def readFramesVideo(video,cnt,savefolder):
     vidcap = cv2.VideoCapture(VIDEO_PATH)
     print(VIDEO_PATH)
     length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
-    i = random.randint(0, length - 100)
+    #i = random.randint(0, length - 100)
+    i = 50
     vidcap.set(cv2.CAP_PROP_POS_FRAMES, i)
     success, image = vidcap.read()
     count = 0
@@ -75,7 +76,8 @@ def readFramesVideo(video,cnt,savefolder):
         cv2.waitKey(0)
         """
 
-        cv2.imwrite("./" + savefolder + "/frame%d.jpg" % f, crop_img)  # save frame as JPEG file
+        fr = '{:03}'.format(f)
+        cv2.imwrite("./" + savefolder + "/frame"+fr+".jpg", crop_img)  # save frame as JPEG file
         count += 1
 
         if count == 100:

@@ -59,7 +59,7 @@ class Test:
         self._set_output()
 
         # add data
-        # self._add_data()
+        #self._add_data()
 
         # prepare data
         self._prepare_data()
@@ -78,16 +78,25 @@ class Test:
         self._test_dataset()
 
     def _add_data(self):
-
+        """
         cnt=206
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
         readFramesVideo("walkDrunkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames"))
+        """
+        """
         cnt=207
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
         readFramesVideo("walkFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames2"))
+        """
+        """
         cnt=208
         mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
         readFramesVideo("walkExhaustedMale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3"))
+        """
+
+        cnt=209
+        mkdir(os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
+        readFramesVideo("fightFemale",cnt,os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames4"))
 
     def _prepare_data(self):
         data_loader_test = CustomDatasetDataLoader(self._opt, is_for="test")
@@ -115,7 +124,7 @@ class Test:
 
         total_time = 0
         n_total_time = 0
-        cnt=208
+        cnt=206
         for i_test_batch, test_batch in enumerate(self._dataset_test):
             # set inputs
             self._model.set_input(test_batch)
@@ -147,7 +156,7 @@ class Test:
         cv2.imwrite(filepath, img)
 
     def _display_shape(self, gt_moves, predicted_moves, betas, dataset_size, batch_size, i_epoch, is_train):
-        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames3")
+        filepath = os.path.join(self._opt["dirs"]["exp_dir"], self._opt["dirs"]["test"], "wildFrames")
 
         # Pick Up a Random Batch and Print it
         batch = random.randint(0, batch_size - 1)
@@ -170,22 +179,24 @@ class Test:
         for i in range(len(femaleBetas)):
             femaleBetas[i] = [ '%.2f' % elem for elem in femaleBetas[i]]
 
+        """
         if betasShowList in femaleBetas:
             m = load_model('src/smpl/models/basicModel_f_lbs_10_207_0_v1.0.0.pkl')
         #LOAD MALE MODEL
         else:
             m = load_model('src/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl')
+        """
 
-        #m.betas[:] = betasShow
+        m = load_model('src/smpl/models/basicModel_f_lbs_10_207_0_v1.0.0.pkl')
+        m.betas[:] = betasShow
 
         # === Plot and animate ===
         fig = plt.figure()
         ax = plt.gca(projection='3d')
         ob = viz.Ax3DPose(ax)
 
-        frames = sorted(glob.iglob(filepath + "/superposedS*.jpg"))
-        print(frames)
-        print(filepath)
+        framesOrig = sorted(glob.iglob(filepath + "/original*.jpg"))
+        framesSuperposed = sorted(glob.iglob(filepath + "/superposed*.jpg"))
 
         for i in range(99):
             m.pose[:] = gt_moves["moves_gt"][0][i].detach().cpu().numpy()
@@ -244,19 +255,22 @@ class Test:
 
         # Put the predicted and gt together
         for i in range(0, len(images_gt)):
-            im = Image.open(frames[i])
-            img = Image.fromarray(np.hstack((im,images_gt[i], images_predicted[i])))
+            im1 = Image.open(framesOrig[i])
+            im2 = Image.open(framesSuperposed[i])
+            img = Image.fromarray(np.hstack((im1,im2,images_predicted[i])))
             draw = ImageDraw.Draw(img)
+            fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 25)
+            fntb = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 40)
             # font = ImageFont.truetype(<font-file>, <font-size>)
             # draw.text((x, y),"Sample Text",(r,g,b))
-            draw.text((275, 0), "Original", (0, 0, 0))
+            draw.text((275, 0), "Original", font=fnt, fill=(0, 0, 0))
+            draw.text((925, 0), "Extracted Ground Truth", font=fnt, fill=(0, 0, 0))
+            draw.text((1700, 425), "RES CON", font=fntb,fill=(0, 0, 0))
 
             if i < len(images_gt)/2:
-                draw.text((925, 0), "Ground Truth", (0, 0, 0))
-                draw.text((1575, 0), "Ground Truth", (0, 0, 0))
+                draw.text((1575, 0), "SMPL Ground Truth", font=fnt, fill=(0, 0, 0))
             else:
-                draw.text((925, 0), "Ground Truth", (0, 0, 0))
-                draw.text((1575, 0), "Predicted", (0, 0, 0))
+                draw.text((1575, 0), "SMPL Predicted", font=fnt, fill=(0, 0, 0))
 
             images.append(img)
 
